@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7129C4A717F891BE006DAA7C /* StoreTests.m */; };
 		7145F69517F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
 		7145F69A17F7767900B32A04 /* EasyStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F69917F7767900B32A04 /* EasyStore.h */; };
 		7145F69C17F7767900B32A04 /* EasyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F69B17F7767900B32A04 /* EasyStore.m */; };
@@ -15,7 +16,7 @@
 		7145F6A617F7767900B32A04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6A517F7767900B32A04 /* UIKit.framework */; };
 		7145F6A917F7767900B32A04 /* libEasyStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69117F7767900B32A04 /* libEasyStore.a */; };
 		7145F6AF17F7767900B32A04 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7145F6AD17F7767900B32A04 /* InfoPlist.strings */; };
-		7145F6B117F7767900B32A04 /* EasyStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F6B017F7767900B32A04 /* EasyStoreTests.m */; };
+		7145F6B117F7767900B32A04 /* CreateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F6B017F7767900B32A04 /* CreateTests.m */; };
 		7145F6BD17F7782D00B32A04 /* EasyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F6BC17F7782D00B32A04 /* EasyTable.m */; };
 		7145F6C017F7785300B32A04 /* EasyColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F6BF17F7785300B32A04 /* EasyColumn.m */; };
 		7145F6C317F77AA200B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7129C4A717F891BE006DAA7C /* StoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTests.m; sourceTree = "<group>"; };
 		7145F69117F7767900B32A04 /* libEasyStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEasyStore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7145F69417F7767900B32A04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7145F69817F7767900B32A04 /* EasyStore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyStore-Prefix.pch"; sourceTree = "<group>"; };
@@ -57,7 +59,7 @@
 		7145F6A517F7767900B32A04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		7145F6AC17F7767900B32A04 /* EasyStoreTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EasyStoreTests-Info.plist"; sourceTree = "<group>"; };
 		7145F6AE17F7767900B32A04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7145F6B017F7767900B32A04 /* EasyStoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyStoreTests.m; sourceTree = "<group>"; };
+		7145F6B017F7767900B32A04 /* CreateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateTests.m; sourceTree = "<group>"; };
 		7145F6BB17F7782D00B32A04 /* EasyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTable.h; sourceTree = "<group>"; };
 		7145F6BC17F7782D00B32A04 /* EasyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTable.m; sourceTree = "<group>"; };
 		7145F6BE17F7785300B32A04 /* EasyColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyColumn.h; sourceTree = "<group>"; };
@@ -130,9 +132,9 @@
 				7145F69917F7767900B32A04 /* EasyStore.h */,
 				7145F69B17F7767900B32A04 /* EasyStore.m */,
 				7145F6C117F7789C00B32A04 /* EasyConstants.h */,
-				7145F69717F7767900B32A04 /* Supporting Files */,
 				7145F6C517F8799600B32A04 /* Utility.h */,
 				7145F6C617F8799600B32A04 /* Utility.m */,
+				7145F69717F7767900B32A04 /* Supporting Files */,
 			);
 			path = EasyStore;
 			sourceTree = "<group>";
@@ -148,7 +150,8 @@
 		7145F6AA17F7767900B32A04 /* EasyStoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				7145F6B017F7767900B32A04 /* EasyStoreTests.m */,
+				7145F6B017F7767900B32A04 /* CreateTests.m */,
+				7129C4A717F891BE006DAA7C /* StoreTests.m */,
 				7145F6AB17F7767900B32A04 /* Supporting Files */,
 			);
 			path = EasyStoreTests;
@@ -266,7 +269,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7145F6B117F7767900B32A04 /* EasyStoreTests.m in Sources */,
+				7145F6B117F7767900B32A04 /* CreateTests.m in Sources */,
+				7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +447,7 @@
 				7145F6B617F7767900B32A04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7145F6B717F7767900B32A04 /* Build configuration list for PBXNativeTarget "EasyStoreTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +456,7 @@
 				7145F6B917F7767900B32A04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

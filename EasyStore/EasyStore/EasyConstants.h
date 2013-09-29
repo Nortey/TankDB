@@ -15,5 +15,10 @@ typedef enum {
     EasyString
 } EasyType;
 
+typedef enum {
+    Easy_OK,
+    Easy_ERROR
+} EasyStatus;
+
 
 #endif

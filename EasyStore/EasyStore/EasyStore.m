@@ -12,6 +12,8 @@
 static NSMutableArray* _tables;
 static sqlite3* _database;
 static NSString* _databasePath;
+static EasyStatus _status;
+static NSString* _errorMessage;
 
 @implementation EasyStore
 
@@ -42,21 +44,6 @@ static NSString* _databasePath;
     }
 }
 
-+(void)invokeRawQuery:(NSString*)query{
-    const char *dbpath = [_databasePath UTF8String];
-    if (sqlite3_open(dbpath, &_database) == SQLITE_OK){
-        char *errMsg;
-        const char *sql_stmt = [query UTF8String];
-        
-        if (sqlite3_exec(_database, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
-            NSLog(@"Failed to create table");
-        }
-        sqlite3_close(_database);
-    } else {
-        NSLog(@"Failed to open database");
-    }
-}
-
 +(void)done{
     for(EasyTable *table in _tables){
         NSString* tableName = [table getName];
@@ -66,7 +53,35 @@ static NSString* _databasePath;
     }
 }
 
++(EasyStatus)getStatus{
+    return _status;
+}
 
++(NSString*)getErrorMessage{
+    return _errorMessage;
+}
+
++(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error{
+    _status = status;
+    _errorMessage = [NSString stringWithString:error];
+}
+
++(void)invokeRawQuery:(NSString*)query{
+    const char *dbpath = [_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_database) == SQLITE_OK){
+        char *errMsg;
+        const char *sql_stmt = [query UTF8String];
+        
+        if (sqlite3_exec(_database, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
+            [EasyStore setEasyStoreStatus:Easy_ERROR withError:[NSString stringWithFormat:@"%s", errMsg]];
+        }else{
+            [EasyStore setEasyStoreStatus:Easy_OK withError:@""];
+        }
+        sqlite3_close(_database);
+    } else {
+       [EasyStore setEasyStoreStatus:Easy_ERROR withError:@"Failed to open database"];
+    }
+}
 
 /*
     Create table

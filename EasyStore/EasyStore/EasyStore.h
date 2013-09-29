@@ -19,6 +19,9 @@
 /* Public Methods */
 +(void)start;
 +(void)done;
++(EasyStatus)getStatus;
++(NSString*)getErrorMessage;
++(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;
 
 +(EasyTable*)createTableWithName:(NSString*)name;
 +(void)invokeRawQuery:(NSString*)query;
