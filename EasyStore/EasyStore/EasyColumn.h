@@ -17,6 +17,8 @@
 
 /* Public Methods */
 -(id)initWitName:(NSString*)name withType:(EasyType)type;
+
+/* Private Methods */
 -(NSString*)getCreationString;
 
 

@@ -18,6 +18,7 @@
 
 - (void)setUp{
     [super setUp];
+    [EasyStore clearEasyStore];
 }
 
 - (void)tearDown{
@@ -49,8 +50,5 @@
     XCTAssertEqualObjects([EasyStore getErrorMessage], @"", @"Error message is not empty");
 }
 
-- (void)testInvalidStore{
-    
-}
 
 @end

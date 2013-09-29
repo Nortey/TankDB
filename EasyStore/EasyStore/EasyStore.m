@@ -19,8 +19,9 @@ static NSString* _errorMessage;
 
 
 /*
-    Initialize
+    Public Methods
  */
+
 +(void)start{
     _tables = [NSMutableArray new];
     
@@ -53,19 +54,28 @@ static NSString* _errorMessage;
     }
 }
 
-+(EasyStatus)getStatus{
-    return _status;
+
++(EasyTable*)createTableWithName:(NSString*)name{
+    EasyTable* table = [[EasyTable alloc] initWithName:name];
+    [_tables addObject:table];
+    
+    return table;
 }
 
-+(NSString*)getErrorMessage{
-    return _errorMessage;
+
++(void)clearEasyStore{
+    NSArray* tablesArray = [EasyStore getAllEntriesForTable:@"sqlite_master"];
+    
+    for(EasyEntry* entry in tablesArray){
+        NSString* tableName = [entry getStringForColumnName:@"tbl_name"];
+        NSString* dropQuery = [NSString stringWithFormat:@"DROP TABLE IF EXISTS %@", tableName];
+        [EasyStore invokeRawQuery:dropQuery];
+    }
 }
 
-+(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error{
-    _status = status;
-    _errorMessage = [NSString stringWithString:error];
-}
-
+/*
+    Queries
+ */
 +(void)invokeRawQuery:(NSString*)query{
     const char *dbpath = [_databasePath UTF8String];
     if (sqlite3_open(dbpath, &_database) == SQLITE_OK){
@@ -79,31 +89,51 @@ static NSString* _errorMessage;
         }
         sqlite3_close(_database);
     } else {
-       [EasyStore setEasyStoreStatus:Easy_ERROR withError:@"Failed to open database"];
+        [EasyStore setEasyStoreStatus:Easy_ERROR withError:@"Failed to open database"];
     }
 }
 
-/*
-    Create table
-*/
-+(EasyTable*)createTableWithName:(NSString*)name{
-    EasyTable* table = [[EasyTable alloc] initWithName:name];
-    [_tables addObject:table];
++(NSArray*)invokeRawSelectQuery:(NSString*)query{
+    NSMutableArray* selectArray = [NSMutableArray new];
+    sqlite3_stmt *selectstmt;
     
-    return table;
+    const char *dbpath = [_databasePath UTF8String];
+    if(sqlite3_open(dbpath, &_database) == SQLITE_OK) {
+        const char *command = [query UTF8String];
+        
+        if (sqlite3_prepare_v2(_database, command, -1, &selectstmt, NULL) == SQLITE_OK) {
+            while (sqlite3_step(selectstmt) == SQLITE_ROW) {
+                NSMutableDictionary *columnDictionary = [NSMutableDictionary new];
+                
+                int numColumns = sqlite3_column_count(selectstmt);
+                for(int i=0; i<numColumns; i++){
+                    NSString *columnName = [NSString stringWithUTF8String:(char *)sqlite3_column_name(selectstmt, i)];
+                    NSString *columnValue = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, i)];
+                    [columnDictionary setObject:columnValue forKey:columnName];
+                }
+                [selectArray addObject:columnDictionary];
+            }
+            
+            [EasyStore setEasyStoreStatus:Easy_OK withError:@""];
+        }else{
+            [EasyStore setEasyStoreStatus:Easy_ERROR withError:@"Failed to open database"];
+        }
+        sqlite3_finalize(selectstmt);
+    }
+    
+    sqlite3_close (_database);
+    
+    return selectArray;
 }
 
-/*
-    Store into table
-*/
-
-+(void)store:(NSDictionary*)entry intoTable:(NSString*)tableName{
++(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName{
     NSMutableArray* columnNamesArray = [NSMutableArray new];
     NSMutableArray* columnValuesArray = [NSMutableArray new];
+    NSMutableDictionary* entries = [entry getEntries];
     
-    for(NSString* key in entry){
+    for(NSString* key in entries){
         [columnNamesArray addObject:key];
-        NSObject *value = [entry objectForKey:key];
+        NSObject *value = [entries objectForKey:key];
         
         if([value isKindOfClass:[NSString class]]){
             value = [NSString stringWithFormat:@"\"%@\"", value];
@@ -111,12 +141,53 @@ static NSString* _errorMessage;
         
         [columnValuesArray addObject:value];
     }
-    
+    	
     NSString *columnNames = [columnNamesArray componentsJoinedByString:@", "];
     NSString *columnValues = [columnValuesArray componentsJoinedByString:@", "];
     NSString *storeQuery = [NSString stringWithFormat:@"INSERT INTO %@ ( %@ ) VALUES ( %@ )", tableName, columnNames, columnValues];
-   
+    
     [EasyStore invokeRawQuery:storeQuery];
+}
+
++(NSArray*)getAllEntriesForTable:(NSString*)tableName{
+    NSString* selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
+    NSArray* selectArray = [EasyStore invokeRawSelectQuery:selectQuery];
+    
+    NSMutableArray* allEntries = [NSMutableArray new];
+    for(NSDictionary* dict in selectArray){
+        EasyEntry* entry = [EasyEntry new];
+        
+        for(NSString* key in dict){
+            [entry setString:[dict objectForKey:key] forColumnName:key];
+        }
+        
+        [allEntries addObject:entry];
+    }
+    
+    return allEntries;
+}
+
+
+/*
+    Private Methods
+ */
+
++(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error{
+    _status = status;
+    _errorMessage = [NSString stringWithString:error];
+}
+
+
+/*
+    Properties
+ */
+
++(EasyStatus)getStatus{
+    return _status;
+}
+
++(NSString*)getErrorMessage{
+    return _errorMessage;
 }
 
 

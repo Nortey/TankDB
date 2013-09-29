@@ -14,11 +14,11 @@
     NSMutableArray* _columns;
 }
 
--(id)initWithName:(NSString*)name;
-
-
 /* Public Methods */
+-(id)initWithName:(NSString*)name;
 -(EasyColumn*)createColumnWithName:(NSString*)name withType:(int)type;
+
+/* Private Methods */
 -(NSString*)getCreationString;
 
 /* Properties */

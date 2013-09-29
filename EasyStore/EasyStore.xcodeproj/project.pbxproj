@@ -22,6 +22,9 @@
 		7145F6C317F77AA200B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
 		7145F6C417F7838300B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
 		7145F6C717F8799600B32A04 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F6C617F8799600B32A04 /* Utility.m */; };
+		71960BA217F8D76700513369 /* EasyEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA117F8D76700513369 /* EasyEntry.m */; };
+		71960BA417F8F0DB00513369 /* ClearTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA317F8F0DB00513369 /* ClearTests.m */; };
+		71960BA617F8F37000513369 /* SelectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA517F8F37000513369 /* SelectTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,10 @@
 		7145F6C217F77AA200B32A04 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7145F6C517F8799600B32A04 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		7145F6C617F8799600B32A04 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		71960BA017F8D76700513369 /* EasyEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyEntry.h; sourceTree = "<group>"; };
+		71960BA117F8D76700513369 /* EasyEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyEntry.m; sourceTree = "<group>"; };
+		71960BA317F8F0DB00513369 /* ClearTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearTests.m; sourceTree = "<group>"; };
+		71960BA517F8F37000513369 /* SelectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +135,7 @@
 		7145F69617F7767900B32A04 /* EasyStore */ = {
 			isa = PBXGroup;
 			children = (
-				7145F6BA17F776DE00B32A04 /* Table */,
+				7145F6BA17F776DE00B32A04 /* Classes */,
 				7145F69917F7767900B32A04 /* EasyStore.h */,
 				7145F69B17F7767900B32A04 /* EasyStore.m */,
 				7145F6C117F7789C00B32A04 /* EasyConstants.h */,
@@ -152,6 +159,8 @@
 			children = (
 				7145F6B017F7767900B32A04 /* CreateTests.m */,
 				7129C4A717F891BE006DAA7C /* StoreTests.m */,
+				71960BA317F8F0DB00513369 /* ClearTests.m */,
+				71960BA517F8F37000513369 /* SelectTests.m */,
 				7145F6AB17F7767900B32A04 /* Supporting Files */,
 			);
 			path = EasyStoreTests;
@@ -166,15 +175,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7145F6BA17F776DE00B32A04 /* Table */ = {
+		7145F6BA17F776DE00B32A04 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				7145F6BB17F7782D00B32A04 /* EasyTable.h */,
 				7145F6BC17F7782D00B32A04 /* EasyTable.m */,
 				7145F6BE17F7785300B32A04 /* EasyColumn.h */,
 				7145F6BF17F7785300B32A04 /* EasyColumn.m */,
+				71960BA017F8D76700513369 /* EasyEntry.h */,
+				71960BA117F8D76700513369 /* EasyEntry.m */,
 			);
-			name = Table;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7145F6C717F8799600B32A04 /* Utility.m in Sources */,
+				71960BA217F8D76700513369 /* EasyEntry.m in Sources */,
 				7145F6BD17F7782D00B32A04 /* EasyTable.m in Sources */,
 				7145F69C17F7767900B32A04 /* EasyStore.m in Sources */,
 				7145F6C017F7785300B32A04 /* EasyColumn.m in Sources */,
@@ -271,6 +283,8 @@
 			files = (
 				7145F6B117F7767900B32A04 /* CreateTests.m in Sources */,
 				7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */,
+				71960BA417F8F0DB00513369 /* ClearTests.m in Sources */,
+				71960BA617F8F37000513369 /* SelectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

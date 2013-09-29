@@ -11,6 +11,7 @@
 
 #import "EasyTable.h"
 #import "EasyColumn.h"
+#import "EasyEntry.h"
 
 @interface EasyStore : NSObject{
     
@@ -19,15 +20,21 @@
 /* Public Methods */
 +(void)start;
 +(void)done;
-+(EasyStatus)getStatus;
-+(NSString*)getErrorMessage;
-+(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;
-
 +(EasyTable*)createTableWithName:(NSString*)name;
-+(void)invokeRawQuery:(NSString*)query;
-+(void)store:(NSDictionary*)entry intoTable:(NSString*)tableName;
++(void)clearEasyStore;
 
+
+/* Queries */
++(void)invokeRawQuery:(NSString*)query;
++(NSArray*)invokeRawSelectQuery:(NSString*)query;
++(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName;
++(NSArray*)getAllEntriesForTable:(NSString*)tableName;
 
 /* Private Methods */
++(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;
+
+/* Properties */
++(EasyStatus)getStatus;
++(NSString*)getErrorMessage;
 
 @end

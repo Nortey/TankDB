@@ -21,6 +21,8 @@
     return self;
 }
 
+
+/* Private Methods */
 -(NSString*)getCreationString{
     NSString* columnType = [Utility convertType:_type];
     NSString* createString = [NSString stringWithFormat:@"%@ %@", _name, columnType];

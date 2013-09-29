@@ -1,5 +1,5 @@
 //
-//  StoreTests.m
+//  SelectTests.m
 //  EasyStore
 //
 //  Created by Jeremy Nortey on 9/29/13.
@@ -9,12 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "EasyStore.h"
 
-
-@interface StoreTests : XCTestCase
+@interface SelectTests : XCTestCase
 
 @end
 
-@implementation StoreTests
+@implementation SelectTests
 
 - (void)setUp{
     [super setUp];
@@ -25,12 +24,12 @@
     [super tearDown];
 }
 
-- (void)testStoreIntoEasyStore{
+- (void)testTmp{
     [EasyStore start];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
-    EasyColumn* nameColumn = [table createColumnWithName:@"name" withType:EasyString];
-    EasyColumn* amountColumn = [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"name" withType:EasyString];
+    [table createColumnWithName:@"amount" withType:EasyNumber];
     
     [EasyStore done];
     
@@ -39,10 +38,8 @@
     [entry setNumber:45 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
-    XCTAssertEqualObjects([nameColumn getName], @"name", @"Column name incorrect");
-    XCTAssertEqualObjects([amountColumn getName], @"amount", @"Column name incorrect");
-    XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
+    NSArray* entries = [EasyStore getAllEntriesForTable:@"Users"];
+    XCTAssertEqual((int)[entries count], 1, @"Entry not properly stored in EasyStore");
 }
-
 
 @end
