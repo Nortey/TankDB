@@ -21,20 +21,24 @@
 
 /* Public Methods */
 -(void)setString:(NSString*)string forColumnName:(NSString*)columnName{
-    [entryDicitonary setObject:string forKey:columnName];
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    [entryDicitonary setObject:string forKey:columnNameLowerCase];
 }
 
 -(void)setNumber:(int)number forColumnName:(NSString*)columnName{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *numberObject = [NSNumber numberWithInteger:number];
-    [entryDicitonary setObject:numberObject forKey:columnName];
+    [entryDicitonary setObject:numberObject forKey:columnNameLowerCase];
 }
 
 -(NSString*)getStringForColumnName:(NSString*)columnName{
-    return [entryDicitonary objectForKey:columnName];
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    return [entryDicitonary objectForKey:columnNameLowerCase];
 }
 
 -(int)getNumberForColumnName:(NSString*)columnName{
-    return [[entryDicitonary objectForKey:columnName] intValue];
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    return [[entryDicitonary objectForKey:columnNameLowerCase] intValue];
 }
 
 

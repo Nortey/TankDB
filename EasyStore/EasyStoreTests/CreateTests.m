@@ -23,6 +23,7 @@
 
 - (void)tearDown{
     [super tearDown];
+    [EasyStore clearEasyStore];
 }
 
 - (void)testCreateTableAndColumns{
@@ -49,6 +50,8 @@
     XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
     XCTAssertEqualObjects([EasyStore getErrorMessage], @"", @"Error message is not empty");
 }
+
+
 
 
 @end

@@ -16,7 +16,9 @@
 -(id)initWithName:(NSString*)name{
     self = [super init];
     if (self) {
-        _name = [[NSString alloc] initWithString:name];
+        NSString* tableName = [name lowercaseString];
+        
+        _name = [[NSString alloc] initWithString:tableName];
         _columns = [NSMutableArray new];
     }
     return self;

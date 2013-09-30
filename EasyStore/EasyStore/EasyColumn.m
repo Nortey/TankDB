@@ -15,7 +15,9 @@
 -(id)initWitName:(NSString*)name withType:(EasyType)type{
     self = [super init];
     if (self) {
-        _name = [[NSString alloc] initWithString:name];
+        NSString* columnName = [name lowercaseString];
+        
+        _name = [[NSString alloc] initWithString:columnName];
         _type = type;
     }
     return self;

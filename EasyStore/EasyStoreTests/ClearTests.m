@@ -17,11 +17,12 @@
 
 -(void)setUp{
     [super setUp];
-
+    [EasyStore clearEasyStore];
 }
 
 -(void)tearDown{
     [super tearDown];
+    [EasyStore clearEasyStore];
 }
 
 - (void)testClearEasyStore{

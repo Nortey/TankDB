@@ -130,6 +130,7 @@ static NSString* _errorMessage;
     NSMutableArray* columnNamesArray = [NSMutableArray new];
     NSMutableArray* columnValuesArray = [NSMutableArray new];
     NSMutableDictionary* entries = [entry getEntries];
+    NSString* tableNameLowerCase = [tableName lowercaseString];
     
     for(NSString* key in entries){
         [columnNamesArray addObject:key];
@@ -144,13 +145,14 @@ static NSString* _errorMessage;
     	
     NSString *columnNames = [columnNamesArray componentsJoinedByString:@", "];
     NSString *columnValues = [columnValuesArray componentsJoinedByString:@", "];
-    NSString *storeQuery = [NSString stringWithFormat:@"INSERT INTO %@ ( %@ ) VALUES ( %@ )", tableName, columnNames, columnValues];
+    NSString *storeQuery = [NSString stringWithFormat:@"INSERT INTO %@ ( %@ ) VALUES ( %@ )", tableNameLowerCase, columnNames, columnValues];
     
     [EasyStore invokeRawQuery:storeQuery];
 }
 
 +(NSArray*)getAllEntriesForTable:(NSString*)tableName{
-    NSString* selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
+    NSString* tableNameLowerCase = [tableName lowercaseString];
+    NSString* selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@", tableNameLowerCase];
     NSArray* selectArray = [EasyStore invokeRawSelectQuery:selectQuery];
     
     NSMutableArray* allEntries = [NSMutableArray new];

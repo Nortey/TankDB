@@ -23,6 +23,7 @@
 
 - (void)tearDown{
     [super tearDown];
+    [EasyStore clearEasyStore];
 }
 
 - (void)testStoreIntoEasyStore{
@@ -42,6 +43,14 @@
     XCTAssertEqualObjects([nameColumn getName], @"name", @"Column name incorrect");
     XCTAssertEqualObjects([amountColumn getName], @"amount", @"Column name incorrect");
     XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
+}
+
+-(void)testStoreIntoTableNotExists{
+    
+}
+
+-(void)testStoreIntoColumnNotExists{
+    
 }
 
 
