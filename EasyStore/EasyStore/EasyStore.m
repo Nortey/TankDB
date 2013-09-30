@@ -169,6 +169,12 @@ static NSString* _errorMessage;
     return allEntries;
 }
 
++(NSArray*)selectEntriesFromTable:(NSString*)tableName withPredicate:(EasyPredicate*)predicate{
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ %@", tableName, [predicate getPredicateString]];
+    NSArray* entries = [EasyStore invokeRawSelectQuery:selectQuery];
+    return entries;
+}
+
 
 /*
     Private Methods

@@ -26,6 +26,8 @@
 		71960BA417F8F0DB00513369 /* ClearTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA317F8F0DB00513369 /* ClearTests.m */; };
 		71960BA617F8F37000513369 /* SelectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA517F8F37000513369 /* SelectTests.m */; };
 		71960BA817F8FA4700513369 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA717F8FA4700513369 /* UtilityTests.m */; };
+		71960BAB17F90D5C00513369 /* EasyPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BAA17F90D5C00513369 /* EasyPredicate.m */; };
+		71960BAD17F9215300513369 /* PredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BAC17F9215300513369 /* PredicateTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,9 @@
 		71960BA317F8F0DB00513369 /* ClearTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearTests.m; sourceTree = "<group>"; };
 		71960BA517F8F37000513369 /* SelectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTests.m; sourceTree = "<group>"; };
 		71960BA717F8FA4700513369 /* UtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTests.m; sourceTree = "<group>"; };
+		71960BA917F90D5C00513369 /* EasyPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyPredicate.h; sourceTree = "<group>"; };
+		71960BAA17F90D5C00513369 /* EasyPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyPredicate.m; sourceTree = "<group>"; };
+		71960BAC17F9215300513369 /* PredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +169,7 @@
 				71960BA517F8F37000513369 /* SelectTests.m */,
 				71960BA317F8F0DB00513369 /* ClearTests.m */,
 				71960BA717F8FA4700513369 /* UtilityTests.m */,
+				71960BAC17F9215300513369 /* PredicateTests.m */,
 				7145F6AB17F7767900B32A04 /* Supporting Files */,
 			);
 			path = EasyStoreTests;
@@ -187,6 +193,8 @@
 				7145F6BF17F7785300B32A04 /* EasyColumn.m */,
 				71960BA017F8D76700513369 /* EasyEntry.h */,
 				71960BA117F8D76700513369 /* EasyEntry.m */,
+				71960BA917F90D5C00513369 /* EasyPredicate.h */,
+				71960BAA17F90D5C00513369 /* EasyPredicate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -275,6 +283,7 @@
 				7145F6C717F8799600B32A04 /* Utility.m in Sources */,
 				71960BA217F8D76700513369 /* EasyEntry.m in Sources */,
 				7145F6BD17F7782D00B32A04 /* EasyTable.m in Sources */,
+				71960BAB17F90D5C00513369 /* EasyPredicate.m in Sources */,
 				7145F69C17F7767900B32A04 /* EasyStore.m in Sources */,
 				7145F6C017F7785300B32A04 /* EasyColumn.m in Sources */,
 			);
@@ -285,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7145F6B117F7767900B32A04 /* CreateTests.m in Sources */,
+				71960BAD17F9215300513369 /* PredicateTests.m in Sources */,
 				7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */,
 				71960BA417F8F0DB00513369 /* ClearTests.m in Sources */,
 				71960BA617F8F37000513369 /* SelectTests.m in Sources */,

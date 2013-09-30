@@ -117,15 +117,15 @@
 }
 
 -(void)testSelectMixedCase{
-    
+    // TODO TEST
 }
 
 -(void)testSelectTableNotExists{
-    
+    // TODO TEST
 }
 
 -(void)testSelectColumnNotExists{
-    
+    // TODO TEST
 }
 
 @end

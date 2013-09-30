@@ -12,6 +12,7 @@
 #import "EasyTable.h"
 #import "EasyColumn.h"
 #import "EasyEntry.h"
+#import "EasyPredicate.h"
 
 @interface EasyStore : NSObject{
     
@@ -29,6 +30,7 @@
 +(NSArray*)invokeRawSelectQuery:(NSString*)query;
 +(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName;
 +(NSArray*)getAllEntriesForTable:(NSString*)tableName;
++(NSArray*)selectEntriesFromTable:(NSString*)tableName withPredicate:(EasyPredicate*)predicate;
 
 /* Private Methods */
 +(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;
