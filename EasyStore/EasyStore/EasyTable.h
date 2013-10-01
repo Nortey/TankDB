@@ -18,6 +18,9 @@
 -(id)initWithName:(NSString*)name;
 -(EasyColumn*)createColumnWithName:(NSString*)name withType:(int)type;
 
+-(EasyColumn*)createStringColumnWithName:(NSString*)name;
+-(EasyColumn*)createNumberColumnWithName:(NSString*)name;
+
 /* Private Methods */
 -(NSString*)getCreationString;
 

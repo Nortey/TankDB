@@ -35,6 +35,15 @@
     return column;
 }
 
+-(EasyColumn*)createStringColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:EasyString];
+}
+
+
+-(EasyColumn*)createNumberColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:EasyNumber];
+}
+
 
 /* Private Methods */
 -(NSString*)getCreationString;{
