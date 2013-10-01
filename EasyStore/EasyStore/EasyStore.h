@@ -8,9 +8,9 @@
 
 #import <sqlite3.h>
 #import <Foundation/Foundation.h>
+
 #import "EasyConstants.h"
 #import "Utility.h"
-
 #import "EasyTable.h"
 #import "EasyColumn.h"
 #import "EasyEntry.h"
