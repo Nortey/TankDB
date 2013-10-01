@@ -1,19 +1,19 @@
 //
-//  PredicateTests.m
+//  PredicateNumberTests.m
 //  EasyStore
 //
-//  Created by Jeremy Nortey on 9/29/13.
+//  Created by Jeremy Nortey on 9/30/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import "EasyStore.h"
 
-@interface PredicateTests : XCTestCase
+@interface PredicateNumberTests : XCTestCase
 
 @end
 
-@implementation PredicateTests
+@implementation PredicateNumberTests
 
 - (void)setUp{
     [super setUp];
@@ -50,16 +50,17 @@
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
-    [predicate whereColumn:@"name" equalsString:@"Blake"];
+    [predicate selectFromTable:@"Users"];
+    [predicate whereColumn:@"amount" equalsNumber:4444];
     
-    NSArray* entries = [EasyStore selectEntriesFromTable:@"Users" withPredicate:predicate];
+    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
-    NSMutableDictionary* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqualObjects([singleEntry valueForKey:@"name"], @"Blake", @"Incorrect entry returned from query");
+    EasyEntry* singleEntry = [entries objectAtIndex:0];
+    XCTAssertEqual([singleEntry getNumberForColumnName:@"amount"], 4444, @"Incorrect entry returned from query");
 }
 
-- (void)testOrPredicate{
+/*- (void)testOrPredicate{
     [EasyStore start];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
@@ -84,18 +85,19 @@
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"Blake"];
     [predicate orColumnName:@"name" equalsString:@"Dan"];
     
-    NSArray* entries = [EasyStore selectEntriesFromTable:@"Users" withPredicate:predicate];
+    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
-    NSMutableDictionary* firstEntry = [entries objectAtIndex:0];
-    BOOL correct = [@"Blake" isEqualToString:[firstEntry valueForKey:@"name"]] || [@"Dan" isEqualToString:[firstEntry valueForKey:@"name"]];
+    EasyEntry* firstEntry = [entries objectAtIndex:0];
+    BOOL correct = [@"Blake" isEqualToString:[firstEntry getStringForColumnName:@"name"]] || [@"Dan" isEqualToString:[firstEntry getStringForColumnName:@"name"]];
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
     
-    NSMutableDictionary* secondEntry = [entries objectAtIndex:0];
-    correct = [@"Blake" isEqualToString:[secondEntry valueForKey:@"name"]] || [@"Dan" isEqualToString:[secondEntry valueForKey:@"name"]];
+    EasyEntry* secondEntry = [entries objectAtIndex:0];
+    correct = [@"Blake" isEqualToString:[secondEntry getStringForColumnName:@"name"]] || [@"Dan" isEqualToString:[secondEntry getStringForColumnName:@"name"]];
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
 }
 
@@ -124,15 +126,17 @@
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"Kyle"];
     [predicate andColumnName:@"state" equalsString:@"Texas"];
     
-    NSArray* entries = [EasyStore selectEntriesFromTable:@"Users" withPredicate:predicate];
+    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
-    NSMutableDictionary* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqualObjects([singleEntry valueForKey:@"name"], @"Kyle", @"Incorrect entry returned from query");
-    XCTAssertEqualObjects([singleEntry valueForKey:@"state"], @"Texas", @"Incorrect entry returned from query");
-}
+    EasyEntry* singleEntry = [entries objectAtIndex:0];
+    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"name"], @"Kyle", @"Incorrect entry returned from query");
+    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"state"], @"Texas", @"Incorrect entry returned from query");
+}*/
+
 
 @end

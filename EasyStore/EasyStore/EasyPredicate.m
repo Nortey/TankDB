@@ -18,9 +18,19 @@
     return self;
 }
 
+-(NSString*)getPredicateString{
+    return predicateString;
+}
+
+-(void)selectFromTable:(NSString *)tableName{
+    NSString* tableLowerCase = [tableName lowercaseString];
+    [predicateString appendFormat:@"SELECT * FROM %@" , tableLowerCase];
+}
+
+// String Equal predicates
 -(void)whereColumn:(NSString*) columnName equalsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
-    NSString* newPredicate = [NSString stringWithFormat:@"WHERE %@ = \"%@\"", columnNameLowerCase, string];
+    NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = \"%@\"", columnNameLowerCase, string];
     [predicateString appendFormat:@"%@", newPredicate];
 }
 
@@ -36,9 +46,25 @@
     [predicateString appendFormat:@"%@", newPredicate];
 }
 
--(NSString*)getPredicateString{
-    return predicateString;
+// Number Equal predicates
+-(void)whereColumn:(NSString*) columnName equalsNumber:(int)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = %i", columnNameLowerCase, number];
+    [predicateString appendFormat:@"%@", newPredicate];
 }
+
+-(void)andColumnName:(NSString*) columnName equalsNumber:(int)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" AND %@ = %i", columnNameLowerCase, number];
+    [predicateString appendFormat:@"%@", newPredicate];
+}
+
+-(void)orColumnName:(NSString*) columnName equalsNumber:(int)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" OR %@ = %i", columnNameLowerCase, number];
+    [predicateString appendFormat:@"%@", newPredicate];
+}
+
 
 
 @end

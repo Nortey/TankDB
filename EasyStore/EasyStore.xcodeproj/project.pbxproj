@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		718C07E417FA58F000511C87 /* UniversalLib */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 718C07E517FA58F000511C87 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
+			buildPhases = (
+				718C07E817FA597900511C87 /* ShellScript */,
+				718C07F117FA5B4E00511C87 /* CopyFiles */,
+			);
+			dependencies = (
+			);
+			name = UniversalLib;
+			productName = UniversalLib;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7129C4A717F891BE006DAA7C /* StoreTests.m */; };
 		7145F69517F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
@@ -22,12 +37,26 @@
 		7145F6C317F77AA200B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
 		7145F6C417F7838300B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
 		7145F6C717F8799600B32A04 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F6C617F8799600B32A04 /* Utility.m */; };
+		718C079B17FA4F2400511C87 /* PredicateNumberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C079A17FA4F2400511C87 /* PredicateNumberTests.m */; };
+		718C07EB17FA5AED00511C87 /* EasyTable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BB17F7782D00B32A04 /* EasyTable.h */; };
+		718C07EC17FA5AED00511C87 /* EasyColumn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BE17F7785300B32A04 /* EasyColumn.h */; };
+		718C07ED17FA5AED00511C87 /* EasyEntry.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA017F8D76700513369 /* EasyEntry.h */; };
+		718C07EE17FA5AED00511C87 /* EasyPredicate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA917F90D5C00513369 /* EasyPredicate.h */; };
+		718C07EF17FA5AED00511C87 /* EasyConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C117F7789C00B32A04 /* EasyConstants.h */; };
+		718C07F017FA5AED00511C87 /* Utility.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C517F8799600B32A04 /* Utility.h */; };
+		718C07F217FA5B6F00511C87 /* EasyTable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BB17F7782D00B32A04 /* EasyTable.h */; };
+		718C07F317FA5B6F00511C87 /* EasyColumn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BE17F7785300B32A04 /* EasyColumn.h */; };
+		718C07F417FA5B6F00511C87 /* EasyEntry.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA017F8D76700513369 /* EasyEntry.h */; };
+		718C07F517FA5B6F00511C87 /* EasyPredicate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA917F90D5C00513369 /* EasyPredicate.h */; };
+		718C07F617FA5B6F00511C87 /* EasyStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F69917F7767900B32A04 /* EasyStore.h */; };
+		718C07F717FA5B6F00511C87 /* EasyConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C117F7789C00B32A04 /* EasyConstants.h */; };
+		718C07F817FA5B6F00511C87 /* Utility.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C517F8799600B32A04 /* Utility.h */; };
 		71960BA217F8D76700513369 /* EasyEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA117F8D76700513369 /* EasyEntry.m */; };
 		71960BA417F8F0DB00513369 /* ClearTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA317F8F0DB00513369 /* ClearTests.m */; };
 		71960BA617F8F37000513369 /* SelectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA517F8F37000513369 /* SelectTests.m */; };
 		71960BA817F8FA4700513369 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA717F8FA4700513369 /* UtilityTests.m */; };
 		71960BAB17F90D5C00513369 /* EasyPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BAA17F90D5C00513369 /* EasyPredicate.m */; };
-		71960BAD17F9215300513369 /* PredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BAC17F9215300513369 /* PredicateTests.m */; };
+		71960BAD17F9215300513369 /* PredicateStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BAC17F9215300513369 /* PredicateStringTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +73,32 @@
 		7145F68F17F7767900B32A04 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
+			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				718C07EB17FA5AED00511C87 /* EasyTable.h in CopyFiles */,
+				718C07EC17FA5AED00511C87 /* EasyColumn.h in CopyFiles */,
+				718C07ED17FA5AED00511C87 /* EasyEntry.h in CopyFiles */,
+				718C07EE17FA5AED00511C87 /* EasyPredicate.h in CopyFiles */,
+				718C07EF17FA5AED00511C87 /* EasyConstants.h in CopyFiles */,
+				718C07F017FA5AED00511C87 /* Utility.h in CopyFiles */,
 				7145F69A17F7767900B32A04 /* EasyStore.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		718C07F117FA5B4E00511C87 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = include/EasyStore;
+			dstSubfolderSpec = 16;
+			files = (
+				718C07F217FA5B6F00511C87 /* EasyTable.h in CopyFiles */,
+				718C07F317FA5B6F00511C87 /* EasyColumn.h in CopyFiles */,
+				718C07F417FA5B6F00511C87 /* EasyEntry.h in CopyFiles */,
+				718C07F517FA5B6F00511C87 /* EasyPredicate.h in CopyFiles */,
+				718C07F617FA5B6F00511C87 /* EasyStore.h in CopyFiles */,
+				718C07F717FA5B6F00511C87 /* EasyConstants.h in CopyFiles */,
+				718C07F817FA5B6F00511C87 /* Utility.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +125,7 @@
 		7145F6C217F77AA200B32A04 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7145F6C517F8799600B32A04 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		7145F6C617F8799600B32A04 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		718C079A17FA4F2400511C87 /* PredicateNumberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateNumberTests.m; sourceTree = "<group>"; };
 		71960BA017F8D76700513369 /* EasyEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyEntry.h; sourceTree = "<group>"; };
 		71960BA117F8D76700513369 /* EasyEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyEntry.m; sourceTree = "<group>"; };
 		71960BA317F8F0DB00513369 /* ClearTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearTests.m; sourceTree = "<group>"; };
@@ -81,7 +133,7 @@
 		71960BA717F8FA4700513369 /* UtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTests.m; sourceTree = "<group>"; };
 		71960BA917F90D5C00513369 /* EasyPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyPredicate.h; sourceTree = "<group>"; };
 		71960BAA17F90D5C00513369 /* EasyPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyPredicate.m; sourceTree = "<group>"; };
-		71960BAC17F9215300513369 /* PredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateTests.m; sourceTree = "<group>"; };
+		71960BAC17F9215300513369 /* PredicateStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateStringTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +221,8 @@
 				71960BA517F8F37000513369 /* SelectTests.m */,
 				71960BA317F8F0DB00513369 /* ClearTests.m */,
 				71960BA717F8FA4700513369 /* UtilityTests.m */,
-				71960BAC17F9215300513369 /* PredicateTests.m */,
+				71960BAC17F9215300513369 /* PredicateStringTests.m */,
+				718C079A17FA4F2400511C87 /* PredicateNumberTests.m */,
 				7145F6AB17F7767900B32A04 /* Supporting Files */,
 			);
 			path = EasyStoreTests;
@@ -260,6 +313,7 @@
 			targets = (
 				7145F69017F7767900B32A04 /* EasyStore */,
 				7145F6A017F7767900B32A04 /* EasyStoreTests */,
+				718C07E417FA58F000511C87 /* UniversalLib */,
 			);
 		};
 /* End PBXProject section */
@@ -274,6 +328,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		718C07E817FA597900511C87 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ImageFilters ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ImageFilters -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7145F68D17F7767900B32A04 /* Sources */ = {
@@ -294,7 +364,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7145F6B117F7767900B32A04 /* CreateTests.m in Sources */,
-				71960BAD17F9215300513369 /* PredicateTests.m in Sources */,
+				71960BAD17F9215300513369 /* PredicateStringTests.m in Sources */,
+				718C079B17FA4F2400511C87 /* PredicateNumberTests.m in Sources */,
 				7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */,
 				71960BA417F8F0DB00513369 /* ClearTests.m in Sources */,
 				71960BA617F8F37000513369 /* SelectTests.m in Sources */,
@@ -456,6 +527,20 @@
 			};
 			name = Release;
 		};
+		718C07E617FA58F000511C87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		718C07E717FA58F000511C87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -485,6 +570,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		718C07E517FA58F000511C87 /* Build configuration list for PBXAggregateTarget "UniversalLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				718C07E617FA58F000511C87 /* Debug */,
+				718C07E717FA58F000511C87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EasyConstants.h"
 
 @interface Utility : NSObject{
     

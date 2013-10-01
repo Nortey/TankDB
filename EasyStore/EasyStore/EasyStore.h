@@ -8,6 +8,8 @@
 
 #import <sqlite3.h>
 #import <Foundation/Foundation.h>
+#import "EasyConstants.h"
+#import "Utility.h"
 
 #import "EasyTable.h"
 #import "EasyColumn.h"
@@ -30,7 +32,7 @@
 +(NSArray*)invokeRawSelectQuery:(NSString*)query;
 +(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName;
 +(NSArray*)getAllEntriesForTable:(NSString*)tableName;
-+(NSArray*)selectEntriesFromTable:(NSString*)tableName withPredicate:(EasyPredicate*)predicate;
++(NSArray*)getEntriesWithPredicate:(EasyPredicate*)predicate;
 
 /* Private Methods */
 +(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;

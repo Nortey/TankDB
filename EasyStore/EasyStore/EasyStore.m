@@ -169,10 +169,23 @@ static NSString* _errorMessage;
     return allEntries;
 }
 
-+(NSArray*)selectEntriesFromTable:(NSString*)tableName withPredicate:(EasyPredicate*)predicate{
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@ %@", tableName, [predicate getPredicateString]];
-    NSArray* entries = [EasyStore invokeRawSelectQuery:selectQuery];
-    return entries;
++(NSArray*)getEntriesWithPredicate:(EasyPredicate*)predicate{
+    NSString *selectQuery = [predicate getPredicateString];
+    NSArray* selectArray = [EasyStore invokeRawSelectQuery:selectQuery];
+    
+    NSMutableArray* allEntries = [NSMutableArray new];
+    for(NSDictionary* dict in selectArray){
+        EasyEntry* entry = [EasyEntry new];
+        
+        for(NSString* key in dict){
+            [entry setString:[dict objectForKey:key] forColumnName:key];
+        }
+        
+        [allEntries addObject:entry];
+    }
+
+    
+    return allEntries;
 }
 
 
