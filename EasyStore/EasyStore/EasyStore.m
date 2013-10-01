@@ -108,8 +108,16 @@ static NSString* _errorMessage;
                 int numColumns = sqlite3_column_count(selectstmt);
                 for(int i=0; i<numColumns; i++){
                     NSString *columnName = [NSString stringWithUTF8String:(char *)sqlite3_column_name(selectstmt, i)];
-                    NSString *columnValue = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, i)];
-                    [columnDictionary setObject:columnValue forKey:columnName];
+                    NSString *columnValue = nil;
+                    @try{
+                        columnValue = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, i)];
+                    }@catch (NSException* e) {
+                        
+                    }
+                    
+                    if(columnValue != nil){
+                        [columnDictionary setObject:columnValue forKey:columnName];
+                    }
                 }
                 [selectArray addObject:columnDictionary];
             }

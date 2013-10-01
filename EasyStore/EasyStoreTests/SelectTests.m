@@ -116,6 +116,36 @@
     XCTAssertEqual(fourthEntry, 2001, @"Entry not properly stored");
 }
 
+- (void)testGetSpecialCharacters{
+    // TODO more special characters
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Characters"];
+    [table createColumnWithName:@"firstColumn" withType:EasyString];
+    [table createColumnWithName:@"secondColumn" withType:EasyNumber];
+    
+    [EasyStore done];
+    
+    EasyEntry* entry = [EasyEntry new];
+    [entry setString:@"(){}[].;:?/|'" forColumnName:@"firstColumn"];
+    //[entry setNumber:45 forColumnName:@"secondColumn"];
+    [EasyStore store:entry intoTable:@"Characters"];
+    
+    NSArray* entries = [EasyStore getAllEntriesForTable:@"Characters"];
+    XCTAssertEqual((int)[entries count], 1, @"Entry not properly stored in EasyStore");
+    
+    EasyEntry* selectedEntry = [entries objectAtIndex:0];
+    NSString* entryFirstColumn = [selectedEntry getStringForColumnName:@"firstColumn"];
+    //int amount = [selectedEntry getNumberForColumnName:@"amount"];
+    
+    XCTAssertEqualObjects(entryFirstColumn, @"(){}[].;:?/|'", @"Name not properly stored in EasyStore");
+    //XCTAssertEqual(amount, 45, @"Amount not properly stored in EasyStore");
+}
+
+-(void)testSelectSomeColumnsEmpty{
+    
+}
+
 -(void)testSelectMixedCase{
     // TODO TEST
 }
