@@ -117,12 +117,12 @@
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Kyle" forColumnName:@"name"];
-    [entry setString:@"Alabama" forColumnName:@"state"];
+    [entry2 setString:@"Alabama" forColumnName:@"state"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Kyle" forColumnName:@"name"];
-    [entry setString:@"Denver" forColumnName:@"state"];
+    [entry3 setString:@"Denver" forColumnName:@"state"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];

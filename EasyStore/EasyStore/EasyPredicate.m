@@ -46,6 +46,7 @@
     [predicateString appendFormat:@"%@", newPredicate];
 }
 
+
 // Number Equal predicates
 -(void)whereColumn:(NSString*) columnName equalsNumber:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
@@ -65,6 +66,25 @@
     [predicateString appendFormat:@"%@", newPredicate];
 }
 
+
+// Number greater than predicates
+-(void)whereColumn:(NSString*) columnName isGreaterThanNumber:(int)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ > %i", columnNameLowerCase, number];
+    [predicateString appendFormat:@"%@", newPredicate];
+}
+
+-(void)andColumnName:(NSString*) columnName isGreaterThanNumber:(int)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" AND %@ > %i", columnNameLowerCase, number];
+    [predicateString appendFormat:@"%@", newPredicate];
+}
+
+-(void)orColumnName:(NSString*) columnName isGreaterThanNumbersNumber:(int)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" OR %@ > %i", columnNameLowerCase, number];
+    [predicateString appendFormat:@"%@", newPredicate];
+}
 
 
 @end

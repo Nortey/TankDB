@@ -60,7 +60,7 @@
     XCTAssertEqual([singleEntry getNumberForColumnName:@"amount"], 4444, @"Incorrect entry returned from query");
 }
 
-/*- (void)testOrPredicate{
+- (void)testOrPredicate{
     [EasyStore start];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
@@ -86,18 +86,18 @@
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
-    [predicate whereColumn:@"name" equalsString:@"Blake"];
-    [predicate orColumnName:@"name" equalsString:@"Dan"];
+    [predicate whereColumn:@"amount" equalsNumber:4444];
+    [predicate orColumnName:@"amount" equalsNumber:5555];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
-    BOOL correct = [@"Blake" isEqualToString:[firstEntry getStringForColumnName:@"name"]] || [@"Dan" isEqualToString:[firstEntry getStringForColumnName:@"name"]];
+    BOOL correct =  ( 4444 == [firstEntry getNumberForColumnName:@"amount"] || 5555 == [firstEntry getNumberForColumnName:@"amount"] );
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
     
     EasyEntry* secondEntry = [entries objectAtIndex:0];
-    correct = [@"Blake" isEqualToString:[secondEntry getStringForColumnName:@"name"]] || [@"Dan" isEqualToString:[secondEntry getStringForColumnName:@"name"]];
+    correct = ( 4444 == [secondEntry getNumberForColumnName:@"amount"] || 5555 == [secondEntry getNumberForColumnName:@"amount"] );
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
 }
 
@@ -105,38 +105,50 @@
     [EasyStore start];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
-    [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"state" withType:EasyString];
+    [table createColumnWithName:@"age" withType:EasyString];
+    [table createColumnWithName:@"money" withType:EasyString];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"Kyle" forColumnName:@"name"];
-    [entry setString:@"Texas" forColumnName:@"state"];
+    [entry setNumber:21 forColumnName:@"age"];
+    [entry setNumber:83832 forColumnName:@"money"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"Kyle" forColumnName:@"name"];
-    [entry setString:@"Alabama" forColumnName:@"state"];
+    [entry2 setNumber:35 forColumnName:@"age"];
+    [entry2 setNumber:99090 forColumnName:@"money"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setString:@"Kyle" forColumnName:@"name"];
-    [entry setString:@"Denver" forColumnName:@"state"];
+    [entry3 setNumber:3 forColumnName:@"age"];
+    [entry3 setNumber:90 forColumnName:@"money"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
-    [predicate whereColumn:@"name" equalsString:@"Kyle"];
-    [predicate andColumnName:@"state" equalsString:@"Texas"];
+    [predicate whereColumn:@"age" equalsNumber:3];
+    [predicate andColumnName:@"money" equalsNumber:90];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"name"], @"Kyle", @"Incorrect entry returned from query");
-    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"state"], @"Texas", @"Incorrect entry returned from query");
-}*/
+    XCTAssertEqual([singleEntry getNumberForColumnName:@"age"], 3, @"Incorrect entry returned from query");
+    XCTAssertEqual([singleEntry getNumberForColumnName:@"money"], 90, @"Incorrect entry returned from query");
+}
+
+-(void)testWhereGreaterThan{
+    
+}
+
+-(void)testOrGreaterThan{
+    
+}
+
+-(void)testAndGreaterThan{
+    
+}
 
 
 @end

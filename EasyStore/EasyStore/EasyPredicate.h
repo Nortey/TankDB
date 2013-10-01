@@ -31,15 +31,15 @@
 -(void)andColumnName:(NSString*) columnName equalsNumber:(int)number;
 -(void)orColumnName:(NSString*) columnName equalsNumber:(int)number;
 
-/*
+
 // Greater than number
 -(void)whereColumn:(NSString*) columnName isGreaterThanNumber:(int)number;
 -(void)andColumnName:(NSString*) columnName isGreaterThanNumber:(int)number;
--(void)orColumnName:(NSString*) columnName equalisGreaterThanNumbersNumber:(int)number;
+-(void)orColumnName:(NSString*) columnName isGreaterThanNumbersNumber:(int)number;
 
 
 // Less than than number
--(void)whereColumn:(NSString*) columnName isLessThanNumber:(int)number;
+/*-(void)whereColumn:(NSString*) columnName isLessThanNumber:(int)number;
 -(void)andColumnName:(NSString*) columnName isLessThanNumber:(int)number;
 -(void)orColumnName:(NSString*) columnName isLessThanNumber:(int)number;
 */
