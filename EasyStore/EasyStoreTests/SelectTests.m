@@ -143,7 +143,7 @@
 }
 
 -(void)testSelectSomeColumnsEmpty{
-    
+    // TODO TEST
 }
 
 -(void)testSelectMixedCase{

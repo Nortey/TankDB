@@ -13,17 +13,23 @@
     BOOL isAndClause;
     BOOL isOrClause;*/
     
+    BOOL orderAscending;
+    BOOL orderDescending;
+    NSString* orderColumn;
+    
     NSMutableString *predicateString;
 }
 
 -(void)selectFromTable:(NSString*)tableName;
 -(void)deleteFromTable:(NSString*)tableName;
 
+-(void)orderAscendingByColumn:columnName;
+-(void)orderDescendingByColumn:columnName;
+
 // Equals string
 -(void)whereColumn:(NSString*) columnName equalsString:(NSString*)string;
 -(void)andColumnName:(NSString*) columnName equalsString:(NSString*)string;
 -(void)orColumnName:(NSString*) columnName equalsString:(NSString*)string;
-
 
 // Contains string
 -(void)whereColumn:(NSString*) columnName containsString:(NSString*)string;
@@ -35,12 +41,10 @@
 -(void)andColumnName:(NSString*) columnName equalsNumber:(int)number;
 -(void)orColumnName:(NSString*) columnName equalsNumber:(int)number;
 
-
 // Greater than number
 -(void)whereColumn:(NSString*) columnName isGreaterThanNumber:(int)number;
 -(void)andColumnName:(NSString*) columnName isGreaterThanNumber:(int)number;
 -(void)orColumnName:(NSString*) columnName isGreaterThanNumber:(int)number;
-
 
 // Less than than number
 -(void)whereColumn:(NSString*) columnName isLessThanNumber:(int)number;

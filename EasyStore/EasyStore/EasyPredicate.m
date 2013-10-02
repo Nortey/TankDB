@@ -14,11 +14,23 @@
     self = [super init];
     if(self){
         predicateString = [NSMutableString stringWithString:@""];
+        orderAscending = FALSE;
+        orderDescending = FALSE;
     }
     return self;
 }
 
 -(NSString*)getPredicateString{
+    if(orderAscending == TRUE){
+        [predicateString appendFormat:@" ORDER BY %@ ASC" , orderColumn];
+    }else if(orderDescending == TRUE){
+        [predicateString appendFormat:@" ORDER BY %@ DESC" , orderColumn];
+    }
+    
+    orderAscending = FALSE;
+    orderDescending = FALSE;
+    orderColumn = nil;
+    
     return predicateString;
 }
 
@@ -33,9 +45,19 @@
     [predicateString appendFormat:@"DELETE FROM %@" , tableLowerCase];
 }
 
+// NEEDS TESTING
+-(void)orderAscendingByColumn:columnName{
+    orderAscending = TRUE;
+    orderColumn = [NSString stringWithFormat:@"%@", [columnName lowercaseString]];
+}
+
+// NEEDS TESTING
+-(void)orderDescendingByColumn:columnName{
+    orderDescending = TRUE;
+    orderColumn = [NSString stringWithFormat:@"%@", [columnName lowercaseString]];
+}
+
 // String Equal predicates
-
-
 -(void)whereColumn:(NSString*) columnName equalsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = \"%@\"", columnNameLowerCase, string];
@@ -55,6 +77,7 @@
 }
 
 // Contains string
+
 // NEEDS TESTING
 -(void)whereColumn:(NSString*) columnName containsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
