@@ -192,8 +192,12 @@ static NSString* _errorMessage;
         [allEntries addObject:entry];
     }
 
-    
     return allEntries;
+}
+
++(void)deleteEntriesWithPredicate:(EasyPredicate*)predicate{
+    NSString *deleteQuery = [predicate getPredicateString];
+    [EasyStore invokeRawQuery:deleteQuery];
 }
 
 

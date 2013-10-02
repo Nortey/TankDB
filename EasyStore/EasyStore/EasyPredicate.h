@@ -17,18 +17,18 @@
 }
 
 -(void)selectFromTable:(NSString*)tableName;
+-(void)deleteFromTable:(NSString*)tableName;
 
 // Equals string
 -(void)whereColumn:(NSString*) columnName equalsString:(NSString*)string;
 -(void)andColumnName:(NSString*) columnName equalsString:(NSString*)string;
 -(void)orColumnName:(NSString*) columnName equalsString:(NSString*)string;
 
-/*
-// Begins with / Ends with / Contains
--(void)whereColumn:(NSString*) columnName isLikeString:(NSString*)string;
--(void)andColumnName:(NSString*) columnName isLikeString:(NSString*)string;
--(void)orColumnName:(NSString*) columnName isLikeString:(NSString*)string;
-*/
+
+// Contains string
+-(void)whereColumn:(NSString*) columnName containsString:(NSString*)string;
+-(void)andColumnName:(NSString*) columnName containsString:(NSString*)string;
+-(void)orColumnName:(NSString*) columnName containsString:(NSString*)string;
 
 // Equals number
 -(void)whereColumn:(NSString*) columnName equalsNumber:(int)number;

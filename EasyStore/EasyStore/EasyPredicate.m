@@ -27,7 +27,15 @@
     [predicateString appendFormat:@"SELECT * FROM %@" , tableLowerCase];
 }
 
+// NEEDS TESTING
+-(void)deleteFromTable:(NSString *)tableName{
+    NSString* tableLowerCase = [tableName lowercaseString];
+    [predicateString appendFormat:@"DELETE FROM %@" , tableLowerCase];
+}
+
 // String Equal predicates
+
+
 -(void)whereColumn:(NSString*) columnName equalsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = \"%@\"", columnNameLowerCase, string];
@@ -43,6 +51,28 @@
 -(void)orColumnName:(NSString*) columnName equalsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" OR %@ = \"%@\"", columnNameLowerCase, string];
+    [predicateString appendFormat:@"%@", newPredicate];
+}
+
+// Contains string
+// NEEDS TESTING
+-(void)whereColumn:(NSString*) columnName containsString:(NSString*)string{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ LIKE \"%@%@%@\"", columnNameLowerCase, @"%", string, @"%"];
+    [predicateString appendFormat:@"%@", newPredicate];
+}
+
+// NEEDS TESTING
+-(void)andColumnName:(NSString*) columnName containsString:(NSString*)string{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" AND %@ LIKE \"%@%@%@\"", columnNameLowerCase, @"%", string, @"%"];
+    [predicateString appendFormat:@"%@", newPredicate];
+}
+
+// NEEDS TESTING
+-(void)orColumnName:(NSString*) columnName containsString:(NSString*)string{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" OR %@ LIKE \"%@%@%@\"", columnNameLowerCase, @"%", string, @"%"];
     [predicateString appendFormat:@"%@", newPredicate];
 }
 

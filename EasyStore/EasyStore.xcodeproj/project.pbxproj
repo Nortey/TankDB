@@ -52,7 +52,7 @@
 		718C07F717FA5B6F00511C87 /* EasyConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C117F7789C00B32A04 /* EasyConstants.h */; };
 		718C07F817FA5B6F00511C87 /* Utility.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C517F8799600B32A04 /* Utility.h */; };
 		71960BA217F8D76700513369 /* EasyEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA117F8D76700513369 /* EasyEntry.m */; };
-		71960BA417F8F0DB00513369 /* ClearTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA317F8F0DB00513369 /* ClearTests.m */; };
+		71960BA417F8F0DB00513369 /* DeleteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA317F8F0DB00513369 /* DeleteTests.m */; };
 		71960BA617F8F37000513369 /* SelectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA517F8F37000513369 /* SelectTests.m */; };
 		71960BA817F8FA4700513369 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BA717F8FA4700513369 /* UtilityTests.m */; };
 		71960BAB17F90D5C00513369 /* EasyPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71960BAA17F90D5C00513369 /* EasyPredicate.m */; };
@@ -128,7 +128,7 @@
 		718C079A17FA4F2400511C87 /* PredicateNumberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateNumberTests.m; sourceTree = "<group>"; };
 		71960BA017F8D76700513369 /* EasyEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyEntry.h; sourceTree = "<group>"; };
 		71960BA117F8D76700513369 /* EasyEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyEntry.m; sourceTree = "<group>"; };
-		71960BA317F8F0DB00513369 /* ClearTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearTests.m; sourceTree = "<group>"; };
+		71960BA317F8F0DB00513369 /* DeleteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteTests.m; sourceTree = "<group>"; };
 		71960BA517F8F37000513369 /* SelectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTests.m; sourceTree = "<group>"; };
 		71960BA717F8FA4700513369 /* UtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTests.m; sourceTree = "<group>"; };
 		71960BA917F90D5C00513369 /* EasyPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyPredicate.h; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 				7145F6B017F7767900B32A04 /* CreateTests.m */,
 				7129C4A717F891BE006DAA7C /* StoreTests.m */,
 				71960BA517F8F37000513369 /* SelectTests.m */,
-				71960BA317F8F0DB00513369 /* ClearTests.m */,
+				71960BA317F8F0DB00513369 /* DeleteTests.m */,
 				71960BA717F8FA4700513369 /* UtilityTests.m */,
 				71960BAC17F9215300513369 /* PredicateStringTests.m */,
 				718C079A17FA4F2400511C87 /* PredicateNumberTests.m */,
@@ -367,7 +367,7 @@
 				71960BAD17F9215300513369 /* PredicateStringTests.m in Sources */,
 				718C079B17FA4F2400511C87 /* PredicateNumberTests.m in Sources */,
 				7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */,
-				71960BA417F8F0DB00513369 /* ClearTests.m in Sources */,
+				71960BA417F8F0DB00513369 /* DeleteTests.m in Sources */,
 				71960BA617F8F37000513369 /* SelectTests.m in Sources */,
 				71960BA817F8FA4700513369 /* UtilityTests.m in Sources */,
 			);
@@ -578,6 +578,7 @@
 				718C07E717FA58F000511C87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
