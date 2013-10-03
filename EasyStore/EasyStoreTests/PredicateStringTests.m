@@ -138,4 +138,106 @@
     XCTAssertEqualObjects([singleEntry getStringForColumnName:@"state"], @"Texas", @"Incorrect entry returned from query");
 }
 
+- (void)testContainsStringPrefix{
+    // TODO TEST
+}
+
+- (void)testContainsStringSuffix{
+    // TODO TEST
+}
+
+- (void)testContainsString{
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Words"];
+    [table createColumnWithName:@"word" withType:EasyString];
+    
+    [EasyStore done];
+    
+    EasyEntry* entry = [EasyEntry new];
+    [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];
+    [EasyStore store:entry intoTable:@"Words"];
+    
+    EasyEntry* entry2 = [EasyEntry new];
+    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumnName:@"word"];
+    [EasyStore store:entry2 intoTable:@"Words"];
+    
+    EasyEntry* entry3 = [EasyEntry new];
+    [entry3 setString:@"123456789" forColumnName:@"word"];
+    [EasyStore store:entry3 intoTable:@"Words"];
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Words"];
+    [predicate whereColumn:@"word" containsString:@"fgh"];
+    
+    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
+    
+    EasyEntry* singleEntry = [entries objectAtIndex:0];
+    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"word"], @"abcdefghijlkmno", @"Incorrect entry returned from query");
+}
+
+- (void)testAndContainsString{
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Words"];
+    [table createColumnWithName:@"word" withType:EasyString];
+    
+    [EasyStore done];
+    
+    EasyEntry* entry = [EasyEntry new];
+    [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];
+    [EasyStore store:entry intoTable:@"Words"];
+    
+    EasyEntry* entry2 = [EasyEntry new];
+    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumnName:@"word"];
+    [EasyStore store:entry2 intoTable:@"Words"];
+    
+    EasyEntry* entry3 = [EasyEntry new];
+    [entry3 setString:@"123456789" forColumnName:@"word"];
+    [EasyStore store:entry3 intoTable:@"Words"];
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Words"];
+    [predicate whereColumn:@"word" containsString:@"234"];
+    [predicate andColumnName:@"word" containsString:@"678"];
+    
+    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
+    
+    EasyEntry* singleEntry = [entries objectAtIndex:0];
+    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"word"], @"123456789", @"Incorrect entry returned from query");
+}
+
+- (void)testOrContainsString{
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Words"];
+    [table createColumnWithName:@"word" withType:EasyString];
+    
+    [EasyStore done];
+    
+    EasyEntry* entry = [EasyEntry new];
+    [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];
+    [EasyStore store:entry intoTable:@"Words"];
+    
+    EasyEntry* entry2 = [EasyEntry new];
+    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumnName:@"word"];
+    [EasyStore store:entry2 intoTable:@"Words"];
+    
+    EasyEntry* entry3 = [EasyEntry new];
+    [entry3 setString:@"123456789" forColumnName:@"word"];
+    [EasyStore store:entry3 intoTable:@"Words"];
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Words"];
+    [predicate whereColumn:@"word" containsString:@"234"];
+    [predicate orColumnName:@"word" containsString:@"aaa"];
+    
+    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
+}
+
+
+
 @end

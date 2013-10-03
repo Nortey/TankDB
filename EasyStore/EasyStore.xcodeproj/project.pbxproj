@@ -37,6 +37,8 @@
 		7145F6C317F77AA200B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
 		7145F6C417F7838300B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
 		7145F6C717F8799600B32A04 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F6C617F8799600B32A04 /* Utility.m */; };
+		7146ECD417FC4816002C70BF /* PredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7146ECD317FC4816002C70BF /* PredicateTests.m */; };
+		714702B217FCF68100E2017F /* TestPredicateOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 714702B117FCF68100E2017F /* TestPredicateOrder.m */; };
 		718C079B17FA4F2400511C87 /* PredicateNumberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C079A17FA4F2400511C87 /* PredicateNumberTests.m */; };
 		718C07EB17FA5AED00511C87 /* EasyTable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BB17F7782D00B32A04 /* EasyTable.h */; };
 		718C07EC17FA5AED00511C87 /* EasyColumn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BE17F7785300B32A04 /* EasyColumn.h */; };
@@ -125,6 +127,8 @@
 		7145F6C217F77AA200B32A04 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7145F6C517F8799600B32A04 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		7145F6C617F8799600B32A04 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		7146ECD317FC4816002C70BF /* PredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateTests.m; sourceTree = "<group>"; };
+		714702B117FCF68100E2017F /* TestPredicateOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPredicateOrder.m; sourceTree = "<group>"; };
 		718C079A17FA4F2400511C87 /* PredicateNumberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateNumberTests.m; sourceTree = "<group>"; };
 		71960BA017F8D76700513369 /* EasyEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyEntry.h; sourceTree = "<group>"; };
 		71960BA117F8D76700513369 /* EasyEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyEntry.m; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 				71960BA517F8F37000513369 /* SelectTests.m */,
 				71960BA317F8F0DB00513369 /* DeleteTests.m */,
 				71960BA717F8FA4700513369 /* UtilityTests.m */,
+				7146ECD317FC4816002C70BF /* PredicateTests.m */,
+				714702B117FCF68100E2017F /* TestPredicateOrder.m */,
 				71960BAC17F9215300513369 /* PredicateStringTests.m */,
 				718C079A17FA4F2400511C87 /* PredicateNumberTests.m */,
 				7145F6AB17F7767900B32A04 /* Supporting Files */,
@@ -364,12 +370,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7145F6B117F7767900B32A04 /* CreateTests.m in Sources */,
+				714702B217FCF68100E2017F /* TestPredicateOrder.m in Sources */,
 				71960BAD17F9215300513369 /* PredicateStringTests.m in Sources */,
 				718C079B17FA4F2400511C87 /* PredicateNumberTests.m in Sources */,
 				7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */,
 				71960BA417F8F0DB00513369 /* DeleteTests.m in Sources */,
 				71960BA617F8F37000513369 /* SelectTests.m in Sources */,
 				71960BA817F8FA4700513369 /* UtilityTests.m in Sources */,
+				7146ECD417FC4816002C70BF /* PredicateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

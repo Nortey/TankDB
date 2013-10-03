@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+// TODO Error if calling WHERE multiple times
+
 @interface EasyPredicate : NSObject{
     /*BOOL isWhereClause;
     BOOL isAndClause;
