@@ -32,7 +32,10 @@
 +(NSArray*)invokeRawSelectQuery:(NSString*)query;
 +(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName;
 +(NSArray*)getAllEntriesForTable:(NSString*)tableName;
+
+/* Select */
 +(NSArray*)getEntriesWithPredicate:(EasyPredicate*)predicate;
++(void)deleteEntriesWithPredicate:(EasyPredicate*)predicate;
 
 /* Private Methods */
 +(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;

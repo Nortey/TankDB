@@ -39,7 +39,6 @@
     [predicateString appendFormat:@"SELECT * FROM %@" , tableLowerCase];
 }
 
-// NEEDS TESTING
 -(void)deleteFromTable:(NSString *)tableName{
     NSString* tableLowerCase = [tableName lowercaseString];
     [predicateString appendFormat:@"DELETE FROM %@" , tableLowerCase];
