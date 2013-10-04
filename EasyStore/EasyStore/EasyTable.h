@@ -22,6 +22,7 @@
 -(EasyColumn*)createStringColumnWithName:(NSString*)name;
 -(EasyColumn*)createNumberColumnWithName:(NSString*)name;
 -(EasyColumn*)createBooleanColumnWithName:(NSString*)name;
+-(EasyColumn*)createDateColumnWithName:(NSString*)name;
 
 /* Private Methods */
 -(NSString*)getCreationString;

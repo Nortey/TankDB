@@ -23,6 +23,7 @@
 
 /* Begin PBXBuildFile section */
 		7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7129C4A717F891BE006DAA7C /* StoreTests.m */; };
+		7145546A17FEF74B00A5B05B /* PredicateDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145546917FEF74B00A5B05B /* PredicateDateTests.m */; };
 		7145F69517F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
 		7145F69A17F7767900B32A04 /* EasyStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F69917F7767900B32A04 /* EasyStore.h */; };
 		7145F69C17F7767900B32A04 /* EasyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F69B17F7767900B32A04 /* EasyStore.m */; };
@@ -39,6 +40,7 @@
 		7145F6C717F8799600B32A04 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F6C617F8799600B32A04 /* Utility.m */; };
 		71462CA217FE53BD00B8E5F3 /* UpdateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71462CA117FE53BD00B8E5F3 /* UpdateTests.m */; };
 		71462CA417FE618F00B8E5F3 /* PredicateBooleanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71462CA317FE618F00B8E5F3 /* PredicateBooleanTests.m */; };
+		71462CA617FE715500B8E5F3 /* RawQueryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71462CA517FE715500B8E5F3 /* RawQueryTests.m */; };
 		7146ECD417FC4816002C70BF /* PredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7146ECD317FC4816002C70BF /* PredicateTests.m */; };
 		714702B217FCF68100E2017F /* TestPredicateOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 714702B117FCF68100E2017F /* TestPredicateOrder.m */; };
 		718C079B17FA4F2400511C87 /* PredicateNumberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C079A17FA4F2400511C87 /* PredicateNumberTests.m */; };
@@ -110,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		7129C4A717F891BE006DAA7C /* StoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTests.m; sourceTree = "<group>"; };
+		7145546917FEF74B00A5B05B /* PredicateDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateDateTests.m; sourceTree = "<group>"; };
 		7145F69117F7767900B32A04 /* libEasyStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEasyStore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7145F69417F7767900B32A04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7145F69817F7767900B32A04 /* EasyStore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyStore-Prefix.pch"; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 		7145F6C617F8799600B32A04 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		71462CA117FE53BD00B8E5F3 /* UpdateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateTests.m; sourceTree = "<group>"; };
 		71462CA317FE618F00B8E5F3 /* PredicateBooleanTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateBooleanTests.m; sourceTree = "<group>"; };
+		71462CA517FE715500B8E5F3 /* RawQueryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawQueryTests.m; sourceTree = "<group>"; };
 		7146ECD317FC4816002C70BF /* PredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateTests.m; sourceTree = "<group>"; };
 		714702B117FCF68100E2017F /* TestPredicateOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPredicateOrder.m; sourceTree = "<group>"; };
 		718C079A17FA4F2400511C87 /* PredicateNumberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateNumberTests.m; sourceTree = "<group>"; };
@@ -227,9 +231,11 @@
 				7145F6B017F7767900B32A04 /* CreateTests.m */,
 				71960BA317F8F0DB00513369 /* DeleteTests.m */,
 				71462CA317FE618F00B8E5F3 /* PredicateBooleanTests.m */,
+				7145546917FEF74B00A5B05B /* PredicateDateTests.m */,
 				718C079A17FA4F2400511C87 /* PredicateNumberTests.m */,
 				71960BAC17F9215300513369 /* PredicateStringTests.m */,
 				7146ECD317FC4816002C70BF /* PredicateTests.m */,
+				71462CA517FE715500B8E5F3 /* RawQueryTests.m */,
 				7129C4A717F891BE006DAA7C /* StoreTests.m */,
 				71960BA517F8F37000513369 /* SelectTests.m */,
 				714702B117FCF68100E2017F /* TestPredicateOrder.m */,
@@ -376,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71462CA217FE53BD00B8E5F3 /* UpdateTests.m in Sources */,
+				71462CA617FE715500B8E5F3 /* RawQueryTests.m in Sources */,
 				7145F6B117F7767900B32A04 /* CreateTests.m in Sources */,
 				714702B217FCF68100E2017F /* TestPredicateOrder.m in Sources */,
 				71960BAD17F9215300513369 /* PredicateStringTests.m in Sources */,
@@ -386,6 +393,7 @@
 				71960BA617F8F37000513369 /* SelectTests.m in Sources */,
 				71960BA817F8FA4700513369 /* UtilityTests.m in Sources */,
 				7146ECD417FC4816002C70BF /* PredicateTests.m in Sources */,
+				7145546A17FEF74B00A5B05B /* PredicateDateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

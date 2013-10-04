@@ -37,6 +37,12 @@
     [entryDicitonary setObject:boolObject forKey:columnNameLowerCase];
 }
 
+-(void)setDate:(NSDate*)date forColumnName:(NSString*)columnName{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSNumber *dateInteger = [NSNumber numberWithBool:[date timeIntervalSince1970]];
+    [entryDicitonary setObject:dateInteger forKey:columnNameLowerCase];
+}
+
 
 -(NSString*)getStringForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
@@ -51,6 +57,12 @@
 -(BOOL)getBooleanForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     return [[entryDicitonary objectForKey:columnNameLowerCase] boolValue];
+}
+
+-(NSDate*)getDateForColumnName:(NSString*)columnName{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    int unixTimestamp = [[entryDicitonary objectForKey:columnNameLowerCase] intValue];
+    return [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberWithInteger:unixTimestamp] doubleValue]];
 }
 
 

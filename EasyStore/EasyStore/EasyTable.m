@@ -45,7 +45,11 @@
 }
 
 -(EasyColumn*)createBooleanColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyNumber];
+    return [self createColumnWithName:name withType:EasyBoolean];
+}
+
+-(EasyColumn*)createDateColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:EasyDate];
 }
 
 -(void)addIdentityColumn{

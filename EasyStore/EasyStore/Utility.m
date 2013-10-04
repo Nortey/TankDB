@@ -18,6 +18,8 @@
             return @"TEXT"; break;
         case EasyBoolean:
             return @"INTEGER"; break;
+        case EasyDate:
+            return @"INTEGER"; break;
     }
     
     return nil;

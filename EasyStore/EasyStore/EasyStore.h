@@ -17,7 +17,7 @@
 #import "EasyPredicate.h"
 
 @interface EasyStore : NSObject{
-    
+
 }
 
 /* Public Methods */

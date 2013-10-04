@@ -16,10 +16,14 @@
 -(void)setString:(NSString*)string forColumnName:(NSString*)columnName;
 -(void)setNumber:(int)number forColumnName:(NSString*)columnName;
 -(void)setBoolean:(BOOL)booleanValue forColumnName:(NSString*)columnName;
+-(void)setDate:(NSDate*)date forColumnName:(NSString*)columnName;
+
+//TODO SET DATE AS NOW
 
 -(NSString*)getStringForColumnName:(NSString*)columnName;
 -(int)getNumberForColumnName:(NSString*)columnName;
 -(BOOL)getBooleanForColumnName:(NSString*)columnName;
+-(NSDate*)getDateForColumnName:(NSString*)columnName;
 
 /* Properties */
 -(NSMutableDictionary*)getEntries;

@@ -66,6 +66,23 @@
 -(void)andColumnNameIsFalse:(NSString*) columnName;
 -(void)orColumnNameIsFalse:(NSString*) columnName;
 
+// Date values
+
+//TODO IMPLEMENT
+/*
+-(void)whereColumn:(NSString*) columnName equalsDate:(NSDate*)date;
+-(void)andColumnName:(NSString*) columnName equalsDate:(NSDate*)date;
+-(void)orColumnName:(NSString*) columnName equalsDate:(NSDate*)date;
+
+-(void)whereColumn:(NSString*) columnName isAfterDate:(NSDate*)date;
+-(void)andColumnName:(NSString*) columnName isAfterDate:(NSDate*)date;
+-(void)orColumnName:(NSString*) columnName isAfterDate:(NSDate*)date;
+
+-(void)whereColumn:(NSString*) columnName isBeforeDate:(NSDate*)date;
+-(void)andColumnName:(NSString*) columnName isBeforeDate:(NSDate*)date;
+-(void)orColumnName:(NSString*) columnName isBeforeDate:(NSDate*)date;
+ */
+
 -(NSString*)getPredicateString;
 
  
