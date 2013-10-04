@@ -36,6 +36,7 @@
 /* Select */
 +(NSArray*)getEntriesWithPredicate:(EasyPredicate*)predicate;
 +(void)deleteEntriesWithPredicate:(EasyPredicate*)predicate;
++(void)updateEntriesWithPredicate:(EasyPredicate*)predicate;
 
 /* Private Methods */
 +(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;

@@ -15,15 +15,19 @@
     BOOL isAndClause;
     BOOL isOrClause;*/
     
-    BOOL orderAscending;
-    BOOL orderDescending;
-    NSString* orderColumn;
-    
-    NSMutableString *predicateString;
+    NSMutableString *startClause;
+    NSMutableString *orderByClause;
+    NSMutableString *setClause;
+    NSMutableString *whereClause;
+    NSMutableArray* updateSetArray;
 }
 
 -(void)selectFromTable:(NSString*)tableName;
 -(void)deleteFromTable:(NSString*)tableName;
+-(void)updateTable:(NSString*)tableName;
+
+-(void)setColumn:(NSString*)columnName toString:(NSString*)newValue;
+-(void)setColumn:(NSString*)columnName toNumber:(int)newValue;
 
 -(void)orderAscendingByColumn:columnName;
 -(void)orderDescendingByColumn:columnName;

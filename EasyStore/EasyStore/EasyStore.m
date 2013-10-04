@@ -200,6 +200,11 @@ static NSString* _errorMessage;
     [EasyStore invokeRawQuery:deleteQuery];
 }
 
++(void)updateEntriesWithPredicate:(EasyPredicate*)predicate{
+    NSString *updateQuery = [predicate getPredicateString];
+    [EasyStore invokeRawQuery:updateQuery];
+}
+
 
 /*
     Private Methods
