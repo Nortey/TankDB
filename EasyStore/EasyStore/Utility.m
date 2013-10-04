@@ -16,6 +16,8 @@
             return @"INTEGER"; break;
         case EasyString:
             return @"TEXT"; break;
+        case EasyBoolean:
+            return @"INTEGER"; break;
     }
     
     return nil;

@@ -15,19 +15,27 @@
 -(id)initWitName:(NSString*)name withType:(EasyType)type{
     self = [super init];
     if (self) {
-        NSString* columnName = [name lowercaseString];
-        
-        _name = [[NSString alloc] initWithString:columnName];
+        _primaryKey = @"";
+        _autoIncrement = @"";
+        _name = [[NSString alloc] initWithString:name];
         _type = type;
     }
     return self;
 }
 
+-(void)setAsIdentityColumn{
+    _primaryKey = @" PRIMARY KEY ";
+    _autoIncrement = @" AUTOINCREMENT";
+}
+
+-(void)setAsPrimaryKey{
+    _primaryKey = @" PRIMARY KEY ";
+}
 
 /* Private Methods */
 -(NSString*)getCreationString{
     NSString* columnType = [Utility convertType:_type];
-    NSString* createString = [NSString stringWithFormat:@"%@ %@", _name, columnType];
+    NSString* createString = [NSString stringWithFormat:@"%@ %@%@%@", [_name lowercaseString], columnType, _primaryKey, _autoIncrement];
     
     return createString;
 }

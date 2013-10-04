@@ -31,6 +31,13 @@
     [entryDicitonary setObject:numberObject forKey:columnNameLowerCase];
 }
 
+-(void)setBoolean:(BOOL)booleanValue forColumnName:(NSString*)columnName{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSNumber *boolObject = [NSNumber numberWithBool:booleanValue];
+    [entryDicitonary setObject:boolObject forKey:columnNameLowerCase];
+}
+
+
 -(NSString*)getStringForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     return [entryDicitonary objectForKey:columnNameLowerCase];
@@ -39,6 +46,11 @@
 -(int)getNumberForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     return [[entryDicitonary objectForKey:columnNameLowerCase] intValue];
+}
+
+-(BOOL)getBooleanForColumnName:(NSString*)columnName{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    return [[entryDicitonary objectForKey:columnNameLowerCase] boolValue];
 }
 
 

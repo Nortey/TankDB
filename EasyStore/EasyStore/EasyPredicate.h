@@ -57,6 +57,15 @@
 -(void)andColumnName:(NSString*) columnName isLessThanNumber:(int)number;
 -(void)orColumnName:(NSString*) columnName isLessThanNumber:(int)number;
 
+// Boolean values
+-(void)whereColumnIsTrue:(NSString*) columnName;
+-(void)andColumnNameIsTrue:(NSString*) columnName;
+-(void)orColumnNameIsTrue:(NSString*) columnName;
+
+-(void)whereColumnIsFalse:(NSString*) columnName;
+-(void)andColumnNameIsFalse:(NSString*) columnName;
+-(void)orColumnNameIsFalse:(NSString*) columnName;
+
 -(NSString*)getPredicateString;
 
  

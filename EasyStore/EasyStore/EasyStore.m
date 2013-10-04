@@ -73,6 +73,10 @@ static NSString* _errorMessage;
     }
 }
 
++(void)addIdentityColumn{
+    
+}
+
 /*
     Queries
  */

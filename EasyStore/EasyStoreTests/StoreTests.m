@@ -45,6 +45,25 @@
     XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
 }
 
+- (void)testStoreBooleanIntoEasyStore{
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    EasyColumn* firstColumn = [table createBooleanColumnWithName:@"isValid"];
+    EasyColumn* secondColumn = [table createBooleanColumnWithName:@"isSuccessful"];
+    
+    [EasyStore done];
+    
+    EasyEntry* entry = [EasyEntry new];
+    [entry setBoolean:TRUE forColumnName:@"isValid"];
+    [entry setBoolean:FALSE forColumnName:@"isSuccessful"];
+    [EasyStore store:entry intoTable:@"Users"];
+    
+    XCTAssertEqualObjects([firstColumn getName], @"isValid", @"Column name incorrect");
+    XCTAssertEqualObjects([secondColumn getName], @"isSuccessful", @"Column name incorrect");
+    XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
+}
+
 - (void)testStoreSpecialCharacters{
 }
 
@@ -57,6 +76,10 @@
 }
 
 -(void)testStoreIntoColumnNotExists{
+    
+}
+
+-(void)testPrimaryKeyUniqueness{
     
 }
 

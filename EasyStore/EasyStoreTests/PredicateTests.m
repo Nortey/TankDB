@@ -34,4 +34,8 @@
     
 }
 
+-(void)queryUsingIdentityColumn{
+    
+}
+
 @end

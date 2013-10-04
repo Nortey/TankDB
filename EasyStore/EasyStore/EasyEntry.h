@@ -15,9 +15,11 @@
 /* Public Methods */
 -(void)setString:(NSString*)string forColumnName:(NSString*)columnName;
 -(void)setNumber:(int)number forColumnName:(NSString*)columnName;
+-(void)setBoolean:(BOOL)booleanValue forColumnName:(NSString*)columnName;
 
 -(NSString*)getStringForColumnName:(NSString*)columnName;
 -(int)getNumberForColumnName:(NSString*)columnName;
+-(BOOL)getBooleanForColumnName:(NSString*)columnName;
 
 /* Properties */
 -(NSMutableDictionary*)getEntries;

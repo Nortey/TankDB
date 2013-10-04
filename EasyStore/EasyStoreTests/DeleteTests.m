@@ -78,4 +78,8 @@
     XCTAssertEqual((int)[remainingEntries count], 1, @"Incorrect number of results returned from query");
 }
 
+-(void)deleteUsingIdentityColumn{
+    
+}
+
 @end

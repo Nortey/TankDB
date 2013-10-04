@@ -44,6 +44,15 @@
     return [self createColumnWithName:name withType:EasyNumber];
 }
 
+-(EasyColumn*)createBooleanColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:EasyNumber];
+}
+
+-(void)addIdentityColumn{
+    EasyColumn* identityColumn = [self createColumnWithName:@"id" withType:EasyNumber];
+    [identityColumn setAsIdentityColumn];
+}
+
 
 /* Private Methods */
 -(NSString*)getCreationString;{

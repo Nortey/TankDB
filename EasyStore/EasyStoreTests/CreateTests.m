@@ -51,6 +51,50 @@
     XCTAssertEqualObjects([EasyStore getErrorMessage], @"", @"Error message is not empty");
 }
 
+- (void)testCreateTableWithIdentity{
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    EasyColumn* identityColumn = [table createColumnWithName:@"id" withType:EasyNumber];
+    [table createColumnWithName:@"name" withType:EasyString];
+    [table createColumnWithName:@"amount" withType:EasyNumber];
+    
+    [identityColumn setAsIdentityColumn];
+    
+    [EasyStore done];
+    
+    XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
+    XCTAssertEqualObjects([EasyStore getErrorMessage], @"", @"Error message is not empty");
+}
+
+- (void)testCreateTableWithBuiltInIdentity{
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    
+    [table addIdentityColumn];
+    [table createColumnWithName:@"name" withType:EasyString];
+    [table createColumnWithName:@"amount" withType:EasyNumber];
+    
+    [EasyStore done];
+    
+    XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
+    XCTAssertEqualObjects([EasyStore getErrorMessage], @"", @"Error message is not empty");
+}
+
+- (void)testCreateTableWithPrimaryKey{
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    
+    [[table createColumnWithName:@"name" withType:EasyString] setAsPrimaryKey];
+    [table createColumnWithName:@"amount" withType:EasyNumber];
+    
+    [EasyStore done];
+    
+    XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
+    XCTAssertEqualObjects([EasyStore getErrorMessage], @"", @"Error message is not empty");
+}
 
 
 

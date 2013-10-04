@@ -12,7 +12,8 @@
 
 typedef enum {
     EasyNumber,
-    EasyString
+    EasyString,
+    EasyBoolean
 } EasyType;
 
 typedef enum {
