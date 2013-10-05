@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "EasyStore.h"
 
 @interface RawQueryTests : XCTestCase
 
@@ -14,21 +15,71 @@
 
 @implementation RawQueryTests
 
-- (void)setUp
-{
+- (void)setUp{
     [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
+    [EasyStore clearEasyStore];
 }
 
-- (void)tearDown
-{
-    // Put teardown code here; it will be run once, after the last test case.
+- (void)tearDown{
     [super tearDown];
+    [EasyStore clearEasyStore];
 }
 
-- (void)testExample
-{
-    //XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+- (void)testCreateTableUsingRawQuery{
+    [EasyStore beginDatabaseCreation];
+    
+    NSString* createTableQuery = @"CREATE TABLE users ( name TEXT, amount INTEGER )";
+    [EasyStore invokeRawQuery:createTableQuery];
+    
+    XCTAssertTrue([EasyStore getStatus] == Easy_OK, @"Raw SQL query table creation failed");
+}
+
+- (void)testInsertUsingRawQuery{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable* table = [EasyStore createTableWithName:@"Words"];
+    [table createStringColumnWithName:@"word"];
+    
+    [EasyStore completeDatabaseCreation];
+    [EasyStore invokeRawQuery:@"INSERT INTO Words VALUES ( \"hello\" )"];
+    
+    XCTAssertTrue([EasyStore getStatus] == Easy_OK, @"Raw SQL query table creation failed");
+}
+
+- (void)testSelectUsingRawQuery{
+//    [EasyStore beginDatabaseCreation];
+//    
+//    EasyTable* table = [EasyStore createTableWithName:@"Words"];
+//    [table createStringColumnWithName:@"word"];
+//    
+//    [EasyStore completeDatabaseCreation];
+//    [EasyStore invokeRawQuery:@"INSERT INTO Words VALUES ( \"hello\" )"];
+//    
+//    XCTAssertTrue([EasyStore getStatus] == Easy_OK, @"Raw SQL query table creation failed");
+}
+
+- (void)testUpdateUsingRawQuery{
+    //    [EasyStore beginDatabaseCreation];
+    //
+    //    EasyTable* table = [EasyStore createTableWithName:@"Words"];
+    //    [table createStringColumnWithName:@"word"];
+    //
+    //    [EasyStore completeDatabaseCreation];
+    //    [EasyStore invokeRawQuery:@"INSERT INTO Words VALUES ( \"hello\" )"];
+    //
+    //    XCTAssertTrue([EasyStore getStatus] == Easy_OK, @"Raw SQL query table creation failed");
+}
+
+- (void)testDeleteUsingRawQuery{
+    //    [EasyStore beginDatabaseCreation];
+    //
+    //    EasyTable* table = [EasyStore createTableWithName:@"Words"];
+    //    [table createStringColumnWithName:@"word"];
+    //
+    //    [EasyStore completeDatabaseCreation];
+    //    [EasyStore invokeRawQuery:@"INSERT INTO Words VALUES ( \"hello\" )"];
+    //
+    //    XCTAssertTrue([EasyStore getStatus] == Easy_OK, @"Raw SQL query table creation failed");
 }
 
 @end
