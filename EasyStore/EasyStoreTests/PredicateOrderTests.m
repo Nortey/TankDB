@@ -45,7 +45,7 @@
     [predicate selectFromTable:@"Words"];
     [predicate orderAscendingByColumn:@"word"];
 
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     NSArray* orderedWords = @[@"aaaa", @"eeeeee", @"oooooo", @"ttttttt", @"zzzzzz"];
     
     XCTAssertEqual([entries count], [words count], @"Incorrect number of results returned from query");
@@ -77,7 +77,7 @@
     [predicate selectFromTable:@"Words"];
     [predicate orderDescendingByColumn:@"word"];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     NSArray* orderedWords = @[@"zzzzzz", @"ttttttt", @"oooooo", @"eeeeee", @"aaaa"];
     
     XCTAssertEqual([entries count], [words count], @"Incorrect number of results returned from query");

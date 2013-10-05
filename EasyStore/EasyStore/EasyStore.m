@@ -17,11 +17,10 @@ static NSString* _errorMessage;
 
 @implementation EasyStore
 
-
 /*
-    Public Methods
+ *  Begin database creation
+ *  Creates the database file and attempts to open the database
  */
-
 +(void)beginDatabaseCreation{
     _tables = [NSMutableArray new];
     
@@ -32,19 +31,23 @@ static NSString* _errorMessage;
     // Build the path to the database file
     _databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent:@"easy_store.db"]];
     
+    // Open the database
     NSFileManager *filemgr = [NSFileManager defaultManager];
-    
     if ([filemgr fileExistsAtPath: _databasePath ] == NO){
         const char *dbpath = [_databasePath UTF8String];
         
         if (sqlite3_open(dbpath, &_database) == SQLITE_OK){
             sqlite3_close(_database);
         } else {
-            NSLog(@"Failed to open/create database");
+            [EasyStore setEasyStoreStatus:Easy_ERROR withError:@"Failed to open/create database"];
         }
     }
 }
 
+/*
+ *  Complete database creation
+ *  Creates all tables and columns if they do not exist
+ */
 +(void)completeDatabaseCreation{
     for(EasyTable *table in _tables){
         NSString* tableName = [table getName];
@@ -54,7 +57,10 @@ static NSString* _errorMessage;
     }
 }
 
-
+/*
+ *  Create table with name
+ *  Creates a new table in the database
+ */
 +(EasyTable*)createTableWithName:(NSString*)name{
     EasyTable* table = [[EasyTable alloc] initWithName:name];
     [_tables addObject:table];
@@ -62,23 +68,8 @@ static NSString* _errorMessage;
     return table;
 }
 
-
-+(void)clearEasyStore{
-    NSArray* tablesArray = [EasyStore getAllEntriesForTable:@"sqlite_master"];
-    
-    for(EasyEntry* entry in tablesArray){
-        NSString* tableName = [entry getStringForColumnName:@"tbl_name"];
-        NSString* dropQuery = [NSString stringWithFormat:@"DROP TABLE IF EXISTS %@", tableName];
-        [EasyStore invokeRawQuery:dropQuery];
-    }
-}
-
-+(void)addIdentityColumn{
-    
-}
-
 /*
-    Queries
+ *  Invoke raw query
  */
 +(void)invokeRawQuery:(NSString*)query{
     const char *dbpath = [_databasePath UTF8String];
@@ -97,6 +88,10 @@ static NSString* _errorMessage;
     }
 }
 
+/*
+ *  Invoke raw select query
+ *  Invokes a raw select query and returns the results as an array of EasyEntry objects
+ */
 +(NSArray*)invokeRawSelectQuery:(NSString*)query{
     NSMutableArray* selectArray = [NSMutableArray new];
     sqlite3_stmt *selectstmt;
@@ -105,14 +100,22 @@ static NSString* _errorMessage;
     if(sqlite3_open(dbpath, &_database) == SQLITE_OK) {
         const char *command = [query UTF8String];
         
+        // Perform the query
         if (sqlite3_prepare_v2(_database, command, -1, &selectstmt, NULL) == SQLITE_OK) {
+            
+            // For each row returned
             while (sqlite3_step(selectstmt) == SQLITE_ROW) {
                 NSMutableDictionary *columnDictionary = [NSMutableDictionary new];
                 
+                // For each column in each row
                 int numColumns = sqlite3_column_count(selectstmt);
                 for(int i=0; i<numColumns; i++){
-                    NSString *columnName = [NSString stringWithUTF8String:(char *)sqlite3_column_name(selectstmt, i)];
+                    
+                    // Get the column name
                     NSString *columnValue = nil;
+                    NSString *columnName = [NSString stringWithUTF8String:(char *)sqlite3_column_name(selectstmt, i)];
+                    
+                    // Attempt to get the column value or return nil if it does not exist
                     @try{
                         columnValue = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, i)];
                     }@catch (NSException* e) {
@@ -134,16 +137,35 @@ static NSString* _errorMessage;
     }
     
     sqlite3_close (_database);
-    
     return selectArray;
 }
 
+
+/*
+ *  Clear easy store
+ *  Will remove all tables from the database. Completely clears Easystore.
+ */
++(void)clearEasyStore{
+    NSArray* tablesArray = [EasyStore selectAllEntriesForTable:@"sqlite_master"];
+    
+    for(EasyEntry* entry in tablesArray){
+        NSString* tableName = [entry getStringForColumnName:@"tbl_name"];
+        NSString* dropQuery = [NSString stringWithFormat:@"DROP TABLE IF EXISTS %@", tableName];
+        [EasyStore invokeRawQuery:dropQuery];
+    }
+}
+
+/*
+ *  Store entry
+ *  Will construct the query necessary to store the entry into the table
+ */
 +(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName{
     NSMutableArray* columnNamesArray = [NSMutableArray new];
     NSMutableArray* columnValuesArray = [NSMutableArray new];
     NSMutableDictionary* entries = [entry getEntries];
     NSString* tableNameLowerCase = [tableName lowercaseString];
     
+    // Add array of columns, wrapping strings in quotes
     for(NSString* key in entries){
         [columnNamesArray addObject:key];
         NSObject *value = [entries objectForKey:key];
@@ -162,7 +184,11 @@ static NSString* _errorMessage;
     [EasyStore invokeRawQuery:storeQuery];
 }
 
-+(NSArray*)getAllEntriesForTable:(NSString*)tableName{
+/*
+ *  Get all entries for table
+ *  Gets all rows in a table and returns an array of EasyEntry objects
+ */
++(NSArray*)selectAllEntriesForTable:(NSString*)tableName{
     NSString* tableNameLowerCase = [tableName lowercaseString];
     NSString* selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@", tableNameLowerCase];
     NSArray* selectArray = [EasyStore invokeRawSelectQuery:selectQuery];
@@ -181,7 +207,11 @@ static NSString* _errorMessage;
     return allEntries;
 }
 
-+(NSArray*)getEntriesWithPredicate:(EasyPredicate*)predicate{
+/*
+ *  Get entries with predicate
+ *  Constructs and invokes a select statement with a predicate. Returns array of EasyEntry objects.
+ */
++(NSArray*)selectEntriesWithPredicate:(EasyPredicate*)predicate{
     NSString *selectQuery = [predicate getPredicateString];
     NSArray* selectArray = [EasyStore invokeRawSelectQuery:selectQuery];
     
@@ -199,11 +229,19 @@ static NSString* _errorMessage;
     return allEntries;
 }
 
+/*
+ *  Get entries with predicate
+ *  Constructs and invokes a delete statement with a predicate
+ */
 +(void)deleteEntriesWithPredicate:(EasyPredicate*)predicate{
     NSString *deleteQuery = [predicate getPredicateString];
     [EasyStore invokeRawQuery:deleteQuery];
 }
 
+/*
+ *  Get entries with predicate
+ *  Constructs and invokes an update statement with a predicate
+ */
 +(void)updateEntriesWithPredicate:(EasyPredicate*)predicate{
     NSString *updateQuery = [predicate getPredicateString];
     [EasyStore invokeRawQuery:updateQuery];
@@ -211,19 +249,17 @@ static NSString* _errorMessage;
 
 
 /*
-    Private Methods
+ *  Set EasyStore status
+ *  Sets the status and error message after an sql query is performed
  */
-
 +(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error{
     _status = status;
     _errorMessage = [NSString stringWithString:error];
 }
 
-
 /*
-    Properties
+ *  Properties
  */
-
 +(EasyStatus)getStatus{
     return _status;
 }

@@ -25,7 +25,7 @@
     [EasyStore clearEasyStore];
 }
 
--(void)testSetPredicate{
+-(void)testUpdate{
     
 }
 
@@ -57,7 +57,7 @@
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"amount" equalsInteger:4444];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
@@ -93,7 +93,7 @@
     [predicate whereColumn:@"amount" equalsInteger:4444];
     [predicate orColumn:@"amount" equalsInteger:5555];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
@@ -134,7 +134,7 @@
     [predicate whereColumn:@"age" equalsInteger:3];
     [predicate andColumn:@"money" equalsInteger:90];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
@@ -170,7 +170,7 @@
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"amount" isGreaterThanInteger:4000];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
@@ -209,7 +209,7 @@
     [predicate whereColumn:@"name" equalsString:@"John"];
     [predicate orColumn:@"amount" isGreaterThanInteger:5000];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
@@ -251,7 +251,7 @@
     [predicate whereColumn:@"name" equalsString:@"John"];
     [predicate andColumn:@"amount" isGreaterThanInteger:10000];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 0, @"Incorrect number of results returned from query");
 }
 
@@ -283,7 +283,7 @@
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"amount" isLessThanInteger:4000];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
@@ -319,7 +319,7 @@
     [predicate whereColumn:@"name" equalsString:@"Dan"];
     [predicate orColumn:@"amount" isLessThanInteger:5000];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 3, @"Incorrect number of results returned from query");
 }
 

@@ -93,7 +93,10 @@
 }
 
 
-/* Properties */
+/*
+ *  Properties
+ */
+
 -(NSMutableDictionary*)getEntries{
     return _entryDicitonary;
 }

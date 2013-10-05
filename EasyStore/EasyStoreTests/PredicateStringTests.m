@@ -25,7 +25,7 @@
     [EasyStore clearEasyStore];
 }
 
--(void)testSetPredicate{
+-(void)testUpdate{
     
 }
 
@@ -57,7 +57,7 @@
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"Blake"];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
@@ -93,7 +93,7 @@
     [predicate whereColumn:@"name" equalsString:@"Blake"];
     [predicate orColumn:@"name" equalsString:@"Dan"];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
@@ -134,7 +134,7 @@
     [predicate whereColumn:@"name" equalsString:@"Kyle"];
     [predicate andColumn:@"state" equalsString:@"Texas"];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
@@ -174,7 +174,7 @@
     [predicate selectFromTable:@"Words"];
     [predicate whereColumn:@"word" containsString:@"fgh"];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
@@ -206,7 +206,7 @@
     [predicate whereColumn:@"word" containsString:@"234"];
     [predicate andColumn:@"word" containsString:@"678"];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
@@ -238,7 +238,7 @@
     [predicate whereColumn:@"word" containsString:@"234"];
     [predicate orColumn:@"word" containsString:@"aaa"];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
 }
 

@@ -44,7 +44,7 @@
         [EasyStore store:entry intoTable:@"Users"];
     }
     
-    NSArray* entries = [EasyStore getAllEntriesForTable:@"Users"];
+    NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
     XCTAssertEqual([entries count], [names count], @"Incorrect number of results returned from query");
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -55,7 +55,7 @@
     [EasyStore updateEntriesWithPredicate:predicate];
     
     NSArray* updatedNames = @[@"Bill", @"Paul", @"Kyle", @"Jake",@"Mike"];
-    NSArray* updatedEntries = [EasyStore getAllEntriesForTable:@"Users"];
+    NSArray* updatedEntries = [EasyStore selectAllEntriesForTable:@"Users"];
     
     for(int i=0; i<[names count]; i++){
         EasyEntry* thisEntry = [updatedEntries objectAtIndex:i];

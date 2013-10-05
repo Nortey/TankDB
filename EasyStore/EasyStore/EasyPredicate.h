@@ -38,8 +38,10 @@
 -(void)orderAscendingByColumn:columnName;
 -(void)orderDescendingByColumn:columnName;
 
-/* Properties */
+/* Private Methods */
 -(NSString*)getPredicateString;
+
+/* Properties */
 -(NSString*)getSubPredicateType;
 -(void)setSubPredicateType:(NSString*)subPredicateType;
 
@@ -74,7 +76,6 @@
 -(void)whereColumn:(NSString*) columnName isLessThanInteger:(int)number;
 -(void)andColumn:(NSString*) columnName isLessThanInteger:(int)number;
 -(void)orColumn:(NSString*) columnName isLessThanInteger:(int)number;
-
 
 /* Equals float */
 -(void)whereColumn:(NSString*) columnName equalsFloat:(float)number;

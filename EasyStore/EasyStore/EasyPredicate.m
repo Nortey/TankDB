@@ -10,6 +10,9 @@
 
 @implementation EasyPredicate
 
+/*
+ *  Initializes the predicate
+ */
 -(id)init{
     self = [super init];
     if(self){
@@ -26,6 +29,29 @@
     return self;
 }
 
+/*
+ *  Start clause methods
+ *  Beginning of predicate clauses including SELECT, DELETE, and UPDATE
+ */
+-(void)selectFromTable:(NSString *)tableName{
+    NSString* tableLowerCase = [tableName lowercaseString];
+    [_startClause appendFormat:@"SELECT * FROM %@" , tableLowerCase];
+}
+
+-(void)deleteFromTable:(NSString *)tableName{
+    NSString* tableLowerCase = [tableName lowercaseString];
+    [_startClause appendFormat:@"DELETE FROM %@" , tableLowerCase];
+}
+
+-(void)updateTable:(NSString*)tableName{
+    NSString* tableLowerCase = [tableName lowercaseString];
+    [_startClause appendFormat:@"UPDATE %@" , tableLowerCase];
+}
+
+/*
+ *  Compound predicate methods
+ *  Called to surround an entire predicate in an AND or an OR
+ */
 -(void)And:(EasyPredicate*)predicate{
     [predicate setSubPredicateType:@"AND"];
     [_subPredicates addObject:predicate];
@@ -36,15 +62,10 @@
     [_subPredicates addObject:predicate];
 }
 
-// Order by
--(void)orderAscendingByColumn:columnName{
-    [_orderByClause appendFormat:@" ORDER BY %@ ASC" , [columnName lowercaseString]];
-}
-
--(void)orderDescendingByColumn:columnName{
-    [_orderByClause appendFormat:@" ORDER BY %@ DESC" , [columnName lowercaseString]];
-}
-
+/*
+ *  Predicate modifiers
+ *  Modifiers called for predicates including ORDER, LIMIT and OFFSET
+ */
 -(void)limit:(int)limit{
     [_limitClause appendFormat:@" LIMIT %i", limit];
 }
@@ -53,14 +74,18 @@
     [_offsetClause appendFormat:@" OFFSET %i", offset];
 }
 
--(void)setSubPredicateType:(NSString*)predicateType{
-    _subPredicateType = [NSString stringWithString:predicateType];
+-(void)orderAscendingByColumn:columnName{
+    [_orderByClause appendFormat:@" ORDER BY %@ ASC" , [columnName lowercaseString]];
 }
 
--(NSString*)getSubPredicateType{
-    return _subPredicateType;
+-(void)orderDescendingByColumn:columnName{
+    [_orderByClause appendFormat:@" ORDER BY %@ DESC" , [columnName lowercaseString]];
 }
 
+/*
+ *  Get predicate string
+ *  Constructs the entire predicate including compound predicates
+ */
 -(NSString*)getPredicateString{
     
     // Append update parts of predicate
@@ -77,28 +102,25 @@
     // Construct predicate string
     NSString* returnedPredicateString = [NSString stringWithFormat:@"%@%@%@%@%@%@%@",
                                          _startClause, _setClause, _whereClause, subPredicateString, _orderByClause,_limitClause,_offsetClause];
-    
     return returnedPredicateString;
 }
 
-// Start Clauses
--(void)selectFromTable:(NSString *)tableName{
-    NSString* tableLowerCase = [tableName lowercaseString];
-    [_startClause appendFormat:@"SELECT * FROM %@" , tableLowerCase];
+/*
+ *  Properties
+ */
+-(NSString*)getSubPredicateType{
+    return _subPredicateType;
 }
 
--(void)deleteFromTable:(NSString *)tableName{
-    NSString* tableLowerCase = [tableName lowercaseString];
-    [_startClause appendFormat:@"DELETE FROM %@" , tableLowerCase];
+-(void)setSubPredicateType:(NSString*)predicateType{
+    _subPredicateType = [NSString stringWithString:predicateType];
 }
 
--(void)updateTable:(NSString*)tableName{
-    NSString* tableLowerCase = [tableName lowercaseString];
-    [_startClause appendFormat:@"UPDATE %@" , tableLowerCase];
-}
 
-// Set clauses
-
+/*
+ *  Set column methods
+ *  Set column for each data type for UPDATE
+ */
 -(void)setColumn:(NSString*)columnName toString:(NSString*)newValue{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* setString = [NSString stringWithFormat:@" SET %@ = \"%@\"" , columnNameLowerCase, newValue];
@@ -131,7 +153,9 @@
 }
 
 
-// String Equal predicates
+/*
+ *  String equal predicates
+ */
 -(void)whereColumn:(NSString*) columnName equalsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = \"%@\"", columnNameLowerCase, string];
@@ -150,8 +174,9 @@
     [_whereClause appendFormat:@"%@", newPredicate];
 }
 
-// Contains string
-
+/*
+ *  Contains string predicates
+ */
 -(void)whereColumn:(NSString*) columnName containsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ LIKE \"%@%@%@\"", columnNameLowerCase, @"%", string, @"%"];
@@ -171,7 +196,9 @@
 }
 
 
-// Number Equal predicates
+/*
+ *  Integer equal predicates
+ */
 -(void)whereColumn:(NSString*) columnName equalsInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = %i", columnNameLowerCase, number];
@@ -191,7 +218,9 @@
 }
 
 
-// Number greater than predicates
+/*
+ *  Greater than integer predicates
+ */
 -(void)whereColumn:(NSString*) columnName isGreaterThanInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ > %i", columnNameLowerCase, number];
@@ -210,7 +239,9 @@
     [_whereClause appendFormat:@"%@", newPredicate];
 }
 
-// Integer greater than predicates
+/*
+ *  Less than integer predicates
+ */
 -(void)whereColumn:(NSString*) columnName isLessThanInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ < %i", columnNameLowerCase, number];
@@ -230,7 +261,9 @@
 }
 
 
-// Equals float
+/*
+ *  Equals float predicates
+ */
 -(void)whereColumn:(NSString*) columnName equalsFloat:(float)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = %f", columnNameLowerCase, number];
@@ -249,7 +282,9 @@
     [_whereClause appendFormat:@"%@", newPredicate];
 }
 
-// Greater than float
+/*
+ *  Greater than float predicates
+ */
 -(void)whereColumn:(NSString*) columnName isGreaterThanFloat:(float)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ > %f", columnNameLowerCase, number];
@@ -268,7 +303,9 @@
     [_whereClause appendFormat:@"%@", newPredicate];
 }
 
-// Less than than float
+/*
+ *  Less than float predicates
+ */
 -(void)whereColumn:(NSString*) columnName isLessThanFloat:(float)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ < %f", columnNameLowerCase, number];
@@ -288,9 +325,9 @@
 }
 
 
-
-// Boolean predicates
-
+/*
+ *  Boolean true predicates
+ */
 -(void)whereColumnIsTrue:(NSString*) columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = %i", columnNameLowerCase, 1];
@@ -309,6 +346,9 @@
     [_whereClause appendFormat:@"%@", newPredicate];
 }
 
+/*
+ *  Boolean false predicates
+ */
 -(void)whereColumnIsFalse:(NSString*) columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = %i", columnNameLowerCase, 0];
@@ -327,7 +367,9 @@
     [_whereClause appendFormat:@"%@", newPredicate];
 }
 
-// Date Equal predicates
+/*
+ *  Date equal predicates
+ */
 -(void)whereColumn:(NSString*) columnName equalsDate:(NSDate*)date{
     int unixTimestamp = [date timeIntervalSince1970];
     [self whereColumn:columnName equalsInteger:unixTimestamp];
@@ -343,7 +385,9 @@
     [self orColumn:columnName equalsInteger:unixTimestamp];
 }
 
-// Date after predicates
+/*
+ *  Is after date predicates
+ */
 -(void)whereColumn:(NSString*) columnName isAfterDate:(NSDate*)date{
     int unixTimestamp = [date timeIntervalSince1970];
     [self whereColumn:columnName isGreaterThanInteger:unixTimestamp];
@@ -360,7 +404,9 @@
 }
 
 
-// Date before predicates
+/*
+ *  Is before date predicates
+ */
 -(void)whereColumn:(NSString*) columnName isBeforeDate:(NSDate*)date{
     int unixTimestamp = [date timeIntervalSince1970];
     [self whereColumn:columnName isLessThanInteger:unixTimestamp];

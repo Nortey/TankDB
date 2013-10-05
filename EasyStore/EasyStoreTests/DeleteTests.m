@@ -39,11 +39,11 @@
     [entry setInteger:38 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
-    NSArray* entries = [EasyStore getAllEntriesForTable:@"Users"];
+    NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
     XCTAssertEqual((int)[entries count], 1, @"Entry not properly stored in EasyStore");
     
     [EasyStore clearEasyStore];
-    entries = [EasyStore getAllEntriesForTable:@"Users"];
+    entries = [EasyStore selectAllEntriesForTable:@"Users"];
     XCTAssertEqual((int)[entries count], 0, @"Easy store not properly cleared");
 }
 
@@ -70,16 +70,43 @@
     [predicate deleteFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"Blake"];
     
-    NSArray* entries = [EasyStore getAllEntriesForTable:@"Users"];
+    NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     [EasyStore deleteEntriesWithPredicate:predicate];
-    NSArray* remainingEntries = [EasyStore getAllEntriesForTable:@"Users"];
+    NSArray* remainingEntries = [EasyStore selectAllEntriesForTable:@"Users"];
     XCTAssertEqual((int)[remainingEntries count], 1, @"Incorrect number of results returned from query");
 }
 
--(void)deleteUsingIdentityColumn{
+-(void)testDeleteUsingIdentityColumn{
+    [EasyStore beginDatabaseCreation];
     
+    EasyTable *table = [EasyStore createTableWithName:@"Schools"];
+    [table addIdentityColumn];
+    [table createStringColumnWithName:@"name"];
+    [table createBooleanColumnWithName:@"funded"];
+    [EasyStore completeDatabaseCreation];
+    
+    NSArray* names = @[@"Leander", @"Cedar Park", @"Westwood", @"Austin High", @"Coronado", @"Morehead"];
+    bool funded[] = {true, false, true, false, true, false};
+    
+    for (int i=0; i<[names count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setString:[names objectAtIndex:i] forColumnName:@"name"];
+        [entry setBoolean:funded[i] forColumnName:@"funded"];
+        [EasyStore store:entry intoTable:@"Schools"];
+    }
+    
+    NSArray* entries = [EasyStore selectAllEntriesForTable:@"Schools"];
+    XCTAssertEqual([entries count], [names count], @"Incorrect number of results returned from query");
+    
+    EasyPredicate* predicate = [EasyPredicate new];
+    [predicate deleteFromTable:@"Schools"];
+    [predicate whereColumn:@"id" isGreaterThanInteger:3];
+    
+    [EasyStore deleteEntriesWithPredicate:predicate];
+    entries = [EasyStore selectAllEntriesForTable:@"Schools"];
+    XCTAssertEqual((int)[entries count], 3, @"Incorrect number of results returned from query");
 }
 
 @end

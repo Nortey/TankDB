@@ -25,7 +25,7 @@
     [EasyStore clearEasyStore];
 }
 
--(void)testSetPredicate{
+-(void)testUpdate{
     
 }
 
@@ -48,7 +48,7 @@
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"date" equalsDate:now];
     
-    NSArray* entries = [EasyStore getAllEntriesForTable:@"Users"];
+    NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* thisEntry = [entries objectAtIndex:0];

@@ -179,6 +179,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		713F3629180095D9006ECFD8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7145F6C517F8799600B32A04 /* Utility.h */,
+				7145F6C617F8799600B32A04 /* Utility.m */,
+				7145F6C117F7789C00B32A04 /* EasyConstants.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		7145F68817F7767900B32A04 = {
 			isa = PBXGroup;
 			children = (
@@ -212,12 +222,10 @@
 		7145F69617F7767900B32A04 /* EasyStore */ = {
 			isa = PBXGroup;
 			children = (
-				7145F6BA17F776DE00B32A04 /* Classes */,
 				7145F69917F7767900B32A04 /* EasyStore.h */,
 				7145F69B17F7767900B32A04 /* EasyStore.m */,
-				7145F6C117F7789C00B32A04 /* EasyConstants.h */,
-				7145F6C517F8799600B32A04 /* Utility.h */,
-				7145F6C617F8799600B32A04 /* Utility.m */,
+				7145F6BA17F776DE00B32A04 /* Classes */,
+				713F3629180095D9006ECFD8 /* Helpers */,
 				7145F69717F7767900B32A04 /* Supporting Files */,
 			);
 			path = EasyStore;
@@ -240,8 +248,8 @@
 				7145546917FEF74B00A5B05B /* PredicateDateTests.m */,
 				71393F2417FFB2ED003C9FE6 /* PredicateFloatTests.m */,
 				718C079A17FA4F2400511C87 /* PredicateIntegerTests.m */,
-				714702B117FCF68100E2017F /* PredicateOrderTests.m */,
 				713F362718004792006ECFD8 /* PredicateLimitOffsetTests.m */,
+				714702B117FCF68100E2017F /* PredicateOrderTests.m */,
 				71960BAC17F9215300513369 /* PredicateStringTests.m */,
 				7146ECD317FC4816002C70BF /* PredicateTests.m */,
 				71462CA517FE715500B8E5F3 /* RawQueryTests.m */,

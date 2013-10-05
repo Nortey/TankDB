@@ -60,8 +60,8 @@
     [andPredicate orColumn:@"grade" isLessThanInteger:40];
     [predicate And:andPredicate];
     
-    [EasyStore getEntriesWithPredicate:predicate];
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
+    [EasyStore selectEntriesWithPredicate:predicate];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
 
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     

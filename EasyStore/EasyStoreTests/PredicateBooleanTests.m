@@ -25,11 +25,41 @@
     [EasyStore clearEasyStore];
 }
 
--(void)testSetPredicate{
+-(void)testSelectWherePredicate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createStringColumnWithName:@"name"];
+    [table createBooleanColumnWithName:@"isValid"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSArray* names = @[@"Blake", @"Drew", @"Mike", @"Tom"];
+    bool isValid[] = {true, false, true, false};
+    
+    for(int i=0; i<[names count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setString:[names objectAtIndex:i] forColumnName:@"name"];
+        [entry setBoolean:isValid[i] forColumnName:@"isValid"];
+        [EasyStore store:entry intoTable:@"Users"];
+    }
+    
+    NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
+    XCTAssertEqual([entries count], [names count], @"Incorrect number of results returned from query");
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
+    [predicate whereColumnIsTrue:@"isValid"];
+
+    entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
+}
+
+-(void)testUpdate{
     
 }
 
--(void)testWherePredicate{
+-(void)testDelete{
     
 }
 
@@ -42,14 +72,10 @@
 }
 
 
+
+
 /*- (void)testUpdateSingleEntry{
-    [EasyStore start];
-    
-    EasyTable *table = [EasyStore createTableWithName:@"Users"];
-    [table createStringColumnWithName:@"name"];
-    [table createStringColumnWithName:@"state"];
-    
-    [EasyStore done];
+ 
     
     NSArray* names = @[@"Bill", @"John", @"Kyle", @"Jake",@"Mike"];
     NSArray* states = @[@"Texas", @"Alabama", @"Delaware", @"California",@"Florida"];
