@@ -10,9 +10,11 @@
 
 @implementation EasyColumn
 
-/* Public Methods */
-
--(id)initWitName:(NSString*)name withType:(EasyType)type{
+/*
+ *  Initialize table
+ *  Initializes the column with the given name and column type.
+ */
+-(id)initWithName:(NSString*)name withType:(EasyType)type{
     self = [super init];
     if (self) {
         _primaryKey = @"";
@@ -23,16 +25,28 @@
     return self;
 }
 
+/*
+ *  Set column as identity
+ *  When called, this column will be an autoincrementing primary key in the database upon creation
+ */
 -(void)setAsIdentityColumn{
     _primaryKey = @" PRIMARY KEY ";
     _autoIncrement = @" AUTOINCREMENT";
 }
 
+/*
+ *  Set column as primary key
+ *  When called, this column will be an primary key in the database upon creation
+ */
 -(void)setAsPrimaryKey{
     _primaryKey = @" PRIMARY KEY ";
 }
 
-/* Private Methods */
+
+/*
+ *  Get column creation string
+ *  Constructs the query used to create the column
+ */
 -(NSString*)getCreationString{
     NSString* columnType = [Utility convertType:_type];
     NSString* createString = [NSString stringWithFormat:@"%@ %@%@%@", [_name lowercaseString], columnType, _primaryKey, _autoIncrement];
@@ -40,7 +54,9 @@
     return createString;
 }
 
-/* Properties */
+/*
+ *  Properties
+ */
 
 -(NSString*)getName{
     return _name;

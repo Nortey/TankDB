@@ -26,13 +26,13 @@
 }
 
 - (void)testGetAllEntries{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -51,7 +51,7 @@
 }
 
 -(void)testSelectUpperToLowerCase{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"SELECTTESTS"];
     [table createColumnWithName:@"FIRSTCOLUMN" withType:EasyString];
@@ -59,7 +59,7 @@
     [table createColumnWithName:@"THIRDCOLUMN" withType:EasyString];
     [table createColumnWithName:@"FOURTHCOLUMN" withType:EasyInteger];
 
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"firstValue" forColumnName:@"firstcolumn"];
@@ -84,7 +84,7 @@
 }
 
 -(void)testSelectLowerToUpperCase{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"selecttests"];
     [table createColumnWithName:@"firstcolumn" withType:EasyString];
@@ -92,7 +92,7 @@
     [table createColumnWithName:@"thirdcolumn" withType:EasyString];
     [table createColumnWithName:@"fourthcolumn" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"firstValue" forColumnName:@"FIRSTCOLUMN"];
@@ -118,13 +118,13 @@
 
 - (void)testGetSpecialCharacters{
     // TODO more special characters
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Characters"];
     [table createColumnWithName:@"firstColumn" withType:EasyString];
     [table createColumnWithName:@"secondColumn" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"(){}[].;:?/|'" forColumnName:@"firstColumn"];

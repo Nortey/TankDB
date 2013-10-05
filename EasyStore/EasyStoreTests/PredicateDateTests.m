@@ -25,14 +25,18 @@
     [EasyStore clearEasyStore];
 }
 
+-(void)testSetPredicate{
+    
+}
+
 -(void)testWherePredicate{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createStringColumnWithName:@"name"];
     [table createDateColumnWithName:@"date"];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     NSDate* now = [NSDate date];
     

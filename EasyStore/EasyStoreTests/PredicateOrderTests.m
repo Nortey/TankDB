@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "EasyStore.h"
 
-@interface TestPredicateOrder : XCTestCase
+@interface PredicateOrderTests : XCTestCase
 
 @end
 
-@implementation TestPredicateOrder
+@implementation PredicateOrderTests
 
 - (void)setUp{
     [super setUp];
@@ -26,12 +26,12 @@
 }
 
 - (void)testOrderByStringAscending{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
 
     EasyTable *table = [EasyStore createTableWithName:@"Words"];
     [table createColumnWithName:@"word" withType:EasyString];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     NSArray* words = @[@"zzzzzz", @"aaaa", @"eeeeee", @"ttttttt", @"oooooo"];
     
@@ -58,12 +58,12 @@
 }
 
 - (void)testOrderByStringDescending{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Words"];
     [table createColumnWithName:@"word" withType:EasyString];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     NSArray* words = @[@"zzzzzz", @"aaaa", @"eeeeee", @"ttttttt", @"oooooo"];
     

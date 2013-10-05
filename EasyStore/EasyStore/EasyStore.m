@@ -22,7 +22,7 @@ static NSString* _errorMessage;
     Public Methods
  */
 
-+(void)start{
++(void)beginDatabaseCreation{
     _tables = [NSMutableArray new];
     
     // Get the documents directory
@@ -45,7 +45,7 @@ static NSString* _errorMessage;
     }
 }
 
-+(void)done{
++(void)completeDatabaseCreation{
     for(EasyTable *table in _tables){
         NSString* tableName = [table getName];
         NSString* tableCreatetionString = [table getCreationString];
@@ -128,7 +128,7 @@ static NSString* _errorMessage;
             
             [EasyStore setEasyStoreStatus:Easy_OK withError:@""];
         }else{
-            [EasyStore setEasyStoreStatus:Easy_ERROR withError:@"Failed to open database"];
+            [EasyStore setEasyStoreStatus:Easy_ERROR withError:[NSString stringWithFormat:@"%s", sqlite3_errmsg(_database)]];
         }
         sqlite3_finalize(selectstmt);
     }

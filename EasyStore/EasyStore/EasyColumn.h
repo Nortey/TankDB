@@ -10,23 +10,20 @@
 #import "Utility.h"
 
 @interface EasyColumn : NSObject{
-    // MULTICOLUMN PRIMARY KEYS
-    
     NSString* _name;
     NSString* _autoIncrement;
     NSString* _primaryKey;
     EasyType _type;
 }
 
+-(id)initWithName:(NSString*)name withType:(EasyType)type;
 
-/* Public Methods */
--(id)initWitName:(NSString*)name withType:(EasyType)type;
+/* Other Public Methods */
 -(void)setAsIdentityColumn;
 -(void)setAsPrimaryKey;
 
 /* Private Methods */
 -(NSString*)getCreationString;
-
 
 /* Properties */
 -(NSString*)getName;

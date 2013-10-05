@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface EasyEntry : NSObject{
-    NSMutableDictionary* entryDicitonary;
+    NSMutableDictionary* _entryDicitonary;
 }
 
-/* Public Methods */
+/* Set column value methods */
 -(void)setString:(NSString*)string forColumnName:(NSString*)columnName;
 -(void)setInteger:(int)integer forColumnName:(NSString*)columnName;
 -(void)setBoolean:(BOOL)booleanValue forColumnName:(NSString*)columnName;
@@ -20,6 +20,7 @@
 -(void)setDate:(NSDate*)date forColumnName:(NSString*)columnName;
 -(void)setDateAsNowForColumnName:(NSString*)columnName;
 
+/* Get column value methods */
 -(NSString*)getStringForColumnName:(NSString*)columnName;
 -(int)getIntegerForColumnName:(NSString*)columnName;
 -(BOOL)getBooleanForColumnName:(NSString*)columnName;
@@ -28,6 +29,6 @@
 
 /* Properties */
 -(NSMutableDictionary*)getEntries;
-
+-(NSString*)description;
 
 @end

@@ -10,86 +10,96 @@
 
 @implementation EasyEntry
 
+/*
+ *  Initializes the entry
+ */
 -(id)init{
     self = [super init];
     if(self){
-        entryDicitonary = [NSMutableDictionary new];
+        _entryDicitonary = [NSMutableDictionary new];
     }
     
     return self;
 }
 
-/* Public Methods */
+/*
+ *  Set column value methods
+ *  Sets the value for the column to be saved in the database
+ */
 -(void)setString:(NSString*)string forColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
-    [entryDicitonary setObject:string forKey:columnNameLowerCase];
+    [_entryDicitonary setObject:string forKey:columnNameLowerCase];
 }
 
 -(void)setInteger:(int)integer forColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *numberObject = [NSNumber numberWithInteger:integer];
-    [entryDicitonary setObject:numberObject forKey:columnNameLowerCase];
+    [_entryDicitonary setObject:numberObject forKey:columnNameLowerCase];
 }
 
 -(void)setBoolean:(BOOL)booleanValue forColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *boolObject = [NSNumber numberWithBool:booleanValue];
-    [entryDicitonary setObject:boolObject forKey:columnNameLowerCase];
+    [_entryDicitonary setObject:boolObject forKey:columnNameLowerCase];
 }
 
 -(void)setDate:(NSDate*)date forColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *dateNumber = [NSNumber numberWithInt:[date timeIntervalSince1970]];
-    [entryDicitonary setObject:dateNumber forKey:columnNameLowerCase];
+    [_entryDicitonary setObject:dateNumber forKey:columnNameLowerCase];
 }
 
 -(void)setDateAsNowForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *dateNumber = [NSNumber numberWithInt:[[NSDate date] timeIntervalSince1970]];
-    [entryDicitonary setObject:dateNumber forKey:columnNameLowerCase];
+    [_entryDicitonary setObject:dateNumber forKey:columnNameLowerCase];
 }
 
 -(void)setFloat:(float)floatNumber forColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *numberObject = [NSNumber numberWithFloat:floatNumber];
-    [entryDicitonary setObject:numberObject forKey:columnNameLowerCase];
+    [_entryDicitonary setObject:numberObject forKey:columnNameLowerCase];
 }
 
 
+/*
+ *  Get column value methods
+ *  Gets the value for the column
+ */
 -(NSString*)getStringForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
-    return [entryDicitonary objectForKey:columnNameLowerCase];
+    return [_entryDicitonary objectForKey:columnNameLowerCase];
 }
 
 -(int)getIntegerForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
-    return [[entryDicitonary objectForKey:columnNameLowerCase] intValue];
+    return [[_entryDicitonary objectForKey:columnNameLowerCase] intValue];
 }
 
 -(BOOL)getBooleanForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
-    return [[entryDicitonary objectForKey:columnNameLowerCase] boolValue];
+    return [[_entryDicitonary objectForKey:columnNameLowerCase] boolValue];
 }
 
 -(NSDate*)getDateForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
-    int unixTimestamp = [[entryDicitonary objectForKey:columnNameLowerCase] integerValue];
+    int unixTimestamp = [[_entryDicitonary objectForKey:columnNameLowerCase] integerValue];
     return [NSDate dateWithTimeIntervalSince1970:unixTimestamp];
 }
 
 -(float)getFloatForColumnName:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
-    return [[entryDicitonary objectForKey:columnNameLowerCase] floatValue];
+    return [[_entryDicitonary objectForKey:columnNameLowerCase] floatValue];
 }
 
-
--(NSString *)description{
-    return [entryDicitonary description];
-}
 
 /* Properties */
 -(NSMutableDictionary*)getEntries{
-    return entryDicitonary;
+    return _entryDicitonary;
+}
+
+-(NSString*)description{
+    return [_entryDicitonary description];
 }
 
 @end

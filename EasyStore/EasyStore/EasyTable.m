@@ -11,8 +11,10 @@
 
 @implementation EasyTable
 
-/* Public Methods */
-
+/* 
+ *  Initialize table
+ *  Initializes the table with the provided name. Will convert the name to lowercase.
+ */
 -(id)initWithName:(NSString*)name{
     self = [super init];
     if (self) {
@@ -26,10 +28,11 @@
 
 
 /*
- Create column
+ *  Column creation
+ *  Creates the column based on the column datatype
  */
 -(EasyColumn*)createColumnWithName:(NSString*)name withType:(int)type{
-    EasyColumn* column = [[EasyColumn alloc] initWitName:name withType:type];
+    EasyColumn* column = [[EasyColumn alloc] initWithName:name withType:type];
     [_columns addObject:column];
     
     return column;
@@ -55,13 +58,21 @@
     return [self createColumnWithName:name withType:EasyFloat];
 }
 
+
+/*
+ *  Add Identity column
+ *  Adds a primary autoincrementing column named 'id' to the table
+ */
 -(void)addIdentityColumn{
     EasyColumn* identityColumn = [self createColumnWithName:@"id" withType:EasyInteger];
     [identityColumn setAsIdentityColumn];
 }
 
 
-/* Private Methods */
+/*
+ *  Get table creation string
+ *  Constructs the query used to create the table
+ */
 -(NSString*)getCreationString;{
     NSMutableArray* columnStringArray = [NSMutableArray new];
     for(EasyColumn* column in _columns){
@@ -75,7 +86,9 @@
 }
 
 
-/* Properties */
+/* 
+ *  Properties
+ */
 
 -(NSString*)getName{
     return _name;

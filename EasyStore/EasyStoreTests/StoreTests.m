@@ -27,13 +27,13 @@
 }
 
 - (void)testStoreIntoEasyStore{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     EasyColumn* nameColumn = [table createColumnWithName:@"name" withType:EasyString];
     EasyColumn* amountColumn = [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -46,13 +46,13 @@
 }
 
 - (void)testStoreBooleanIntoEasyStore{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     EasyColumn* firstColumn = [table createBooleanColumnWithName:@"isValid"];
     EasyColumn* secondColumn = [table createBooleanColumnWithName:@"isSuccessful"];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setBoolean:TRUE forColumnName:@"isValid"];

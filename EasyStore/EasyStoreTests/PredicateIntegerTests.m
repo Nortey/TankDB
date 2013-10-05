@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "EasyStore.h"
 
-@interface PredicateNumberTests : XCTestCase
+@interface PredicateIntegerTests : XCTestCase
 
 @end
 
-@implementation PredicateNumberTests
+@implementation PredicateIntegerTests
 
 - (void)setUp{
     [super setUp];
@@ -25,14 +25,18 @@
     [EasyStore clearEasyStore];
 }
 
+-(void)testSetPredicate{
+    
+}
+
 - (void)testWherePredicate{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -61,13 +65,13 @@
 }
 
 - (void)testOrPredicate{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -102,13 +106,13 @@
 }
 
 - (void)testAndPredicate{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"age" withType:EasyString];
     [table createColumnWithName:@"money" withType:EasyString];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setInteger:21 forColumnName:@"age"];
@@ -139,13 +143,13 @@
 }
 
 -(void)testWhereGreaterThan{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -177,13 +181,13 @@
 }
 
 -(void)testOrGreaterThan{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -219,13 +223,13 @@
 }
 
 -(void)testAndGreaterThan{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -252,13 +256,13 @@
 }
 
 -(void)testWhereLessThan{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createStringColumnWithName:@"name"];
     [table createIntegerColumnWithName:@"amount"];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -287,13 +291,13 @@
 }
 
 -(void)testOrLessThan{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];

@@ -25,6 +25,10 @@
     [EasyStore clearEasyStore];
 }
 
+-(void)testSetPredicate{
+    
+}
+
 -(void)testWherePredicate{
     
 }

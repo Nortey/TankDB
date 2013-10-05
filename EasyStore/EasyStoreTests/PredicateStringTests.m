@@ -25,14 +25,18 @@
     [EasyStore clearEasyStore];
 }
 
+-(void)testSetPredicate{
+    
+}
+
 - (void)testWherePredicate{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -61,13 +65,13 @@
 }
 
 - (void)testOrPredicate{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"amount" withType:EasyInteger];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
@@ -102,13 +106,13 @@
 }
 
 - (void)testAndPredicate{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
     [table createColumnWithName:@"state" withType:EasyString];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"Kyle" forColumnName:@"name"];
@@ -147,12 +151,12 @@
 }
 
 - (void)testContainsString{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Words"];
     [table createColumnWithName:@"word" withType:EasyString];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];
@@ -178,12 +182,12 @@
 }
 
 - (void)testAndContainsString{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Words"];
     [table createColumnWithName:@"word" withType:EasyString];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];
@@ -210,12 +214,12 @@
 }
 
 - (void)testOrContainsString{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Words"];
     [table createColumnWithName:@"word" withType:EasyString];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];

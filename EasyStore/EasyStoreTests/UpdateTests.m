@@ -26,13 +26,13 @@
 }
 
 - (void)testUpdateSingleEntry{
-    [EasyStore start];
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createStringColumnWithName:@"name"];
     [table createStringColumnWithName:@"state"];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
     NSArray* names = @[@"Bill", @"John", @"Kyle", @"Jake",@"Mike"];
     NSArray* states = @[@"Texas", @"Alabama", @"Delaware", @"California",@"Florida"];

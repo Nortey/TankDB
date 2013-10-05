@@ -17,21 +17,21 @@
 #import "EasyPredicate.h"
 
 @interface EasyStore : NSObject{
-
+    // TODO refactor and comment
 }
 
 /* Public Methods */
-+(void)start;
-+(void)done;
++(void)beginDatabaseCreation;
++(void)completeDatabaseCreation;
 +(EasyTable*)createTableWithName:(NSString*)name;
 +(void)clearEasyStore;
-
 
 /* Queries */
 +(void)invokeRawQuery:(NSString*)query;
 +(NSArray*)invokeRawSelectQuery:(NSString*)query;
 +(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName;
 +(NSArray*)getAllEntriesForTable:(NSString*)tableName;
+
 
 /* Select */
 +(NSArray*)getEntriesWithPredicate:(EasyPredicate*)predicate;
