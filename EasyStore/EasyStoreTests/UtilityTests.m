@@ -24,7 +24,7 @@
 }
 
 - (void)testConvertType{
-    NSString* numberType = [Utility convertType:EasyNumber];
+    NSString* numberType = [Utility convertType:EasyInteger];
     NSString* stringType = [Utility convertType:EasyString];
     
     XCTAssertEqualObjects(numberType, @"INTEGER", @"Convert EasyNumber failed");

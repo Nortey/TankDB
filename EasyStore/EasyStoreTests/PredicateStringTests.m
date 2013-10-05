@@ -30,23 +30,23 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -65,29 +65,29 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"Blake"];
-    [predicate orColumnName:@"name" equalsString:@"Dan"];
+    [predicate orColumn:@"name" equalsString:@"Dan"];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
@@ -128,7 +128,7 @@
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"Kyle"];
-    [predicate andColumnName:@"state" equalsString:@"Texas"];
+    [predicate andColumn:@"state" equalsString:@"Texas"];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
@@ -200,7 +200,7 @@
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Words"];
     [predicate whereColumn:@"word" containsString:@"234"];
-    [predicate andColumnName:@"word" containsString:@"678"];
+    [predicate andColumn:@"word" containsString:@"678"];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
@@ -232,7 +232,7 @@
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Words"];
     [predicate whereColumn:@"word" containsString:@"234"];
-    [predicate orColumnName:@"word" containsString:@"aaa"];
+    [predicate orColumn:@"word" containsString:@"aaa"];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");

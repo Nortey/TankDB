@@ -39,9 +39,8 @@
     return [self createColumnWithName:name withType:EasyString];
 }
 
-
--(EasyColumn*)createNumberColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyNumber];
+-(EasyColumn*)createIntegerColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:EasyInteger];
 }
 
 -(EasyColumn*)createBooleanColumnWithName:(NSString*)name{
@@ -52,8 +51,12 @@
     return [self createColumnWithName:name withType:EasyDate];
 }
 
+-(EasyColumn*)createFloatColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:EasyFloat];
+}
+
 -(void)addIdentityColumn{
-    EasyColumn* identityColumn = [self createColumnWithName:@"id" withType:EasyNumber];
+    EasyColumn* identityColumn = [self createColumnWithName:@"id" withType:EasyInteger];
     [identityColumn setAsIdentityColumn];
 }
 

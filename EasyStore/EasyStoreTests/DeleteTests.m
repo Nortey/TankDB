@@ -30,13 +30,13 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"Bill" forColumnName:@"name"];
-    [entry setNumber:38 forColumnName:@"amount"];
+    [entry setInteger:38 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     NSArray* entries = [EasyStore getAllEntriesForTable:@"Users"];
@@ -52,18 +52,18 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];

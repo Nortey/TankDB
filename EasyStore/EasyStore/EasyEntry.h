@@ -14,16 +14,17 @@
 
 /* Public Methods */
 -(void)setString:(NSString*)string forColumnName:(NSString*)columnName;
--(void)setNumber:(int)number forColumnName:(NSString*)columnName;
+-(void)setInteger:(int)integer forColumnName:(NSString*)columnName;
 -(void)setBoolean:(BOOL)booleanValue forColumnName:(NSString*)columnName;
+-(void)setFloat:(float)floatNumber forColumnName:(NSString*)columnName;
 -(void)setDate:(NSDate*)date forColumnName:(NSString*)columnName;
-
-//TODO SET DATE AS NOW
+-(void)setDateAsNowForColumnName:(NSString*)columnName;
 
 -(NSString*)getStringForColumnName:(NSString*)columnName;
--(int)getNumberForColumnName:(NSString*)columnName;
+-(int)getIntegerForColumnName:(NSString*)columnName;
 -(BOOL)getBooleanForColumnName:(NSString*)columnName;
 -(NSDate*)getDateForColumnName:(NSString*)columnName;
+-(float)getFloatForColumnName:(NSString*)columnName;
 
 /* Properties */
 -(NSMutableDictionary*)getEntries;

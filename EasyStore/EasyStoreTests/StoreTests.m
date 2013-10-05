@@ -31,13 +31,13 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     EasyColumn* nameColumn = [table createColumnWithName:@"name" withType:EasyString];
-    EasyColumn* amountColumn = [table createColumnWithName:@"amount" withType:EasyNumber];
+    EasyColumn* amountColumn = [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:45 forColumnName:@"amount"];
+    [entry setInteger:45 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     XCTAssertEqualObjects([nameColumn getName], @"name", @"Column name incorrect");

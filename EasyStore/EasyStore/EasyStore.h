@@ -20,6 +20,8 @@
 
 }
 
+/// TODO Change number to bignumber
+
 /* Public Methods */
 +(void)start;
 +(void)done;

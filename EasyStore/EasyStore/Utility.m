@@ -12,7 +12,7 @@
 
 +(NSString*)convertType:(EasyType)type{
     switch (type) {
-        case EasyNumber:
+        case EasyInteger:
             return @"INTEGER"; break;
         case EasyString:
             return @"TEXT"; break;
@@ -20,6 +20,8 @@
             return @"INTEGER"; break;
         case EasyDate:
             return @"INTEGER"; break;
+        case EasyFloat:
+            return @"REAL"; break;
     }
     
     return nil;

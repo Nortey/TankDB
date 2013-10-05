@@ -29,13 +29,13 @@
 - (void)testCreateTableAndColumns{
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     EasyColumn* nameColumn = [table createColumnWithName:@"name" withType:EasyString];
-    EasyColumn* amountColumn = [table createColumnWithName:@"amount" withType:EasyNumber];
+    EasyColumn* amountColumn = [table createColumnWithName:@"amount" withType:EasyInteger];
     
     XCTAssertEqualObjects([nameColumn getName], @"name", @"Column name incorrect");
     XCTAssertEqualObjects([amountColumn getName], @"amount", @"Column name incorrect");
     
     XCTAssertEqual([nameColumn getType], EasyString, @"Column type incorrect");
-    XCTAssertEqual([amountColumn getType], EasyNumber, @"Column type incorrect");
+    XCTAssertEqual([amountColumn getType], EasyInteger, @"Column type incorrect");
 }
 
 - (void)testCreateEasyStore{
@@ -43,7 +43,7 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
@@ -55,9 +55,9 @@
     [EasyStore start];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
-    EasyColumn* identityColumn = [table createColumnWithName:@"id" withType:EasyNumber];
+    EasyColumn* identityColumn = [table createColumnWithName:@"id" withType:EasyInteger];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [identityColumn setAsIdentityColumn];
     
@@ -74,7 +74,7 @@
     
     [table addIdentityColumn];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
@@ -88,7 +88,7 @@
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     
     [[table createColumnWithName:@"name" withType:EasyString] setAsPrimaryKey];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     

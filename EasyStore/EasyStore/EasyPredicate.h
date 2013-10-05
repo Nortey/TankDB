@@ -27,61 +27,77 @@
 -(void)updateTable:(NSString*)tableName;
 
 -(void)setColumn:(NSString*)columnName toString:(NSString*)newValue;
--(void)setColumn:(NSString*)columnName toNumber:(int)newValue;
+-(void)setColumn:(NSString*)columnName toInteger:(int)newValue;
 
 -(void)orderAscendingByColumn:columnName;
 -(void)orderDescendingByColumn:columnName;
 
 // Equals string
 -(void)whereColumn:(NSString*) columnName equalsString:(NSString*)string;
--(void)andColumnName:(NSString*) columnName equalsString:(NSString*)string;
--(void)orColumnName:(NSString*) columnName equalsString:(NSString*)string;
+-(void)andColumn:(NSString*) columnName equalsString:(NSString*)string;
+-(void)orColumn:(NSString*) columnName equalsString:(NSString*)string;
 
 // Contains string
 -(void)whereColumn:(NSString*) columnName containsString:(NSString*)string;
--(void)andColumnName:(NSString*) columnName containsString:(NSString*)string;
--(void)orColumnName:(NSString*) columnName containsString:(NSString*)string;
+-(void)andColumn:(NSString*) columnName containsString:(NSString*)string;
+-(void)orColumn:(NSString*) columnName containsString:(NSString*)string;
 
-// Equals number
--(void)whereColumn:(NSString*) columnName equalsNumber:(int)number;
--(void)andColumnName:(NSString*) columnName equalsNumber:(int)number;
--(void)orColumnName:(NSString*) columnName equalsNumber:(int)number;
+// Equals integer
+-(void)whereColumn:(NSString*) columnName equalsInteger:(int)number;
+-(void)andColumn:(NSString*) columnName equalsInteger:(int)number;
+-(void)orColumn:(NSString*) columnName equalsInteger:(int)number;
 
-// Greater than number
--(void)whereColumn:(NSString*) columnName isGreaterThanNumber:(int)number;
--(void)andColumnName:(NSString*) columnName isGreaterThanNumber:(int)number;
--(void)orColumnName:(NSString*) columnName isGreaterThanNumber:(int)number;
+// Greater than integer
+-(void)whereColumn:(NSString*) columnName isGreaterThanInteger:(int)number;
+-(void)andColumn:(NSString*) columnName isGreaterThanInteger:(int)number;
+-(void)orColumn:(NSString*) columnName isGreaterThanInteger:(int)number;
 
-// Less than than number
--(void)whereColumn:(NSString*) columnName isLessThanNumber:(int)number;
--(void)andColumnName:(NSString*) columnName isLessThanNumber:(int)number;
--(void)orColumnName:(NSString*) columnName isLessThanNumber:(int)number;
+// Less than than integer
+-(void)whereColumn:(NSString*) columnName isLessThanInteger:(int)number;
+-(void)andColumn:(NSString*) columnName isLessThanInteger:(int)number;
+-(void)orColumn:(NSString*) columnName isLessThanInteger:(int)number;
+
+
+// Equals float
+-(void)whereColumn:(NSString*) columnName equalsFloat:(float)number;
+-(void)andColumn:(NSString*) columnName equalsFloat:(float)number;
+-(void)orColumn:(NSString*) columnName equalsFloat:(float)number;
+
+// Greater than float
+-(void)whereColumn:(NSString*) columnName isGreaterThanFloat:(float)number;
+-(void)andColumn:(NSString*) columnName isGreaterThanFloat:(float)number;
+-(void)orColumn:(NSString*) columnName isGreaterThanFloat:(float)number;
+
+// Less than than float
+-(void)whereColumn:(NSString*) columnName isLessThanFloat:(float)number;
+-(void)andColumn:(NSString*) columnName isLessThanFloat:(float)number;
+-(void)orColumn:(NSString*) columnName isLessThanFloat:(float)number;
+
 
 // Boolean values
 -(void)whereColumnIsTrue:(NSString*) columnName;
--(void)andColumnNameIsTrue:(NSString*) columnName;
--(void)orColumnNameIsTrue:(NSString*) columnName;
+-(void)andColumnIsTrue:(NSString*) columnName;
+-(void)orColumnIsTrue:(NSString*) columnName;
 
 -(void)whereColumnIsFalse:(NSString*) columnName;
--(void)andColumnNameIsFalse:(NSString*) columnName;
--(void)orColumnNameIsFalse:(NSString*) columnName;
+-(void)andColumnIsFalse:(NSString*) columnName;
+-(void)orColumnIsFalse:(NSString*) columnName;
 
 // Date values
-
-//TODO IMPLEMENT
-/*
 -(void)whereColumn:(NSString*) columnName equalsDate:(NSDate*)date;
--(void)andColumnName:(NSString*) columnName equalsDate:(NSDate*)date;
--(void)orColumnName:(NSString*) columnName equalsDate:(NSDate*)date;
+-(void)andColumn:(NSString*) columnName equalsDate:(NSDate*)date;
+-(void)orColumn:(NSString*) columnName equalsDate:(NSDate*)date;
+
 
 -(void)whereColumn:(NSString*) columnName isAfterDate:(NSDate*)date;
--(void)andColumnName:(NSString*) columnName isAfterDate:(NSDate*)date;
--(void)orColumnName:(NSString*) columnName isAfterDate:(NSDate*)date;
+-(void)andColumn:(NSString*) columnName isAfterDate:(NSDate*)date;
+-(void)orColumn:(NSString*) columnName isAfterDate:(NSDate*)date;
+
 
 -(void)whereColumn:(NSString*) columnName isBeforeDate:(NSDate*)date;
--(void)andColumnName:(NSString*) columnName isBeforeDate:(NSDate*)date;
--(void)orColumnName:(NSString*) columnName isBeforeDate:(NSDate*)date;
- */
+-(void)andColumn:(NSString*) columnName isBeforeDate:(NSDate*)date;
+-(void)orColumn:(NSString*) columnName isBeforeDate:(NSDate*)date;
+
 
 -(NSString*)getPredicateString;
 

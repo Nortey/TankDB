@@ -11,14 +11,12 @@
 
 
 typedef enum {
-    EasyNumber,
+    EasyInteger,
     EasyString,
     EasyBoolean,
-    EasyDate
+    EasyDate,
+    EasyFloat
 } EasyType;
-
-// TODO DATE
-// TODO REAL
 
 typedef enum {
     Easy_OK,

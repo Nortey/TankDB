@@ -30,34 +30,34 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
-    [predicate whereColumn:@"amount" equalsNumber:4444];
+    [predicate whereColumn:@"amount" equalsInteger:4444];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqual([singleEntry getNumberForColumnName:@"amount"], 4444, @"Incorrect entry returned from query");
+    XCTAssertEqual([singleEntry getIntegerForColumnName:@"amount"], 4444, @"Incorrect entry returned from query");
 }
 
 - (void)testOrPredicate{
@@ -65,39 +65,39 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
-    [predicate whereColumn:@"amount" equalsNumber:4444];
-    [predicate orColumnName:@"amount" equalsNumber:5555];
+    [predicate whereColumn:@"amount" equalsInteger:4444];
+    [predicate orColumn:@"amount" equalsInteger:5555];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
-    BOOL correct =  ( 4444 == [firstEntry getNumberForColumnName:@"amount"] || 5555 == [firstEntry getNumberForColumnName:@"amount"] );
+    BOOL correct =  ( 4444 == [firstEntry getIntegerForColumnName:@"amount"] || 5555 == [firstEntry getIntegerForColumnName:@"amount"] );
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
     
     EasyEntry* secondEntry = [entries objectAtIndex:0];
-    correct = ( 4444 == [secondEntry getNumberForColumnName:@"amount"] || 5555 == [secondEntry getNumberForColumnName:@"amount"] );
+    correct = ( 4444 == [secondEntry getIntegerForColumnName:@"amount"] || 5555 == [secondEntry getIntegerForColumnName:@"amount"] );
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
 }
 
@@ -111,31 +111,31 @@
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setNumber:21 forColumnName:@"age"];
-    [entry setNumber:83832 forColumnName:@"money"];
+    [entry setInteger:21 forColumnName:@"age"];
+    [entry setInteger:83832 forColumnName:@"money"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setNumber:35 forColumnName:@"age"];
-    [entry2 setNumber:99090 forColumnName:@"money"];
+    [entry2 setInteger:35 forColumnName:@"age"];
+    [entry2 setInteger:99090 forColumnName:@"money"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setNumber:3 forColumnName:@"age"];
-    [entry3 setNumber:90 forColumnName:@"money"];
+    [entry3 setInteger:3 forColumnName:@"age"];
+    [entry3 setInteger:90 forColumnName:@"money"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
-    [predicate whereColumn:@"age" equalsNumber:3];
-    [predicate andColumnName:@"money" equalsNumber:90];
+    [predicate whereColumn:@"age" equalsInteger:3];
+    [predicate andColumn:@"money" equalsInteger:90];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqual([singleEntry getNumberForColumnName:@"age"], 3, @"Incorrect entry returned from query");
-    XCTAssertEqual([singleEntry getNumberForColumnName:@"money"], 90, @"Incorrect entry returned from query");
+    XCTAssertEqual([singleEntry getIntegerForColumnName:@"age"], 3, @"Incorrect entry returned from query");
+    XCTAssertEqual([singleEntry getIntegerForColumnName:@"money"], 90, @"Incorrect entry returned from query");
 }
 
 -(void)testWhereGreaterThan{
@@ -143,28 +143,28 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
-    [predicate whereColumn:@"amount" isGreaterThanNumber:4000];
+    [predicate whereColumn:@"amount" isGreaterThanInteger:4000];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
@@ -172,8 +172,8 @@
     EasyEntry* firstEntry = [entries objectAtIndex:0];
     EasyEntry* secondEntry = [entries objectAtIndex:1];
 
-    XCTAssertTrue([firstEntry getNumberForColumnName:@"amount"] > 4000, @"Incorrect entry returned from query");
-    XCTAssertTrue([secondEntry getNumberForColumnName:@"amount"] > 4000, @"Incorrect entry returned from query");
+    XCTAssertTrue([firstEntry getIntegerForColumnName:@"amount"] > 4000, @"Incorrect entry returned from query");
+    XCTAssertTrue([secondEntry getIntegerForColumnName:@"amount"] > 4000, @"Incorrect entry returned from query");
 }
 
 -(void)testOrGreaterThan{
@@ -181,29 +181,29 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"John"];
-    [predicate orColumnName:@"amount" isGreaterThanNumber:5000];
+    [predicate orColumn:@"amount" isGreaterThanInteger:5000];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
@@ -211,10 +211,10 @@
     EasyEntry* firstEntry = [entries objectAtIndex:0];
     EasyEntry* secondEntry = [entries objectAtIndex:1];
     
-    BOOL correct = ( [@"John" isEqualToString:[firstEntry getStringForColumnName:@"name"]] || [firstEntry getNumberForColumnName:@"amount"] > 5000 );
+    BOOL correct = ( [@"John" isEqualToString:[firstEntry getStringForColumnName:@"name"]] || [firstEntry getIntegerForColumnName:@"amount"] > 5000 );
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
     
-    correct = ( [@"John" isEqualToString:[secondEntry getStringForColumnName:@"name"]] || [secondEntry getNumberForColumnName:@"amount"] > 5000 );
+    correct = ( [@"John" isEqualToString:[secondEntry getStringForColumnName:@"name"]] || [secondEntry getIntegerForColumnName:@"amount"] > 5000 );
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
 }
 
@@ -223,29 +223,29 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"John"];
-    [predicate andColumnName:@"amount" isGreaterThanNumber:10000];
+    [predicate andColumn:@"amount" isGreaterThanInteger:10000];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 0, @"Incorrect number of results returned from query");
@@ -256,34 +256,34 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createStringColumnWithName:@"name"];
-    [table createNumberColumnWithName:@"amount"];
+    [table createIntegerColumnWithName:@"amount"];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
-    [predicate whereColumn:@"amount" isLessThanNumber:4000];
+    [predicate whereColumn:@"amount" isLessThanInteger:4000];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
-    XCTAssertTrue([firstEntry getNumberForColumnName:@"amount"] < 4000, @"Incorrect entry returned from query");
+    XCTAssertTrue([firstEntry getIntegerForColumnName:@"amount"] < 4000, @"Incorrect entry returned from query");
 }
 
 -(void)testOrLessThan{
@@ -291,29 +291,29 @@
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
     [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
     
     [EasyStore done];
     
     EasyEntry* entry = [EasyEntry new];
     [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
+    [entry setInteger:3333 forColumnName:@"amount"];
     [EasyStore store:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
     [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
+    [entry2 setInteger:4444 forColumnName:@"amount"];
     [EasyStore store:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
     [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
+    [entry3 setInteger:5555 forColumnName:@"amount"];
     [EasyStore store:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
     [predicate whereColumn:@"name" equalsString:@"Dan"];
-    [predicate orColumnName:@"amount" isLessThanNumber:5000];
+    [predicate orColumn:@"amount" isLessThanInteger:5000];
     
     NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
     XCTAssertEqual((int)[entries count], 3, @"Incorrect number of results returned from query");

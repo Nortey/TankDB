@@ -65,7 +65,7 @@
     [updateSetArray addObject:setString];
 }
 
--(void)setColumn:(NSString*)columnName toNumber:(int)newValue;{
+-(void)setColumn:(NSString*)columnName toInteger:(int)newValue;{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* setString = [NSString stringWithFormat:@" SET %@ = %i" , columnNameLowerCase, newValue];
     [updateSetArray addObject:setString];
@@ -89,13 +89,13 @@
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)andColumnName:(NSString*) columnName equalsString:(NSString*)string{
+-(void)andColumn:(NSString*) columnName equalsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" AND %@ = \"%@\"", columnNameLowerCase, string];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)orColumnName:(NSString*) columnName equalsString:(NSString*)string{
+-(void)orColumn:(NSString*) columnName equalsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" OR %@ = \"%@\"", columnNameLowerCase, string];
     [whereClause appendFormat:@"%@", newPredicate];
@@ -109,13 +109,13 @@
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)andColumnName:(NSString*) columnName containsString:(NSString*)string{
+-(void)andColumn:(NSString*) columnName containsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" AND %@ LIKE \"%@%@%@\"", columnNameLowerCase, @"%", string, @"%"];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)orColumnName:(NSString*) columnName containsString:(NSString*)string{
+-(void)orColumn:(NSString*) columnName containsString:(NSString*)string{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" OR %@ LIKE \"%@%@%@\"", columnNameLowerCase, @"%", string, @"%"];
     [whereClause appendFormat:@"%@", newPredicate];
@@ -123,19 +123,19 @@
 
 
 // Number Equal predicates
--(void)whereColumn:(NSString*) columnName equalsNumber:(int)number{
+-(void)whereColumn:(NSString*) columnName equalsInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)andColumnName:(NSString*) columnName equalsNumber:(int)number{
+-(void)andColumn:(NSString*) columnName equalsInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" AND %@ = %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)orColumnName:(NSString*) columnName equalsNumber:(int)number{
+-(void)orColumn:(NSString*) columnName equalsInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" OR %@ = %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
@@ -143,42 +143,104 @@
 
 
 // Number greater than predicates
--(void)whereColumn:(NSString*) columnName isGreaterThanNumber:(int)number{
+-(void)whereColumn:(NSString*) columnName isGreaterThanInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ > %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)andColumnName:(NSString*) columnName isGreaterThanNumber:(int)number{
+-(void)andColumn:(NSString*) columnName isGreaterThanInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" AND %@ > %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)orColumnName:(NSString*) columnName isGreaterThanNumber:(int)number{
+-(void)orColumn:(NSString*) columnName isGreaterThanInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" OR %@ > %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
-// Number greater than predicates
--(void)whereColumn:(NSString*) columnName isLessThanNumber:(int)number{
+// Integer greater than predicates
+-(void)whereColumn:(NSString*) columnName isLessThanInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ < %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)andColumnName:(NSString*) columnName isLessThanNumber:(int)number{
+-(void)andColumn:(NSString*) columnName isLessThanInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" AND %@ < %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)orColumnName:(NSString*) columnName isLessThanNumber:(int)number{
+-(void)orColumn:(NSString*) columnName isLessThanInteger:(int)number{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" OR %@ < %i", columnNameLowerCase, number];
     [whereClause appendFormat:@"%@", newPredicate];
 }
+
+
+// Equals float
+-(void)whereColumn:(NSString*) columnName equalsFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ = %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+-(void)andColumn:(NSString*) columnName equalsFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" AND %@ = %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+-(void)orColumn:(NSString*) columnName equalsFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" OR %@ = %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+// Greater than float
+-(void)whereColumn:(NSString*) columnName isGreaterThanFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ > %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+-(void)andColumn:(NSString*) columnName isGreaterThanFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" AND %@ > %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+-(void)orColumn:(NSString*) columnName isGreaterThanFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" OR %@ > %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+// Less than than float
+-(void)whereColumn:(NSString*) columnName isLessThanFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" WHERE %@ < %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+-(void)andColumn:(NSString*) columnName isLessThanFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" AND %@ < %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+-(void)orColumn:(NSString*) columnName isLessThanFloat:(float)number{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* newPredicate = [NSString stringWithFormat:@" OR %@ < %f", columnNameLowerCase, number];
+    [whereClause appendFormat:@"%@", newPredicate];
+}
+
+
+
+// Boolean predicates
 
 -(void)whereColumnIsTrue:(NSString*) columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
@@ -186,13 +248,13 @@
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)andColumnNameIsTrue:(NSString*) columnName{
+-(void)andColumnIsTrue:(NSString*) columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" AND %@ = %i", columnNameLowerCase, 1];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)orColumnNameIsTrue:(NSString*) columnName{
+-(void)orColumnIsTrue:(NSString*) columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" OR %@ = %i", columnNameLowerCase, 1];
     [whereClause appendFormat:@"%@", newPredicate];
@@ -204,16 +266,65 @@
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)andColumnNameIsFalse:(NSString*) columnName{
+-(void)andColumnIsFalse:(NSString*) columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" AND %@ = %i", columnNameLowerCase, 0];
     [whereClause appendFormat:@"%@", newPredicate];
 }
 
--(void)orColumnNameIsFalse:(NSString*) columnName{
+-(void)orColumnIsFalse:(NSString*) columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSString* newPredicate = [NSString stringWithFormat:@" OR %@ = %i", columnNameLowerCase, 0];
     [whereClause appendFormat:@"%@", newPredicate];
+}
+
+// Date Equal predicates
+-(void)whereColumn:(NSString*) columnName equalsDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self whereColumn:columnName equalsInteger:unixTimestamp];
+}
+
+-(void)andColumn:(NSString*) columnName equalsDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self andColumn:columnName equalsInteger:unixTimestamp];
+}
+
+-(void)orColumn:(NSString*) columnName equalsDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self orColumn:columnName equalsInteger:unixTimestamp];
+}
+
+// Date after predicates
+-(void)whereColumn:(NSString*) columnName isAfterDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self whereColumn:columnName isGreaterThanInteger:unixTimestamp];
+}
+
+-(void)andColumn:(NSString*) columnName isAfterDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self andColumn:columnName isGreaterThanInteger:unixTimestamp];
+}
+
+-(void)orColumn:(NSString*) columnName isAfterDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self orColumn:columnName isGreaterThanInteger:unixTimestamp];
+}
+
+
+// Date before predicates
+-(void)whereColumn:(NSString*) columnName isBeforeDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self whereColumn:columnName isLessThanInteger:unixTimestamp];
+}
+
+-(void)andColumn:(NSString*) columnName isBeforeDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self andColumn:columnName isLessThanInteger:unixTimestamp];
+}
+
+-(void)orColumn:(NSString*) columnName isBeforeDate:(NSDate*)date{
+    int unixTimestamp = [date timeIntervalSince1970];
+    [self orColumn:columnName isLessThanInteger:unixTimestamp];
 }
 
 

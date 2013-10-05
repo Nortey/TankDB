@@ -20,9 +20,10 @@
 -(EasyColumn*)createColumnWithName:(NSString*)name withType:(int)type;
 
 -(EasyColumn*)createStringColumnWithName:(NSString*)name;
--(EasyColumn*)createNumberColumnWithName:(NSString*)name;
+-(EasyColumn*)createIntegerColumnWithName:(NSString*)name;
 -(EasyColumn*)createBooleanColumnWithName:(NSString*)name;
 -(EasyColumn*)createDateColumnWithName:(NSString*)name;
+-(EasyColumn*)createFloatColumnWithName:(NSString*)name;
 
 /* Private Methods */
 -(NSString*)getCreationString;

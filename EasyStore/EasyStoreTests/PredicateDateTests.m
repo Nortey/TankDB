@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "EasyStore.h"
 
 @interface PredicateDateTests : XCTestCase
 
@@ -14,21 +15,40 @@
 
 @implementation PredicateDateTests
 
-- (void)setUp
-{
+- (void)setUp{
     [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
+    [EasyStore clearEasyStore];
 }
 
-- (void)tearDown
-{
-    // Put teardown code here; it will be run once, after the last test case.
+- (void)tearDown{
     [super tearDown];
+    [EasyStore clearEasyStore];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+-(void)testWherePredicate{
+    [EasyStore start];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createStringColumnWithName:@"name"];
+    [table createDateColumnWithName:@"date"];
+    
+    [EasyStore done];
+    
+    NSDate* now = [NSDate date];
+    
+    EasyEntry* entry = [EasyEntry new];
+    [entry setDate:now forColumnName:@"date"];
+    [EasyStore store:entry intoTable:@"Users"];
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
+    [predicate whereColumn:@"date" equalsDate:now];
+    
+    NSArray* entries = [EasyStore getAllEntriesForTable:@"Users"];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
+    
+    EasyEntry* thisEntry = [entries objectAtIndex:0];
+    XCTAssertTrue((int)[now timeIntervalSinceDate:[thisEntry getDateForColumnName:@"date"]] == 0, @"Incorrect date returned from query");
 }
 
 @end
