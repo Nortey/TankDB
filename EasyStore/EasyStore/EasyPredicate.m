@@ -19,8 +19,27 @@
         orderByClause = [NSMutableString stringWithString:@""];
         
         updateSetArray = [NSMutableArray new];
+        subPredicates = [NSMutableArray new];
     }
     return self;
+}
+
+-(void)And:(EasyPredicate*)predicate{
+    [predicate setSubPredicateType:@"AND"];
+    [subPredicates addObject:predicate];
+}
+
+-(void)Or:(EasyPredicate*)predicate{
+    [predicate setSubPredicateType:@"OR"];
+    [subPredicates addObject:predicate];
+}
+
+-(void)setSubPredicateType:(NSString*)predicateType{
+    subPredicateType = [NSString stringWithString:predicateType];
+}
+
+-(NSString*)getSubPredicateType{
+    return subPredicateType;
 }
 
 -(NSString*)getPredicateString{
@@ -28,8 +47,15 @@
     // Append update parts of predicate
     [setClause setString:[updateSetArray componentsJoinedByString:@" , "]];
     
+    // Construct sub predicates
+    NSMutableString* subPredicateString = [NSMutableString stringWithString:@""];
+    for(EasyPredicate* predicate in subPredicates){
+        NSString* subPredicate = [NSString stringWithFormat:@" %@ ( %@ ) ", [predicate getSubPredicateType], [predicate getPredicateString]];
+        [subPredicateString appendString:subPredicate];
+    }
+    
     // Construct predicate string
-    NSString* returnedPredicateString = [NSString stringWithFormat:@"%@%@%@%@", startClause, setClause, whereClause, orderByClause];
+    NSString* returnedPredicateString = [NSString stringWithFormat:@"%@%@%@%@%@", startClause, setClause, whereClause, subPredicateString, orderByClause];
     
     // Reset the predicate
     [startClause setString:@""];

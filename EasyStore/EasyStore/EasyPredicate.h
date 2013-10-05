@@ -11,9 +11,9 @@
 // TODO Error if calling WHERE multiple times
 
 @interface EasyPredicate : NSObject{
-    /*BOOL isWhereClause;
-    BOOL isAndClause;
-    BOOL isOrClause;*/
+    
+    NSString* subPredicateType;
+    NSMutableArray* subPredicates;
     
     NSMutableString *startClause;
     NSMutableString *orderByClause;
@@ -21,6 +21,12 @@
     NSMutableString *whereClause;
     NSMutableArray* updateSetArray;
 }
+
+-(void)And:(EasyPredicate*)predicate;
+-(void)Or:(EasyPredicate*)predicate;
+
+-(void)setSubPredicateType:(NSString*)subPredicateType;
+-(NSString*)getSubPredicateType;
 
 -(void)selectFromTable:(NSString*)tableName;
 -(void)deleteFromTable:(NSString*)tableName;

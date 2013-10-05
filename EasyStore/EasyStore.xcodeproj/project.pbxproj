@@ -24,6 +24,7 @@
 /* Begin PBXBuildFile section */
 		7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7129C4A717F891BE006DAA7C /* StoreTests.m */; };
 		71393F2517FFB2ED003C9FE6 /* PredicateFloatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71393F2417FFB2ED003C9FE6 /* PredicateFloatTests.m */; };
+		71393F2717FFEB30003C9FE6 /* SubPredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71393F2617FFEB30003C9FE6 /* SubPredicateTests.m */; };
 		7145546A17FEF74B00A5B05B /* PredicateDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145546917FEF74B00A5B05B /* PredicateDateTests.m */; };
 		7145F69517F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
 		7145F69A17F7767900B32A04 /* EasyStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F69917F7767900B32A04 /* EasyStore.h */; };
@@ -114,6 +115,7 @@
 /* Begin PBXFileReference section */
 		7129C4A717F891BE006DAA7C /* StoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTests.m; sourceTree = "<group>"; };
 		71393F2417FFB2ED003C9FE6 /* PredicateFloatTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateFloatTests.m; sourceTree = "<group>"; };
+		71393F2617FFEB30003C9FE6 /* SubPredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubPredicateTests.m; sourceTree = "<group>"; };
 		7145546917FEF74B00A5B05B /* PredicateDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateDateTests.m; sourceTree = "<group>"; };
 		7145F69117F7767900B32A04 /* libEasyStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEasyStore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7145F69417F7767900B32A04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -239,8 +241,9 @@
 				71960BAC17F9215300513369 /* PredicateStringTests.m */,
 				7146ECD317FC4816002C70BF /* PredicateTests.m */,
 				71462CA517FE715500B8E5F3 /* RawQueryTests.m */,
-				7129C4A717F891BE006DAA7C /* StoreTests.m */,
 				71960BA517F8F37000513369 /* SelectTests.m */,
+				7129C4A717F891BE006DAA7C /* StoreTests.m */,
+				71393F2617FFEB30003C9FE6 /* SubPredicateTests.m */,
 				714702B117FCF68100E2017F /* TestPredicateOrder.m */,
 				71462CA117FE53BD00B8E5F3 /* UpdateTests.m */,
 				71960BA717F8FA4700513369 /* UtilityTests.m */,
@@ -384,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71393F2717FFEB30003C9FE6 /* SubPredicateTests.m in Sources */,
 				71462CA217FE53BD00B8E5F3 /* UpdateTests.m in Sources */,
 				71462CA617FE715500B8E5F3 /* RawQueryTests.m in Sources */,
 				7145F6B117F7767900B32A04 /* CreateTests.m in Sources */,

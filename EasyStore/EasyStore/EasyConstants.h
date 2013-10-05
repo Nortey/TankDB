@@ -23,5 +23,4 @@ typedef enum {
     Easy_ERROR
 } EasyStatus;
 
-
 #endif
