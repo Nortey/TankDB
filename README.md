@@ -7,7 +7,8 @@ A lightweight object oriented SQLite wrapper.
 1. Add a link to the libsqlite3.dylib library
 ![Image](Docs/images/add-sqlite-lib.png)
 
-2. Copy the EasyStore static library and header files into your project (All files located in Installation/EasyStore) 
+2. Copy the EasyStore static library and header files into your project<br/> 
+(All files located in Installation/EasyStore) <br/>
 ![Image](Docs/images/copy-easy-store.png)
 
 ##Creating a table
