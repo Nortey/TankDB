@@ -23,6 +23,7 @@
 /* Database creation methods */
 +(void)beginDatabaseCreation;
 +(void)completeDatabaseCreation;
++(void)deleteDatabaseFile;
 +(EasyTable*)createTableWithName:(NSString*)name;
 
 /* Raw queries */

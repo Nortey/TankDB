@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "EasyStore.h"
 
 @interface PredicateFloatTests : XCTestCase
 
@@ -14,25 +15,49 @@
 
 @implementation PredicateFloatTests
 
-- (void)setUp
-{
+
+- (void)setUp{
     [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
+    [EasyStore clearEasyStore];
 }
 
-- (void)tearDown
-{
-    // Put teardown code here; it will be run once, after the last test case.
+- (void)tearDown{
     [super tearDown];
+    [EasyStore clearEasyStore];
 }
 
 -(void)testSetPredicate{
     
 }
 
-- (void)testExample
-{
-    //XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+-(void)testWhereEqualsPredicate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Students"];
+    [table createStringColumnWithName:@"name"];
+    [table createFloatColumnWithName:@"gpa"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSArray* students = @[@"Luffy", @"Sanji", @"Zorro", @"Usopp"];
+    float gpas[] = {3.948, 4.0, 1.223, 2.584};
+    
+    for(int i=0; i<[students count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
+        [entry setFloat:gpas[i] forColumnName:@"gpa"];
+        [EasyStore store:entry intoTable:@"Students"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Students"];
+    [predicate whereColumn:@"gpa" equalsFloat:1.223];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
+    
+    EasyEntry* thisEntry = [entries objectAtIndex:0];
+    XCTAssertEqual([thisEntry getFloatForColumnName:@"gpa"], 1.223f, @"Incorrect floating point number returned");
 }
 
 @end

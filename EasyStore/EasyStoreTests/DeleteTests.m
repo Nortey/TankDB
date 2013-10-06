@@ -25,6 +25,20 @@
     [EasyStore clearEasyStore];
 }
 
+- (void)testDeleteDatabaseFile{
+    
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createColumnWithName:@"name" withType:EasyString];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    [EasyStore deleteDatabaseFile];
+    XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Database file not correctly deleted");
+}
+
 - (void)testClearEasyStore{
     [EasyStore beginDatabaseCreation];
     

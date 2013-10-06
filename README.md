@@ -1,7 +1,7 @@
 EasyStore
 =========
 
-A lightweight object oriented SQLite wrapper.
+A lightweight object oriented local storage library for Objective C.
 
 ##Installation
 1. Add a link to the libsqlite3.dylib library
@@ -11,7 +11,7 @@ A lightweight object oriented SQLite wrapper.
 (All files located in Installation/EasyStore) <br/>
 ![Image](Docs/images/copy-easy-store.png)
 
-##Creating a table
+##Creating a Database with Tables
 
 	#import "EasyStore.h"
 	
@@ -25,7 +25,7 @@ A lightweight object oriented SQLite wrapper.
     
     [EasyStore completeDatabaseCreation];
 
-##Insert data into a table
+##Insert Data into a Table
 
 	EasyEntry* entry = [EasyEntry new];
     [entry setString:@"Bob" forColumnName:@"name"];
@@ -35,7 +35,7 @@ A lightweight object oriented SQLite wrapper.
     [EasyStore store:entry intoTable:@"Users"];
 
 
-##Querying a table
+##Querying a Table
 
  	EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
@@ -48,16 +48,25 @@ A lightweight object oriented SQLite wrapper.
     	int age = [entry getIntegerForColumn:@"age"];
     	bool retired = [entry getBooleanForColumn:@"retired"];
     }
+    
+    // Get all data from a table
+    entries = [EasyStore selectAllEntriesForTable:@"Users"];
+	
+## Other
+identity column
+limit
+offset
+orderby
 
-##Get all data from a table
+## Invoking Raw SQL Queries
+EasyStore is a wrapper around SQLite, so raw queries can be used as well.
 
-	NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
 
-## Invoking raw SQL queries
+## Retrieving SQL Errors
 (TODO)
 
-## Retrieving SQLite errors
-(TODO)
 
+## Supported Data Types
+(TODO)
  
 

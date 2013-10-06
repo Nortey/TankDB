@@ -58,6 +58,19 @@ static NSString* _errorMessage;
 }
 
 /*
+ *  Delete database file
+ *  Deletes the physical database file stored on disk
+ */
++(void)deleteDatabaseFile{
+    NSError* error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath: _databasePath error: &error];
+    if(error){
+        [EasyStore setEasyStoreStatus:Easy_ERROR withError:[error localizedDescription]];
+    }
+}
+
+
+/*
  *  Create table with name
  *  Creates a new table in the database
  */

@@ -64,9 +64,6 @@
     XCTAssertEqual([EasyStore getStatus], Easy_OK, @"Status is not Easy_OK");
 }
 
--(void)testStoreDate{
-    
-}
 
 - (void)testStoreSpecialCharacters{
 }

@@ -29,7 +29,7 @@
     
 }
 
--(void)testWherePredicate{
+-(void)testWhereEqualsPredicate{
     [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
@@ -53,6 +53,25 @@
     
     EasyEntry* thisEntry = [entries objectAtIndex:0];
     XCTAssertTrue((int)[now timeIntervalSinceDate:[thisEntry getDateForColumnName:@"date"]] == 0, @"Incorrect date returned from query");
+}
+
+-(void)testStoreDateAsNow{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Date"];
+    [table createDateColumnWithName:@"date"];
+    [EasyStore completeDatabaseCreation];
+    
+    EasyEntry* entry = [EasyEntry new];
+    NSDate* now = [NSDate date];
+    [entry setDateAsNowForColumnName:@"date"];
+    [EasyStore store:entry intoTable:@"Date"];
+    
+    NSArray* entries = [EasyStore selectAllEntriesForTable:@"Date"];
+    EasyEntry* storedEntry = [entries objectAtIndex:0];
+    NSDate* storedDate = [storedEntry getDateForColumnName:@"date"];
+    
+    XCTAssertTrue(abs([now timeIntervalSince1970] - [storedDate timeIntervalSince1970]) < 3, @"Column name incorrect");
 }
 
 @end

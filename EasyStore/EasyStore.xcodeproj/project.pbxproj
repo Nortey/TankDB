@@ -46,6 +46,7 @@
 		71462CA617FE715500B8E5F3 /* RawQueryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71462CA517FE715500B8E5F3 /* RawQueryTests.m */; };
 		7146ECD417FC4816002C70BF /* PredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7146ECD317FC4816002C70BF /* PredicateTests.m */; };
 		714702B217FCF68100E2017F /* PredicateOrderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 714702B117FCF68100E2017F /* PredicateOrderTests.m */; };
+		7167DEEA18011E40007C48CB /* PerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7167DEE918011E40007C48CB /* PerformanceTests.m */; };
 		718C079B17FA4F2400511C87 /* PredicateIntegerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C079A17FA4F2400511C87 /* PredicateIntegerTests.m */; };
 		718C07EB17FA5AED00511C87 /* EasyTable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BB17F7782D00B32A04 /* EasyTable.h */; };
 		718C07EC17FA5AED00511C87 /* EasyColumn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BE17F7785300B32A04 /* EasyColumn.h */; };
@@ -143,6 +144,7 @@
 		71462CA517FE715500B8E5F3 /* RawQueryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawQueryTests.m; sourceTree = "<group>"; };
 		7146ECD317FC4816002C70BF /* PredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateTests.m; sourceTree = "<group>"; };
 		714702B117FCF68100E2017F /* PredicateOrderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateOrderTests.m; sourceTree = "<group>"; };
+		7167DEE918011E40007C48CB /* PerformanceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceTests.m; sourceTree = "<group>"; };
 		718C079A17FA4F2400511C87 /* PredicateIntegerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateIntegerTests.m; sourceTree = "<group>"; };
 		71960BA017F8D76700513369 /* EasyEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyEntry.h; sourceTree = "<group>"; };
 		71960BA117F8D76700513369 /* EasyEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyEntry.m; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				7145F6B017F7767900B32A04 /* CreateTests.m */,
 				71960BA317F8F0DB00513369 /* DeleteTests.m */,
+				7167DEE918011E40007C48CB /* PerformanceTests.m */,
 				71462CA317FE618F00B8E5F3 /* PredicateBooleanTests.m */,
 				7145546917FEF74B00A5B05B /* PredicateDateTests.m */,
 				71393F2417FFB2ED003C9FE6 /* PredicateFloatTests.m */,
@@ -408,6 +411,7 @@
 				71462CA417FE618F00B8E5F3 /* PredicateBooleanTests.m in Sources */,
 				718C079B17FA4F2400511C87 /* PredicateIntegerTests.m in Sources */,
 				7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */,
+				7167DEEA18011E40007C48CB /* PerformanceTests.m in Sources */,
 				71960BA417F8F0DB00513369 /* DeleteTests.m in Sources */,
 				71960BA617F8F37000513369 /* SelectTests.m in Sources */,
 				71960BA817F8FA4700513369 /* UtilityTests.m in Sources */,
@@ -512,9 +516,14 @@
 		7145F6B517F7767900B32A04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/EasyStore.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyStore/EasyStore-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -524,9 +533,14 @@
 		7145F6B617F7767900B32A04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/EasyStore.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyStore/EasyStore-Prefix.pch";
+				GENERATE_PROFILING_CODE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -536,19 +550,23 @@
 		7145F6B817F7767900B32A04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyStore/EasyStore-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GENERATE_PROFILING_CODE = YES;
 				INFOPLIST_FILE = "EasyStoreTests/EasyStoreTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -557,15 +575,19 @@
 		7145F6B917F7767900B32A04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyStore/EasyStore-Prefix.pch";
+				GENERATE_PROFILING_CODE = NO;
 				INFOPLIST_FILE = "EasyStoreTests/EasyStoreTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -574,6 +596,8 @@
 		718C07E617FA58F000511C87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -581,6 +605,8 @@
 		718C07E717FA58F000511C87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

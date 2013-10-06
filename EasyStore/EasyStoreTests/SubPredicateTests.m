@@ -60,7 +60,6 @@
     [andPredicate orColumn:@"grade" isLessThanInteger:40];
     [predicate And:andPredicate];
     
-    [EasyStore selectEntriesWithPredicate:predicate];
     NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
 
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
@@ -69,6 +68,53 @@
         bool isRegistered = [entry getBooleanForColumnName:@"registered"];
         int grade = [entry getIntegerForColumnName:@"grade"];
         XCTAssertTrue( (isRegistered == true && (grade > 60 || grade < 40)), @"Incorrect data returned from query");
+    }
+}
+
+- (void)testOrSubPredicate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createStringColumnWithName:@"name"];
+    [table createIntegerColumnWithName:@"grade"];
+    [table createBooleanColumnWithName:@"passed"];
+    [table createBooleanColumnWithName:@"registered"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSArray* names = @[@"Kyle", @"Stan", @"Eric", @"Kenny", @"Butters"];
+    int grades[] =      {3,      45,    55,   100,  234,};
+    bool passed[] =     {true, true, false, false, false};
+    bool registered[] = {true, false, true, false, true};
+    
+    for(int i=0; i<[names count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setString:[names objectAtIndex:i] forColumnName:@"name"];
+        [entry setInteger:grades[i] forColumnName:@"grade"];
+        [entry setBoolean:passed[i] forColumnName:@"passed"];
+        [entry setBoolean:registered[i] forColumnName:@"registered"];
+        [EasyStore store:entry intoTable:@"Users"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
+    [predicate whereColumnIsTrue:@"registered"];
+    
+    EasyPredicate* orPredicate = [EasyPredicate new];
+    [orPredicate whereColumn:@"grade" isGreaterThanInteger:60];
+    [orPredicate andColumnIsFalse:@"passed"];
+    
+    [predicate Or:orPredicate];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    
+    XCTAssertEqual((int)[entries count], 4, @"Incorrect number of results returned from query");
+    
+    for(EasyEntry *entry in entries){
+        bool isRegistered = [entry getBooleanForColumnName:@"registered"];
+        int grade = [entry getIntegerForColumnName:@"grade"];
+        bool passed = [entry getIntegerForColumnName:@"passed"];
+        XCTAssertTrue( (isRegistered == true || (grade > 60 && passed == false)), @"Incorrect data returned from query");
     }
 }
 
