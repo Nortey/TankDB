@@ -15,7 +15,6 @@
     NSMutableString* _startClause;
     NSMutableString* _orderByClause;
     NSMutableString* _limitClause;
-    NSMutableString* _offsetClause;
     NSMutableString* _setClause;
     NSMutableString* _whereClause;
     
@@ -33,8 +32,8 @@
 -(void)Or:(EasyPredicate*)predicate;
 
 /* Predicate modifiers */
--(void)limit:(int)limit;
--(void)offset:(int)offset;
+-(void)withLimit:(int)limit;
+-(void)withLimit:(int)limit andOffset:(int)offset;
 -(void)orderAscendingByColumn:columnName;
 -(void)orderDescendingByColumn:columnName;
 
@@ -48,9 +47,10 @@
 /* Set column methods */
 -(void)setColumn:(NSString*)columnName toString:(NSString*)newValue;
 -(void)setColumn:(NSString*)columnName toInteger:(int)newValue;
--(void)setColumn:(NSString*)columnName toBoolean:(BOOL)newValue;
 -(void)setColumn:(NSString*)columnName toDate:(NSDate*)newValue;
 -(void)setColumn:(NSString*)columnName toFloat:(float)newValue;
+-(void)setColumnToTrue:(NSString*)columnName;
+-(void)setColumnToFalse:(NSString*)columnName;
 
 /* Equals string */
 -(void)whereColumn:(NSString*) columnName equalsString:(NSString*)string;

@@ -21,7 +21,6 @@
         _whereClause = [NSMutableString stringWithString:@""];
         _orderByClause = [NSMutableString stringWithString:@""];
         _limitClause = [NSMutableString stringWithString:@""];
-        _offsetClause = [NSMutableString stringWithString:@""];
         
         _updateSetArray = [NSMutableArray new];
         _subPredicates = [NSMutableArray new];
@@ -66,12 +65,12 @@
  *  Predicate modifiers
  *  Modifiers called for predicates including ORDER, LIMIT and OFFSET
  */
--(void)limit:(int)limit{
+-(void)withLimit:(int)limit{
     [_limitClause appendFormat:@" LIMIT %i", limit];
 }
 
--(void)offset:(int)offset{
-    [_offsetClause appendFormat:@" OFFSET %i", offset];
+-(void)withLimit:(int)limit andOffset:(int)offset{
+    [_limitClause appendFormat:@" LIMIT %i OFFSET %i", limit, offset];
 }
 
 -(void)orderAscendingByColumn:columnName{
@@ -100,8 +99,8 @@
     }
     
     // Construct predicate string
-    NSString* returnedPredicateString = [NSString stringWithFormat:@"%@%@%@%@%@%@%@",
-                                         _startClause, _setClause, _whereClause, subPredicateString, _orderByClause,_limitClause,_offsetClause];
+    NSString* returnedPredicateString = [NSString stringWithFormat:@"%@%@%@%@%@%@",
+                                         _startClause, _setClause, _whereClause, subPredicateString, _orderByClause,_limitClause];
     return returnedPredicateString;
 }
 
@@ -133,12 +132,6 @@
     [_updateSetArray addObject:setString];
 }
 
--(void)setColumn:(NSString*)columnName toBoolean:(BOOL)newValue{
-    NSString* columnNameLowerCase = [columnName lowercaseString];
-    NSString* setString = [NSString stringWithFormat:@" SET %@ = %i" , columnNameLowerCase, newValue];
-    [_updateSetArray addObject:setString];
-}
-
 -(void)setColumn:(NSString*)columnName toDate:(NSDate*)newValue{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     int unixTimestamp = [newValue timeIntervalSince1970];
@@ -152,6 +145,17 @@
     [_updateSetArray addObject:setString];
 }
 
+-(void)setColumnToTrue:(NSString *)columnName{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* setString = [NSString stringWithFormat:@" SET %@ = 1" , columnNameLowerCase];
+    [_updateSetArray addObject:setString];
+}
+
+-(void)setColumnToFalse:(NSString *)columnName{
+    NSString* columnNameLowerCase = [columnName lowercaseString];
+    NSString* setString = [NSString stringWithFormat:@" SET %@ = 0" , columnNameLowerCase];
+    [_updateSetArray addObject:setString];
+}
 
 /*
  *  String equal predicates
