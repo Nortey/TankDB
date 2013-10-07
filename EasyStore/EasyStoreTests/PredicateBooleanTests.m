@@ -55,20 +55,61 @@
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
 }
 
--(void)testUpdate{
+
+-(void)testAndTruePredicate{
+    [EasyStore beginDatabaseCreation];
     
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createIntegerColumnWithName:@"number"];
+    [table createBooleanColumnWithName:@"isValid"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    int numbers[] = {1, 2, 3, 4};
+    bool isValid[] = {true, false, true, false};
+    
+    for(int i=0; i<4; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setInteger:numbers[i] forColumnName:@"number"];
+        [entry setBoolean:isValid[i] forColumnName:@"isValid"];
+        [EasyStore store:entry intoTable:@"Users"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
+    [predicate whereColumn:@"number" isGreaterThanInteger:2];
+    [predicate andColumnIsTrue:@"isValid"];
+    
+    NSArray *entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
 }
 
--(void)testDelete{
+-(void)testOrTruePredicate{
+    [EasyStore beginDatabaseCreation];
     
-}
-
--(void)testAndPredicate{
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createIntegerColumnWithName:@"number"];
+    [table createBooleanColumnWithName:@"isValid"];
     
-}
-
--(void)testOrPredicate{
+    [EasyStore completeDatabaseCreation];
     
+    int numbers[] = {1, 2, 3, 4};
+    bool isValid[] = {true, false, true, false};
+    
+    for(int i=0; i<4; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setInteger:numbers[i] forColumnName:@"number"];
+        [entry setBoolean:isValid[i] forColumnName:@"isValid"];
+        [EasyStore store:entry intoTable:@"Users"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
+    [predicate whereColumn:@"number" isGreaterThanInteger:2];
+    [predicate orColumnIsTrue:@"isValid"];
+    
+    NSArray *entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 3, @"Incorrect number of results returned from query");
 }
 
 

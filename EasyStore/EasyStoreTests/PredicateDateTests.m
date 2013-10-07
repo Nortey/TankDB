@@ -70,11 +70,13 @@
     XCTAssertTrue(abs([now timeIntervalSince1970] - [storedDate timeIntervalSince1970]) < 3, @"Column name incorrect");
 }
 
-/*-(void)testUpdateDate{
+-(void)testOrIsBeforeDate{
     [EasyStore beginDatabaseCreation];
     
-    EasyTable *table = [EasyStore createTableWithName:@"UpdateDates"];
+    EasyTable *table = [EasyStore createTableWithName:@"BeforeDate"];
     [table addIdentityColumn];
+    
+    [table createIntegerColumnWithName:@"money"];
     [table createStringColumnWithName:@"date"];
     
     [EasyStore completeDatabaseCreation];
@@ -82,29 +84,199 @@
     NSDate* date1 = [NSDate dateWithTimeIntervalSinceNow:-10000];
     NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:-5000];
     NSDate* now = [NSDate date];
-    //NSDate* date3 = [NSDate dateWithTimeIntervalSinceNow:5000];
-    //NSDate* date4 = [NSDate dateWithTimeIntervalSinceNow:10000];
+    NSDate* date3 = [NSDate dateWithTimeIntervalSinceNow:5000];
+    NSDate* date4 = [NSDate dateWithTimeIntervalSinceNow:10000];
     
-    NSArray* dates = @[date1, date2, now];
+    NSArray* dates = @[date1, date2, now, date3, date4];
+    int money[] = {100, 200, 300, 400, 500};
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
         [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [EasyStore store:entry intoTable:@"UpdateDates"];
+        [entry setInteger:money[i] forColumnName:@"money"];
+        [EasyStore store:entry intoTable:@"BeforeDate"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
-    [predicate updateTable:@"UpdateBoolean"];
-    [predicate setColumn:@"date" toDate:now];
-    [predicate whereColumn:@"date" isBeforeDate:now];
-    [EasyStore updateEntriesWithPredicate:predicate];
+    [predicate selectFromTable:@"BeforeDate"];
+    [predicate whereColumn:@"money" isGreaterThanInteger:300];
+    [predicate orColumn:@"date" isBeforeDate:now];
     
-    NSArray* entries = [EasyStore selectAllEntriesForTable:@"UpdateDates"];
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 4, @"Incorrect number of results returned from query");
     
     for(EasyEntry* entry in entries){
         NSDate *thisDate = [entry getDateForColumnName:@"date"];
-        XCTAssertTrue(, @"Boolean values not correctly updated");
+        int money = [entry getIntegerForColumnName:@"money"];
+        XCTAssertTrue([now compare:thisDate] == NSOrderedDescending || money > 300, @"Incorrect entries selected");
     }
-}*/
+}
+
+-(void)testAndIsBeforeDate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"BeforeDate"];
+    [table addIdentityColumn];
+    
+    [table createIntegerColumnWithName:@"money"];
+    [table createStringColumnWithName:@"date"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSDate* date1 = [NSDate dateWithTimeIntervalSinceNow:-10000];
+    NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:-5000];
+    NSDate* now = [NSDate date];
+    NSDate* date3 = [NSDate dateWithTimeIntervalSinceNow:5000];
+    NSDate* date4 = [NSDate dateWithTimeIntervalSinceNow:10000];
+    
+    NSArray* dates = @[date1, date2, now, date3, date4];
+    int money[] = {100, 200, 300, 400, 500};
+    
+    for(int i=0; i<[dates count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
+        [entry setInteger:money[i] forColumnName:@"money"];
+        [EasyStore store:entry intoTable:@"BeforeDate"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"BeforeDate"];
+    [predicate whereColumn:@"money" isGreaterThanInteger:100];
+    [predicate andColumn:@"date" isBeforeDate:now];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
+    
+    for(EasyEntry* entry in entries){
+        NSDate *thisDate = [entry getDateForColumnName:@"date"];
+        int money = [entry getIntegerForColumnName:@"money"];
+        XCTAssertTrue([now compare:thisDate] == NSOrderedDescending && money > 100, @"Incorrect entries selected");
+    }
+}
+
+-(void)testWhereIsAfterDate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"AfterDate"];
+    [table addIdentityColumn];
+    
+    [table createIntegerColumnWithName:@"money"];
+    [table createStringColumnWithName:@"date"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSDate* date1 = [NSDate dateWithTimeIntervalSinceNow:-10000];
+    NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:-5000];
+    NSDate* now = [NSDate date];
+    NSDate* date3 = [NSDate dateWithTimeIntervalSinceNow:5000];
+    NSDate* date4 = [NSDate dateWithTimeIntervalSinceNow:10000];
+    
+    NSArray* dates = @[date1, date2, now, date3, date4];
+    int money[] = {100, 200, 300, 400, 500};
+    
+    for(int i=0; i<[dates count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
+        [entry setInteger:money[i] forColumnName:@"money"];
+        [EasyStore store:entry intoTable:@"AfterDate"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"AfterDate"];
+    [predicate whereColumn:@"date" isAfterDate:now];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
+    
+    for(EasyEntry* entry in entries){
+        NSDate *thisDate = [entry getDateForColumnName:@"date"];
+        XCTAssertTrue([now compare:thisDate] == NSOrderedAscending, @"Incorrect entries selected");
+    }
+}
+
+-(void)testAndIsAfterDate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"AfterDate"];
+    [table addIdentityColumn];
+    
+    [table createIntegerColumnWithName:@"money"];
+    [table createStringColumnWithName:@"date"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSDate* date1 = [NSDate dateWithTimeIntervalSinceNow:-10000];
+    NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:-5000];
+    NSDate* now = [NSDate date];
+    NSDate* date3 = [NSDate dateWithTimeIntervalSinceNow:5000];
+    NSDate* date4 = [NSDate dateWithTimeIntervalSinceNow:10000];
+    
+    NSArray* dates = @[date1, date2, now, date3, date4];
+    int money[] = {100, 200, 300, 400, 500};
+    
+    for(int i=0; i<[dates count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
+        [entry setInteger:money[i] forColumnName:@"money"];
+        [EasyStore store:entry intoTable:@"AfterDate"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"AfterDate"];
+    [predicate whereColumn:@"money" isGreaterThanInteger:400];
+    [predicate andColumn:@"date" isAfterDate:now];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
+    
+    for(EasyEntry* entry in entries){
+        NSDate *thisDate = [entry getDateForColumnName:@"date"];
+        int money = [entry getIntegerForColumnName:@"money"];
+        XCTAssertTrue([now compare:thisDate] == NSOrderedAscending && money > 400, @"Incorrect entries selected");
+    }
+}
+
+
+-(void)testOrIsAfterDate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"AfterDate"];
+    [table addIdentityColumn];
+    
+    [table createIntegerColumnWithName:@"money"];
+    [table createStringColumnWithName:@"date"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSDate* date1 = [NSDate dateWithTimeIntervalSinceNow:-10000];
+    NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:-5000];
+    NSDate* now = [NSDate date];
+    NSDate* date3 = [NSDate dateWithTimeIntervalSinceNow:5000];
+    NSDate* date4 = [NSDate dateWithTimeIntervalSinceNow:10000];
+    
+    NSArray* dates = @[date1, date2, now, date3, date4];
+    int money[] = {100, 200, 300, 400, 500};
+    
+    for(int i=0; i<[dates count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
+        [entry setInteger:money[i] forColumnName:@"money"];
+        [EasyStore store:entry intoTable:@"AfterDate"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"AfterDate"];
+    [predicate whereColumn:@"money" isLessThanInteger:200];
+    [predicate orColumn:@"date" isAfterDate:now];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 3, @"Incorrect number of results returned from query");
+    
+    for(EasyEntry* entry in entries){
+        NSDate *thisDate = [entry getDateForColumnName:@"date"];
+        int money = [entry getIntegerForColumnName:@"money"];
+        XCTAssertTrue(money < 200 || [now compare:thisDate] == NSOrderedAscending, @"Incorrect entries selected");
+    }
+}
 
 @end

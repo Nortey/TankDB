@@ -29,5 +29,6 @@
 
 /* Properties */
 -(NSMutableDictionary*)getEntries;
+-(NSString*)description;
 
 @end

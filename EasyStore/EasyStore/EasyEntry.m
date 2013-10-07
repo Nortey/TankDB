@@ -101,4 +101,8 @@
     return _entryDicitonary;
 }
 
+-(NSString*)description{
+    return [_entryDicitonary description];
+}
+
 @end
