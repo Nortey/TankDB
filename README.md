@@ -35,7 +35,7 @@ A lightweight object oriented local storage library for Objective C.
     [EasyStore store:entry intoTable:@"Users"];
 
 
-##Querying a Table
+## Querying a Table
 
  	EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
@@ -52,11 +52,50 @@ A lightweight object oriented local storage library for Objective C.
     // Get all data from a table
     entries = [EasyStore selectAllEntriesForTable:@"Users"];
 	
-## Other
-identity column
-limit
-offset
-orderby
+## Keys
+#### Add Identity column
+
+Creates an autoincrementing primary key with the column name "id".
+
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Students"];
+    
+    [table addIdentityColumn];
+    [table createStringColumnWithName:@"name"];
+    [table createFloatColumnWithName:@"gpa"];
+    
+    [EasyStore completeDatabaseCreation];
+
+#### Set custom column to Identity column
+
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"TV_Shows"];
+    
+    [table addIdentityColumn];
+    [[table createIntegerColumnWithName:@"identifier"] setAsIdentityColumn];
+    [table createStringColumnWithName:@"name"];
+    [table createDateColumnWithName:@"airingTime"];
+    
+    [EasyStore completeDatabaseCreation];
+
+#### Add primary key
+
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    
+    [[table createColumnWithName:@"name" withType:EasyString] setAsPrimaryKey];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
+    
+    
+    [EasyStore completeDatabaseCreation];
+
+## Query Modifiers
+#### Limit
+#### Offset
+#### Orderby
 
 ## Invoking Raw SQL Queries
 EasyStore is a wrapper around SQLite, so raw queries can be used as well.
