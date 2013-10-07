@@ -84,11 +84,11 @@ Creates an autoincrementing primary key with the column name "id".
 
     [EasyStore beginDatabaseCreation];
     
-    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    EasyTable *table = [EasyStore createTableWithName:@"Cities"];
     
-    [[table createColumnWithName:@"name" withType:EasyString] setAsPrimaryKey];
-    [table createColumnWithName:@"amount" withType:EasyInteger];
-    
+    [[table createStringColumnWithName:@"name"] setAsPrimaryKey];
+    [table createFloatColumnWithName:@"latitude"];
+    [table createFloatColumnWithName:@"longitude"];
     
     [EasyStore completeDatabaseCreation];
 
