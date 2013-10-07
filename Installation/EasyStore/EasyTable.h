@@ -14,12 +14,19 @@
     NSMutableArray* _columns;
 }
 
-/* Public Methods */
--(id)initWithName:(NSString*)name;
--(EasyColumn*)createColumnWithName:(NSString*)name withType:(int)type;
 
+-(id)initWithName:(NSString*)name;
+
+/* Create columns */
+-(EasyColumn*)createColumnWithName:(NSString*)name withType:(int)type;
 -(EasyColumn*)createStringColumnWithName:(NSString*)name;
--(EasyColumn*)createNumberColumnWithName:(NSString*)name;
+-(EasyColumn*)createIntegerColumnWithName:(NSString*)name;
+-(EasyColumn*)createBooleanColumnWithName:(NSString*)name;
+-(EasyColumn*)createDateColumnWithName:(NSString*)name;
+-(EasyColumn*)createFloatColumnWithName:(NSString*)name;
+
+/* Other public methods */
+-(void)addIdentityColumn;
 
 /* Private Methods */
 -(NSString*)getCreationString;
