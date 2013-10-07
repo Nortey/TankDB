@@ -21,7 +21,7 @@ A lightweight object oriented local storage library for Objective C.
     
     [table createStringColumnWithName:@"name"];
     [table createIntegerColumnWithName:@"age"];
-    [table createBooleanColumnWithName:@"retired"];
+    [table createBooleanColumnWithName:@"retired"];        
     
     [EasyStore completeDatabaseCreation];
 
@@ -71,11 +71,15 @@ Creates an autoincrementing primary key with the column name "id".
 
     [EasyStore beginDatabaseCreation];
     
-    EasyTable *table = [EasyStore createTableWithName:@"TV_Shows"];
+    EasyTable *tvTable = [EasyStore createTableWithName:@"TV_Shows"];
+    [[tvTable createIntegerColumnWithName:@"identifier"] setAsIdentityColumn];
+    [tvTable createStringColumnWithName:@"name"];
+    [tvTable createDateColumnWithName:@"airingTime"];
     
-    [[table createIntegerColumnWithName:@"identifier"] setAsIdentityColumn];
-    [table createStringColumnWithName:@"name"];
-    [table createDateColumnWithName:@"airingTime"];
+    EasyTable *metaDataTable = [EasyStore createTableWithName:@"TV_Meta_Data"];
+    [metaDataTable createIntegerColumnWithName:@"tv_identifier"];
+    [metaDataTable createStringColumnWithName:@"station"];
+    [metaDataTable createIntegerColumnWithName:@"views"];
     
     [EasyStore completeDatabaseCreation];
 
@@ -92,12 +96,40 @@ Creates an autoincrementing primary key with the column name "id".
     [EasyStore completeDatabaseCreation];
 
 ## Query Modifiers
+
 #### Limit
+	EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"results"];
+    [predicate withLimit:5];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    
 #### Offset
-#### Orderby
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"pagedResults"];
+    [predicate withLimit:20 andOffset:5];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+
+#### Order By Ascending
+
+	EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Words"];
+    [predicate orderAscendingByColumn:@"word"];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    
+#### Order by Descending
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Numbers"];
+    [predicate orderDescendingByColumn:@"number"];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+
 
 ## Invoking Raw SQL Queries
-EasyStore is a wrapper around SQLite, so raw queries can be used as well.
+	[EasyStore invokeRawQuery:@"INSERT INTO Words VALUES ( \"hello\" )"];
+	
 
 
 ## Retrieving SQL Errors
