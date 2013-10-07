@@ -73,7 +73,6 @@ Creates an autoincrementing primary key with the column name "id".
     
     EasyTable *table = [EasyStore createTableWithName:@"TV_Shows"];
     
-    [table addIdentityColumn];
     [[table createIntegerColumnWithName:@"identifier"] setAsIdentityColumn];
     [table createStringColumnWithName:@"name"];
     [table createDateColumnWithName:@"airingTime"];
