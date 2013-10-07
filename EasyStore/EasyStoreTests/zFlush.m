@@ -8,13 +8,13 @@
 
 #import <XCTest/XCTest.h>
 
-@interface _LastTests : XCTestCase
+@interface zFlush : XCTestCase
 
 @end
 
 extern void __gcov_flush(void);
 
-@implementation _LastTests
+@implementation zFlush
 
 - (void)setUp{
     [super setUp];

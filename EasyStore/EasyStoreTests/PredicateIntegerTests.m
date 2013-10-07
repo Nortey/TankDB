@@ -25,10 +25,6 @@
     [EasyStore clearEasyStore];
 }
 
--(void)testUpdate{
-    
-}
-
 - (void)testWherePredicate{
     [EasyStore beginDatabaseCreation];
     
@@ -323,38 +319,41 @@
     XCTAssertEqual((int)[entries count], 3, @"Incorrect number of results returned from query");
 }
 
-/*-(void)testAndLessThan{
-    [EasyStore start];
+-(void)testAndLessThan{
+    [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
-    [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyNumber];
+    [table createIntegerColumnWithName:@"money"];
+    [table createIntegerColumnWithName:@"time"];
     
-    [EasyStore done];
+    [EasyStore completeDatabaseCreation];
     
-    EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"John" forColumnName:@"name"];
-    [entry setNumber:3333 forColumnName:@"amount"];
-    [EasyStore store:entry intoTable:@"Users"];
+    int moneyArray[] = {100, 200, 300, 400, 500};
+    int timeArray[] = {1, 2, 3, 4, 5};
     
-    EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setNumber:4444 forColumnName:@"amount"];
-    [EasyStore store:entry2 intoTable:@"Users"];
-    
-    EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setNumber:5555 forColumnName:@"amount"];
-    [EasyStore store:entry3 intoTable:@"Users"];
-    
+    for(int i=0; i<5; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setInteger:moneyArray[i] forColumnName:@"money"];
+        [entry setInteger:timeArray[i] forColumnName:@"time"];
+        [EasyStore store:entry intoTable:@"Users"];
+    }
+        
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
-    [predicate whereColumn:@"name" equalsString:@"John"];
-    [predicate andColumnName:@"amount" isGreaterThanNumber:10000];
+    [predicate whereColumn:@"money" isGreaterThanInteger:200];
+    [predicate andColumn:@"time" isLessThanInteger:4];
     
-    NSArray* entries = [EasyStore getEntriesWithPredicate:predicate];
-    XCTAssertEqual((int)[entries count], 0, @"Incorrect number of results returned from query");
-}*/
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
+    
+    for(int i=0; i<[entries count]; i++){
+        EasyEntry* entry = [entries objectAtIndex:i];
+        int money = [entry getIntegerForColumnName:@"money"];
+        int time = [entry getIntegerForColumnName:@"time"];
+        
+        XCTAssertTrue(money > 200 && time < 4, @"Incorrect results returned from select query");
+    }
+}
  
 
 

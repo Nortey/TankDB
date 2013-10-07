@@ -25,10 +25,6 @@
     [EasyStore clearEasyStore];
 }
 
--(void)testUpdate{
-    
-}
-
 - (void)testWherePredicate{
     [EasyStore beginDatabaseCreation];
     
