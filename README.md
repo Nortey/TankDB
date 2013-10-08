@@ -133,7 +133,19 @@ Creates an autoincrementing primary key with the column name "id".
 
 
 ## Retrieving SQL Errors
-(TODO)
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createColumnWithName:@"name" withType:EasyString];
+    [table createColumnWithName:@"amount" withType:EasyInteger];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    If([EasyStore getStatus] == EASY_OK){
+    	// All is good
+    }else{
+    	NSLog(@"SLQ error message: %@", [EasyStore getErrorMessage]);
+    }
 
 
 ## Supported Data Types
