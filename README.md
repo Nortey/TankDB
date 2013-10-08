@@ -136,8 +136,8 @@ Creates an autoincrementing primary key with the column name "id".
     [EasyStore beginDatabaseCreation];
     
     EasyTable *table = [EasyStore createTableWithName:@"Users"];
-    [table createColumnWithName:@"name" withType:EasyString];
-    [table createColumnWithName:@"amount" withType:EasyInteger];
+    [table createStringColumnWithName:@"name"];
+    [table createIntegerColumnWithName:@"age"];
     
     [EasyStore completeDatabaseCreation];
     
@@ -149,6 +149,10 @@ Creates an autoincrementing primary key with the column name "id".
 
 
 ## Supported Data Types
-(TODO)
+    Integer	-	[table createIntegerColumnWithName:@"name"];
+    String	-	[table createStringColumnWithName:@"name"];
+    Float	-	[table createFloatColumnWithName:@"name"];
+    Boolean	-	[table createBooleanColumnWithName:@"name"];
+    Date	-	[table createDateColumnWithName:@"name"];
  
 
