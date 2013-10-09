@@ -23,6 +23,7 @@
 
 /* Begin PBXBuildFile section */
 		7129C4A817F891BE006DAA7C /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7129C4A717F891BE006DAA7C /* StoreTests.m */; };
+		7135EEC218058819003EFBF5 /* CountTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7135EEC118058819003EFBF5 /* CountTests.m */; };
 		71393F2517FFB2ED003C9FE6 /* PredicateFloatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71393F2417FFB2ED003C9FE6 /* PredicateFloatTests.m */; };
 		71393F2717FFEB30003C9FE6 /* SubPredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71393F2617FFEB30003C9FE6 /* SubPredicateTests.m */; };
 		713F362818004792006ECFD8 /* PredicateLimitOffsetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 713F362718004792006ECFD8 /* PredicateLimitOffsetTests.m */; };
@@ -129,6 +130,7 @@
 
 /* Begin PBXFileReference section */
 		7129C4A717F891BE006DAA7C /* StoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTests.m; sourceTree = "<group>"; };
+		7135EEC118058819003EFBF5 /* CountTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountTests.m; sourceTree = "<group>"; };
 		71393F2417FFB2ED003C9FE6 /* PredicateFloatTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateFloatTests.m; sourceTree = "<group>"; };
 		71393F2617FFEB30003C9FE6 /* SubPredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubPredicateTests.m; sourceTree = "<group>"; };
 		713F362718004792006ECFD8 /* PredicateLimitOffsetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateLimitOffsetTests.m; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				7145F6B017F7767900B32A04 /* CreateTests.m */,
+				7135EEC118058819003EFBF5 /* CountTests.m */,
 				71960BA317F8F0DB00513369 /* DeleteTests.m */,
 				7167DEE918011E40007C48CB /* PerformanceTests.m */,
 				71462CA317FE618F00B8E5F3 /* PredicateBooleanTests.m */,
@@ -431,6 +434,7 @@
 				71960BA417F8F0DB00513369 /* DeleteTests.m in Sources */,
 				71960BA617F8F37000513369 /* SelectTests.m in Sources */,
 				71960BA817F8FA4700513369 /* UtilityTests.m in Sources */,
+				7135EEC218058819003EFBF5 /* CountTests.m in Sources */,
 				7146ECD417FC4816002C70BF /* PredicateTests.m in Sources */,
 				71393F2517FFB2ED003C9FE6 /* PredicateFloatTests.m in Sources */,
 				7145546A17FEF74B00A5B05B /* PredicateDateTests.m in Sources */,

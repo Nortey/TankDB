@@ -24,4 +24,8 @@
 -(IBAction)nextContact:(id)sender;
 -(IBAction)lastContact:(id)sender;
 
+-(void)setContact:(int)index;
+-(int)getNumContacts;
+-(void)resetForm;
+
 @end

@@ -26,6 +26,7 @@
 -(void)selectFromTable:(NSString*)tableName;
 -(void)deleteFromTable:(NSString*)tableName;
 -(void)updateTable:(NSString*)tableName;
+-(void)countEntriesInTable:(NSString*)tableName;
 
 /* Compound Predicate methods */
 -(void)And:(EasyPredicate*)predicate;

@@ -39,6 +39,7 @@
 +(NSArray*)selectEntriesWithPredicate:(EasyPredicate*)predicate;
 +(void)deleteEntriesWithPredicate:(EasyPredicate*)predicate;
 +(void)updateEntriesWithPredicate:(EasyPredicate*)predicate;
++(int)countEntriesWithPredicate:(EasyPredicate*)predicate;
 
 /* Private Methods */
 +(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;

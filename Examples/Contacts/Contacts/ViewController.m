@@ -16,18 +16,21 @@
 @implementation ViewController
 
 
+/*
+ *  ViewDidload
+ *  When the view loads, check if contacts already exist and display the first one
+ */
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    currentContact = -1;
-    
-    NSArray* currentEntries = [EasyStore selectAllEntriesForTable:@"Contacts"];
-    if([currentEntries count] > 0){
-        currentContact++;
-        [self setContact:currentContact];
-    }
+    currentContact = 1;
+    [self setContact:currentContact];
 }
 
+/*
+ *  Add Contact
+ *  Add a contact to the local storage with the values in the textboxes
+ */
 -(IBAction)addContact:(id)sender{
     NSString* name = [contactName text];
     NSString* phoneNumber = [contactPhoneNumber text];
@@ -43,16 +46,37 @@
     [self resetForm];
 }
 
+/*
+ *  Next contact
+ *  View the next contact in the database
+ */
 -(IBAction)nextContact:(id)sender{
-    currentContact++;
+    int numContacts = [self getNumContacts];
+    
+    if(currentContact < numContacts){
+        currentContact++;
+    }
+    
     [self setContact:currentContact];
 }
 
+/*
+ *  Previous contact
+ *  View the previous contact in the databasae
+ */
 -(IBAction)lastContact:(id)sender{
-    currentContact--;
+    
+    if(currentContact > 1){
+        currentContact--;
+    }
+
     [self setContact:currentContact];
 }
 
+/*
+ *  Set Contact
+ *  Get the contact for the given index. Change the labels to the values of that contact
+ */
 -(void)setContact:(int)index{
     EasyPredicate* predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Contacts"];
@@ -69,9 +93,30 @@
         [lblName setText:name];
         [lblPhoneNumber setText:phoneNumber];
         [lblEmailAddress setText:emailAddres];
+    }else{
+        [lblName setText:@"-"];
+        [lblPhoneNumber setText:@"-"];
+        [lblEmailAddress setText:@"-"];
     }
 }
 
+
+/*
+ *  Get Number of Contacts
+ *  Query for the total number of contacts in the database
+ */
+-(int)getNumContacts{
+    EasyPredicate* predicate = [EasyPredicate new];
+    [predicate countEntriesInTable:@"Contacts"];
+    int count = [EasyStore countEntriesWithPredicate:predicate];
+    
+    return count;
+}
+
+/*
+ *  Reset form
+ *  Clear the labels and hide the keyboard
+ */
 -(void)resetForm{
     [contactName resignFirstResponder];
     [contactPhoneNumber resignFirstResponder];
@@ -81,6 +126,8 @@
     [contactPhoneNumber setText:@""];
     [contactEmailAddress setText:@""];
 }
+
+
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];

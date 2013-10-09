@@ -260,6 +260,22 @@ static NSString* _errorMessage;
     [EasyStore invokeRawQuery:updateQuery];
 }
 
+/*
+ *  Count entries with predicate
+ *  Invokes raw count query
+ */
++(int)countEntriesWithPredicate:(EasyPredicate*)predicate{
+    NSArray* entries = [self selectEntriesWithPredicate:predicate];
+    
+    if([entries count] > 0){
+        EasyEntry* countEntry = [entries objectAtIndex:0];
+        int count = [countEntry integerForColumn:@"count"];
+        return count;
+    }
+    
+    return 0;
+}
+
 
 /*
  *  Set EasyStore status

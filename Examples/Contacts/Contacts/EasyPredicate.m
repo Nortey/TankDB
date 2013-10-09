@@ -47,6 +47,11 @@
     [_startClause appendFormat:@"UPDATE %@" , tableLowerCase];
 }
 
+-(void)countEntriesInTable:(NSString*)tableName{
+    NSString* tableLowerCase = [tableName lowercaseString];
+    [_startClause appendFormat:@"SELECT COUNT(*) AS count FROM %@" , tableLowerCase];
+}
+
 /*
  *  Compound predicate methods
  *  Called to surround an entire predicate in an AND or an OR
