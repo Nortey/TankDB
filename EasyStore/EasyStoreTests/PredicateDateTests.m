@@ -279,4 +279,76 @@
     }
 }
 
+-(void)testAndEqualsDate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createIntegerColumnWithName:@"amount"];
+    [table createDateColumnWithName:@"date"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSDate* date1 = [NSDate dateWithTimeIntervalSinceNow:-10000];
+    NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:-5000];
+    NSDate* now = [NSDate date];
+    NSDate* date3 = [NSDate dateWithTimeIntervalSinceNow:5000];
+    NSDate* date4 = [NSDate dateWithTimeIntervalSinceNow:10000];
+    
+    NSArray* dates = @[date1, date2, now, date3, date4];
+    int amounts[] = {100, 200, 300, 400, 500};
+    
+    for(int i=0; i<[dates count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
+        [entry setInteger:amounts[i] forColumnName:@"amount"];
+        [EasyStore store:entry intoTable:@"Users"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
+    [predicate whereColumn:@"amount" isGreaterThanInteger:200];
+    [predicate andColumn:@"date" equalsDate:now];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
+    
+    EasyEntry* thisEntry = [entries objectAtIndex:0];
+    int returnedAmount = [thisEntry getIntegerForColumnName:@"amount"];
+    XCTAssertTrue((int)[now timeIntervalSinceDate:[thisEntry getDateForColumnName:@"date"]] == 0 && returnedAmount == 300, @"Incorrect date returned from query");
+}
+
+-(void)testOrEqualsDate{
+    [EasyStore beginDatabaseCreation];
+    
+    EasyTable *table = [EasyStore createTableWithName:@"Users"];
+    [table createIntegerColumnWithName:@"amount"];
+    [table createDateColumnWithName:@"date"];
+    
+    [EasyStore completeDatabaseCreation];
+    
+    NSDate* date1 = [NSDate dateWithTimeIntervalSinceNow:-10000];
+    NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:-5000];
+    NSDate* now = [NSDate date];
+    NSDate* date3 = [NSDate dateWithTimeIntervalSinceNow:5000];
+    NSDate* date4 = [NSDate dateWithTimeIntervalSinceNow:10000];
+    
+    NSArray* dates = @[date1, date2, now, date3, date4];
+    int amounts[] = {100, 200, 300, 400, 500};
+    
+    for(int i=0; i<[dates count]; i++){
+        EasyEntry* entry = [EasyEntry new];
+        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
+        [entry setInteger:amounts[i] forColumnName:@"amount"];
+        [EasyStore store:entry intoTable:@"Users"];
+    }
+    
+    EasyPredicate *predicate = [EasyPredicate new];
+    [predicate selectFromTable:@"Users"];
+    [predicate whereColumn:@"amount" isLessThanInteger:200];
+    [predicate orColumn:@"date" equalsDate:now];
+    
+    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
+}
+
 @end
