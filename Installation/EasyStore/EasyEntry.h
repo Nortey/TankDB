@@ -13,19 +13,19 @@
 }
 
 /* Set column value methods */
--(void)setString:(NSString*)string forColumnName:(NSString*)columnName;
--(void)setInteger:(int)integer forColumnName:(NSString*)columnName;
--(void)setBoolean:(BOOL)booleanValue forColumnName:(NSString*)columnName;
--(void)setFloat:(float)floatNumber forColumnName:(NSString*)columnName;
--(void)setDate:(NSDate*)date forColumnName:(NSString*)columnName;
--(void)setDateAsNowForColumnName:(NSString*)columnName;
+-(void)setString:(NSString*)string forColumn:(NSString*)columnName;
+-(void)setInteger:(int)integer forColumn:(NSString*)columnName;
+-(void)setBoolean:(BOOL)booleanValue forColumn:(NSString*)columnName;
+-(void)setFloat:(float)floatNumber forColumn:(NSString*)columnName;
+-(void)setDate:(NSDate*)date forColumn:(NSString*)columnName;
+-(void)setDateAsNowForColumn:(NSString*)columnName;
 
 /* Get column value methods */
--(NSString*)getStringForColumnName:(NSString*)columnName;
--(int)getIntegerForColumnName:(NSString*)columnName;
--(BOOL)getBooleanForColumnName:(NSString*)columnName;
--(NSDate*)getDateForColumnName:(NSString*)columnName;
--(float)getFloatForColumnName:(NSString*)columnName;
+-(NSString*)stringForColumn:(NSString*)columnName;
+-(int)integerForColumn:(NSString*)columnName;
+-(BOOL)booleanForColumn:(NSString*)columnName;
+-(NSDate*)dateForColumn:(NSString*)columnName;
+-(float)floatForColumn:(NSString*)columnName;
 
 /* Properties */
 -(NSMutableDictionary*)getEntries;

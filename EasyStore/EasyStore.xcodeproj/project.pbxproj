@@ -28,7 +28,6 @@
 		713F362818004792006ECFD8 /* PredicateLimitOffsetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 713F362718004792006ECFD8 /* PredicateLimitOffsetTests.m */; };
 		7145546A17FEF74B00A5B05B /* PredicateDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145546917FEF74B00A5B05B /* PredicateDateTests.m */; };
 		7145F69517F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
-		7145F69A17F7767900B32A04 /* EasyStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F69917F7767900B32A04 /* EasyStore.h */; };
 		7145F69C17F7767900B32A04 /* EasyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7145F69B17F7767900B32A04 /* EasyStore.m */; };
 		7145F6A317F7767900B32A04 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6A217F7767900B32A04 /* XCTest.framework */; };
 		7145F6A417F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
@@ -47,14 +46,21 @@
 		7146ECD417FC4816002C70BF /* PredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7146ECD317FC4816002C70BF /* PredicateTests.m */; };
 		714702B217FCF68100E2017F /* PredicateOrderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 714702B117FCF68100E2017F /* PredicateOrderTests.m */; };
 		7167DEEA18011E40007C48CB /* PerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7167DEE918011E40007C48CB /* PerformanceTests.m */; };
+		716BCC6E18051B2C00834200 /* EasyStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F69917F7767900B32A04 /* EasyStore.h */; };
+		716BCC6F18051B2C00834200 /* EasyStore.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F69B17F7767900B32A04 /* EasyStore.m */; };
+		716BCC7018051B2C00834200 /* EasyTable.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BC17F7782D00B32A04 /* EasyTable.m */; };
+		716BCC7118051B2C00834200 /* EasyColumn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BE17F7785300B32A04 /* EasyColumn.h */; };
+		716BCC7218051B2C00834200 /* EasyColumn.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BF17F7785300B32A04 /* EasyColumn.m */; };
+		716BCC7318051B2C00834200 /* EasyEntry.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA017F8D76700513369 /* EasyEntry.h */; };
+		716BCC7418051B2C00834200 /* EasyEntry.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA117F8D76700513369 /* EasyEntry.m */; };
+		716BCC7518051B2C00834200 /* EasyPredicate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA917F90D5C00513369 /* EasyPredicate.h */; };
+		716BCC7618051B2C00834200 /* EasyPredicate.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BAA17F90D5C00513369 /* EasyPredicate.m */; };
+		716BCC7718051B2C00834200 /* Utility.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C517F8799600B32A04 /* Utility.h */; };
+		716BCC7818051B2C00834200 /* Utility.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C617F8799600B32A04 /* Utility.m */; };
+		716BCC7918051B2C00834200 /* EasyConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C117F7789C00B32A04 /* EasyConstants.h */; };
 		71700D011802493B00196545 /* zFlush.m in Sources */ = {isa = PBXBuildFile; fileRef = 71700D001802493B00196545 /* zFlush.m */; };
 		718C079B17FA4F2400511C87 /* PredicateIntegerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C079A17FA4F2400511C87 /* PredicateIntegerTests.m */; };
 		718C07EB17FA5AED00511C87 /* EasyTable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BB17F7782D00B32A04 /* EasyTable.h */; };
-		718C07EC17FA5AED00511C87 /* EasyColumn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BE17F7785300B32A04 /* EasyColumn.h */; };
-		718C07ED17FA5AED00511C87 /* EasyEntry.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA017F8D76700513369 /* EasyEntry.h */; };
-		718C07EE17FA5AED00511C87 /* EasyPredicate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA917F90D5C00513369 /* EasyPredicate.h */; };
-		718C07EF17FA5AED00511C87 /* EasyConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C117F7789C00B32A04 /* EasyConstants.h */; };
-		718C07F017FA5AED00511C87 /* Utility.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6C517F8799600B32A04 /* Utility.h */; };
 		718C07F217FA5B6F00511C87 /* EasyTable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BB17F7782D00B32A04 /* EasyTable.h */; };
 		718C07F317FA5B6F00511C87 /* EasyColumn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7145F6BE17F7785300B32A04 /* EasyColumn.h */; };
 		718C07F417FA5B6F00511C87 /* EasyEntry.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71960BA017F8D76700513369 /* EasyEntry.h */; };
@@ -84,16 +90,22 @@
 		7145F68F17F7767900B32A04 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/${PRODUCT_NAME}";
-			dstSubfolderSpec = 16;
+			dstPath = "$(SRCROOT)/../Installation/EasyStore";
+			dstSubfolderSpec = 0;
 			files = (
+				716BCC6E18051B2C00834200 /* EasyStore.h in CopyFiles */,
+				716BCC6F18051B2C00834200 /* EasyStore.m in CopyFiles */,
+				716BCC7018051B2C00834200 /* EasyTable.m in CopyFiles */,
+				716BCC7118051B2C00834200 /* EasyColumn.h in CopyFiles */,
+				716BCC7218051B2C00834200 /* EasyColumn.m in CopyFiles */,
+				716BCC7318051B2C00834200 /* EasyEntry.h in CopyFiles */,
+				716BCC7418051B2C00834200 /* EasyEntry.m in CopyFiles */,
+				716BCC7518051B2C00834200 /* EasyPredicate.h in CopyFiles */,
+				716BCC7618051B2C00834200 /* EasyPredicate.m in CopyFiles */,
+				716BCC7718051B2C00834200 /* Utility.h in CopyFiles */,
+				716BCC7818051B2C00834200 /* Utility.m in CopyFiles */,
+				716BCC7918051B2C00834200 /* EasyConstants.h in CopyFiles */,
 				718C07EB17FA5AED00511C87 /* EasyTable.h in CopyFiles */,
-				718C07EC17FA5AED00511C87 /* EasyColumn.h in CopyFiles */,
-				718C07ED17FA5AED00511C87 /* EasyEntry.h in CopyFiles */,
-				718C07EE17FA5AED00511C87 /* EasyPredicate.h in CopyFiles */,
-				718C07EF17FA5AED00511C87 /* EasyConstants.h in CopyFiles */,
-				718C07F017FA5AED00511C87 /* Utility.h in CopyFiles */,
-				7145F69A17F7767900B32A04 /* EasyStore.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

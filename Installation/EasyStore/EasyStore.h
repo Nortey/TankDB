@@ -23,6 +23,7 @@
 /* Database creation methods */
 +(void)beginDatabaseCreation;
 +(void)completeDatabaseCreation;
++(void)deleteDatabaseFile;
 +(EasyTable*)createTableWithName:(NSString*)name;
 
 /* Raw queries */
@@ -31,7 +32,7 @@
 
 /* Database modifier methods */
 +(void)clearEasyStore;
-+(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName;
++(void)insert:(EasyEntry*)entry intoTable:(NSString*)tableName;
 +(NSArray*)selectAllEntriesForTable:(NSString*)tableName;
 
 /* Predicate methods */
