@@ -39,9 +39,9 @@
     
     for(int i=0; i<[names count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[names objectAtIndex:i] forColumnName:@"name"];
-        [entry setBoolean:isValid[i] forColumnName:@"isValid"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setString:[names objectAtIndex:i] forColumn:@"name"];
+        [entry setBoolean:isValid[i] forColumn:@"isValid"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
@@ -70,9 +70,9 @@
     
     for(int i=0; i<4; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setInteger:numbers[i] forColumnName:@"number"];
-        [entry setBoolean:isValid[i] forColumnName:@"isValid"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setInteger:numbers[i] forColumn:@"number"];
+        [entry setBoolean:isValid[i] forColumn:@"isValid"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -98,9 +98,9 @@
     
     for(int i=0; i<4; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setInteger:numbers[i] forColumnName:@"number"];
-        [entry setBoolean:isValid[i] forColumnName:@"isValid"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setInteger:numbers[i] forColumn:@"number"];
+        [entry setBoolean:isValid[i] forColumn:@"isValid"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -126,9 +126,9 @@
     
     for(int i=0; i<4; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setInteger:numbers[i] forColumnName:@"number"];
-        [entry setBoolean:isValid[i] forColumnName:@"isValid"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setInteger:numbers[i] forColumn:@"number"];
+        [entry setBoolean:isValid[i] forColumn:@"isValid"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];

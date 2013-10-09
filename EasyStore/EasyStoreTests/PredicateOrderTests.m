@@ -37,8 +37,8 @@
     
     for(NSString* word in words){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:word forColumnName:@"word"];
-        [EasyStore store:entry intoTable:@"Words"];
+        [entry setString:word forColumn:@"word"];
+        [EasyStore insert:entry intoTable:@"Words"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -52,7 +52,7 @@
     
     for(int i=0; i<[words count]; i++){
         EasyEntry* thisEntry = [entries objectAtIndex:i];
-        NSString* thisWord = [thisEntry getStringForColumnName:@"word"];
+        NSString* thisWord = [thisEntry stringForColumn:@"word"];
         XCTAssertEqualObjects(thisWord, [orderedWords objectAtIndex:i], @"Strings not correctly returned in ascending order");
     }
 }
@@ -69,8 +69,8 @@
     
     for(NSString* word in words){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:word forColumnName:@"word"];
-        [EasyStore store:entry intoTable:@"Words"];
+        [entry setString:word forColumn:@"word"];
+        [EasyStore insert:entry intoTable:@"Words"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -84,7 +84,7 @@
     
     for(int i=0; i<[words count]; i++){
         EasyEntry* thisEntry = [entries objectAtIndex:i];
-        NSString* thisWord = [thisEntry getStringForColumnName:@"word"];
+        NSString* thisWord = [thisEntry stringForColumn:@"word"];
         XCTAssertEqualObjects(thisWord, [orderedWords objectAtIndex:i], @"Strings not correctly returned in ascending order");
     }
 }

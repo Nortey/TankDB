@@ -36,9 +36,9 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"John" forColumnName:@"name"];
-    [entry setInteger:45 forColumnName:@"amount"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setString:@"John" forColumn:@"name"];
+    [entry setInteger:45 forColumn:@"amount"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     XCTAssertEqualObjects([nameColumn getName], @"name", @"Column name incorrect");
     XCTAssertEqualObjects([amountColumn getName], @"amount", @"Column name incorrect");
@@ -55,9 +55,9 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setBoolean:TRUE forColumnName:@"isValid"];
-    [entry setBoolean:FALSE forColumnName:@"isSuccessful"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setBoolean:TRUE forColumn:@"isValid"];
+    [entry setBoolean:FALSE forColumn:@"isSuccessful"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     XCTAssertEqualObjects([firstColumn getName], @"isValid", @"Column name incorrect");
     XCTAssertEqualObjects([secondColumn getName], @"isSuccessful", @"Column name incorrect");

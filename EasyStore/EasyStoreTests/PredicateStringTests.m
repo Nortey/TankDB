@@ -35,19 +35,19 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"John" forColumnName:@"name"];
-    [entry setInteger:3333 forColumnName:@"amount"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setString:@"John" forColumn:@"name"];
+    [entry setInteger:3333 forColumn:@"amount"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setInteger:4444 forColumnName:@"amount"];
-    [EasyStore store:entry2 intoTable:@"Users"];
+    [entry2 setString:@"Blake" forColumn:@"name"];
+    [entry2 setInteger:4444 forColumn:@"amount"];
+    [EasyStore insert:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setInteger:5555 forColumnName:@"amount"];
-    [EasyStore store:entry3 intoTable:@"Users"];
+    [entry3 setString:@"Dan" forColumn:@"name"];
+    [entry3 setInteger:5555 forColumn:@"amount"];
+    [EasyStore insert:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
@@ -57,7 +57,7 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"name"], @"Blake", @"Incorrect entry returned from query");
+    XCTAssertEqualObjects([singleEntry stringForColumn:@"name"], @"Blake", @"Incorrect entry returned from query");
 }
 
 - (void)testOrPredicate{
@@ -70,19 +70,19 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"John" forColumnName:@"name"];
-    [entry setInteger:3333 forColumnName:@"amount"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setString:@"John" forColumn:@"name"];
+    [entry setInteger:3333 forColumn:@"amount"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setInteger:4444 forColumnName:@"amount"];
-    [EasyStore store:entry2 intoTable:@"Users"];
+    [entry2 setString:@"Blake" forColumn:@"name"];
+    [entry2 setInteger:4444 forColumn:@"amount"];
+    [EasyStore insert:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setString:@"Dan" forColumnName:@"name"];
-    [entry3 setInteger:5555 forColumnName:@"amount"];
-    [EasyStore store:entry3 intoTable:@"Users"];
+    [entry3 setString:@"Dan" forColumn:@"name"];
+    [entry3 setInteger:5555 forColumn:@"amount"];
+    [EasyStore insert:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
@@ -93,11 +93,11 @@
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     EasyEntry* firstEntry = [entries objectAtIndex:0];
-    BOOL correct = [@"Blake" isEqualToString:[firstEntry getStringForColumnName:@"name"]] || [@"Dan" isEqualToString:[firstEntry getStringForColumnName:@"name"]];
+    BOOL correct = [@"Blake" isEqualToString:[firstEntry stringForColumn:@"name"]] || [@"Dan" isEqualToString:[firstEntry stringForColumn:@"name"]];
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
     
     EasyEntry* secondEntry = [entries objectAtIndex:0];
-    correct = [@"Blake" isEqualToString:[secondEntry getStringForColumnName:@"name"]] || [@"Dan" isEqualToString:[secondEntry getStringForColumnName:@"name"]];
+    correct = [@"Blake" isEqualToString:[secondEntry stringForColumn:@"name"]] || [@"Dan" isEqualToString:[secondEntry stringForColumn:@"name"]];
     XCTAssertTrue(correct, @"Incorrect entry returned from query");
 }
 
@@ -111,19 +111,19 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"Kyle" forColumnName:@"name"];
-    [entry setString:@"Texas" forColumnName:@"state"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setString:@"Kyle" forColumn:@"name"];
+    [entry setString:@"Texas" forColumn:@"state"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"Kyle" forColumnName:@"name"];
-    [entry2 setString:@"Alabama" forColumnName:@"state"];
-    [EasyStore store:entry2 intoTable:@"Users"];
+    [entry2 setString:@"Kyle" forColumn:@"name"];
+    [entry2 setString:@"Alabama" forColumn:@"state"];
+    [EasyStore insert:entry2 intoTable:@"Users"];
     
     EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setString:@"Kyle" forColumnName:@"name"];
-    [entry3 setString:@"Denver" forColumnName:@"state"];
-    [EasyStore store:entry3 intoTable:@"Users"];
+    [entry3 setString:@"Kyle" forColumn:@"name"];
+    [entry3 setString:@"Denver" forColumn:@"state"];
+    [EasyStore insert:entry3 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
@@ -134,8 +134,8 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"name"], @"Kyle", @"Incorrect entry returned from query");
-    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"state"], @"Texas", @"Incorrect entry returned from query");
+    XCTAssertEqualObjects([singleEntry stringForColumn:@"name"], @"Kyle", @"Incorrect entry returned from query");
+    XCTAssertEqualObjects([singleEntry stringForColumn:@"state"], @"Texas", @"Incorrect entry returned from query");
 }
 
 - (void)testContainsStringPrefix{
@@ -155,16 +155,16 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];
-    [EasyStore store:entry intoTable:@"Words"];
+    [entry setString:@"abcdefghijlkmno" forColumn:@"word"];
+    [EasyStore insert:entry intoTable:@"Words"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumnName:@"word"];
-    [EasyStore store:entry2 intoTable:@"Words"];
+    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumn:@"word"];
+    [EasyStore insert:entry2 intoTable:@"Words"];
     
     EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setString:@"123456789" forColumnName:@"word"];
-    [EasyStore store:entry3 intoTable:@"Words"];
+    [entry3 setString:@"123456789" forColumn:@"word"];
+    [EasyStore insert:entry3 intoTable:@"Words"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Words"];
@@ -174,7 +174,7 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"word"], @"abcdefghijlkmno", @"Incorrect entry returned from query");
+    XCTAssertEqualObjects([singleEntry stringForColumn:@"word"], @"abcdefghijlkmno", @"Incorrect entry returned from query");
 }
 
 - (void)testAndContainsString{
@@ -186,16 +186,16 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];
-    [EasyStore store:entry intoTable:@"Words"];
+    [entry setString:@"abcdefghijlkmno" forColumn:@"word"];
+    [EasyStore insert:entry intoTable:@"Words"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumnName:@"word"];
-    [EasyStore store:entry2 intoTable:@"Words"];
+    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumn:@"word"];
+    [EasyStore insert:entry2 intoTable:@"Words"];
     
     EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setString:@"123456789" forColumnName:@"word"];
-    [EasyStore store:entry3 intoTable:@"Words"];
+    [entry3 setString:@"123456789" forColumn:@"word"];
+    [EasyStore insert:entry3 intoTable:@"Words"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Words"];
@@ -206,7 +206,7 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* singleEntry = [entries objectAtIndex:0];
-    XCTAssertEqualObjects([singleEntry getStringForColumnName:@"word"], @"123456789", @"Incorrect entry returned from query");
+    XCTAssertEqualObjects([singleEntry stringForColumn:@"word"], @"123456789", @"Incorrect entry returned from query");
 }
 
 - (void)testOrContainsString{
@@ -218,16 +218,16 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"abcdefghijlkmno" forColumnName:@"word"];
-    [EasyStore store:entry intoTable:@"Words"];
+    [entry setString:@"abcdefghijlkmno" forColumn:@"word"];
+    [EasyStore insert:entry intoTable:@"Words"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumnName:@"word"];
-    [EasyStore store:entry2 intoTable:@"Words"];
+    [entry2 setString:@"aaaaaaaaaaaaaaa" forColumn:@"word"];
+    [EasyStore insert:entry2 intoTable:@"Words"];
     
     EasyEntry* entry3 = [EasyEntry new];
-    [entry3 setString:@"123456789" forColumnName:@"word"];
-    [EasyStore store:entry3 intoTable:@"Words"];
+    [entry3 setString:@"123456789" forColumn:@"word"];
+    [EasyStore insert:entry3 intoTable:@"Words"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Words"];

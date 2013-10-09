@@ -49,9 +49,9 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"Bill" forColumnName:@"name"];
-    [entry setInteger:38 forColumnName:@"amount"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setString:@"Bill" forColumn:@"name"];
+    [entry setInteger:38 forColumn:@"amount"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
     XCTAssertEqual((int)[entries count], 1, @"Entry not properly stored in EasyStore");
@@ -71,14 +71,14 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"John" forColumnName:@"name"];
-    [entry setInteger:3333 forColumnName:@"amount"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setString:@"John" forColumn:@"name"];
+    [entry setInteger:3333 forColumn:@"amount"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     EasyEntry* entry2 = [EasyEntry new];
-    [entry2 setString:@"Blake" forColumnName:@"name"];
-    [entry2 setInteger:4444 forColumnName:@"amount"];
-    [EasyStore store:entry2 intoTable:@"Users"];
+    [entry2 setString:@"Blake" forColumn:@"name"];
+    [entry2 setInteger:4444 forColumn:@"amount"];
+    [EasyStore insert:entry2 intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate deleteFromTable:@"Users"];
@@ -106,9 +106,9 @@
     
     for (int i=0; i<[names count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[names objectAtIndex:i] forColumnName:@"name"];
-        [entry setBoolean:funded[i] forColumnName:@"funded"];
-        [EasyStore store:entry intoTable:@"Schools"];
+        [entry setString:[names objectAtIndex:i] forColumn:@"name"];
+        [entry setBoolean:funded[i] forColumn:@"funded"];
+        [EasyStore insert:entry intoTable:@"Schools"];
     }
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"Schools"];

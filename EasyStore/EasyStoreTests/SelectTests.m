@@ -35,16 +35,16 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"John" forColumnName:@"name"];
-    [entry setInteger:45 forColumnName:@"amount"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setString:@"John" forColumn:@"name"];
+    [entry setInteger:45 forColumn:@"amount"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
     XCTAssertEqual((int)[entries count], 1, @"Entry not properly stored in EasyStore");
     
     EasyEntry* selectedEntry = [entries objectAtIndex:0];
-    NSString* entryName = [selectedEntry getStringForColumnName:@"name"];
-    int amount = [selectedEntry getIntegerForColumnName:@"amount"];
+    NSString* entryName = [selectedEntry stringForColumn:@"name"];
+    int amount = [selectedEntry integerForColumn:@"amount"];
     
     XCTAssertEqualObjects(entryName, @"John", @"Name not properly stored in EasyStore");
     XCTAssertEqual(amount, 45, @"Amount not properly stored in EasyStore");
@@ -62,20 +62,20 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"firstValue" forColumnName:@"firstcolumn"];
-    [entry setInteger:383 forColumnName:@"secondcolumn"];
-    [entry setString:@"thirdValue" forColumnName:@"thirdcolumn"];
-    [entry setInteger:2001 forColumnName:@"fourthcolumn"];
-    [EasyStore store:entry intoTable:@"selecttests"];
+    [entry setString:@"firstValue" forColumn:@"firstcolumn"];
+    [entry setInteger:383 forColumn:@"secondcolumn"];
+    [entry setString:@"thirdValue" forColumn:@"thirdcolumn"];
+    [entry setInteger:2001 forColumn:@"fourthcolumn"];
+    [EasyStore insert:entry intoTable:@"selecttests"];
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"selecttests"];
     XCTAssertEqual((int)[entries count], 1, @"Entry not properly stored in EasyStore");
     
     EasyEntry* selectedEntry = [entries objectAtIndex:0];
-    NSString* firstEntry = [selectedEntry getStringForColumnName:@"firstcolumn"];
-    int secondEntry = [selectedEntry getIntegerForColumnName:@"secondcolumn"];
-    NSString* thirdEntry = [selectedEntry getStringForColumnName:@"thirdcolumn"];
-    int fourthEntry = [selectedEntry getIntegerForColumnName:@"fourthcolumn"];
+    NSString* firstEntry = [selectedEntry stringForColumn:@"firstcolumn"];
+    int secondEntry = [selectedEntry integerForColumn:@"secondcolumn"];
+    NSString* thirdEntry = [selectedEntry stringForColumn:@"thirdcolumn"];
+    int fourthEntry = [selectedEntry integerForColumn:@"fourthcolumn"];
     
     XCTAssertEqualObjects(firstEntry, @"firstValue", @"Entry not properly stored");
     XCTAssertEqual(secondEntry, 383, @"Entry not properly stored");
@@ -95,20 +95,20 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"firstValue" forColumnName:@"FIRSTCOLUMN"];
-    [entry setInteger:383 forColumnName:@"SECONDCOLUMN"];
-    [entry setString:@"thirdValue" forColumnName:@"THIRDCOLUMN"];
-    [entry setInteger:2001 forColumnName:@"FOURTHCOLUMN"];
-    [EasyStore store:entry intoTable:@"SELECTTESTS"];
+    [entry setString:@"firstValue" forColumn:@"FIRSTCOLUMN"];
+    [entry setInteger:383 forColumn:@"SECONDCOLUMN"];
+    [entry setString:@"thirdValue" forColumn:@"THIRDCOLUMN"];
+    [entry setInteger:2001 forColumn:@"FOURTHCOLUMN"];
+    [EasyStore insert:entry intoTable:@"SELECTTESTS"];
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"SELECTTESTS"];
     XCTAssertEqual((int)[entries count], 1, @"Entry not properly stored in EasyStore");
     
     EasyEntry* selectedEntry = [entries objectAtIndex:0];
-    NSString* firstEntry = [selectedEntry getStringForColumnName:@"FIRSTCOLUMN"];
-    int secondEntry = [selectedEntry getIntegerForColumnName:@"SECONDCOLUMN"];
-    NSString* thirdEntry = [selectedEntry getStringForColumnName:@"THIRDCOLUMN"];
-    int fourthEntry = [selectedEntry getIntegerForColumnName:@"FOURTHCOLUMN"];
+    NSString* firstEntry = [selectedEntry stringForColumn:@"FIRSTCOLUMN"];
+    int secondEntry = [selectedEntry integerForColumn:@"SECONDCOLUMN"];
+    NSString* thirdEntry = [selectedEntry stringForColumn:@"THIRDCOLUMN"];
+    int fourthEntry = [selectedEntry integerForColumn:@"FOURTHCOLUMN"];
     
     XCTAssertEqualObjects(firstEntry, @"firstValue", @"Entry not properly stored");
     XCTAssertEqual(secondEntry, 383, @"Entry not properly stored");
@@ -127,15 +127,15 @@
     [EasyStore completeDatabaseCreation];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setString:@"(){}[].;:?/|'" forColumnName:@"firstColumn"];
+    [entry setString:@"(){}[].;:?/|'" forColumn:@"firstColumn"];
     //[entry setNumber:45 forColumnName:@"secondColumn"];
-    [EasyStore store:entry intoTable:@"Characters"];
+    [EasyStore insert:entry intoTable:@"Characters"];
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"Characters"];
     XCTAssertEqual((int)[entries count], 1, @"Entry not properly stored in EasyStore");
     
     EasyEntry* selectedEntry = [entries objectAtIndex:0];
-    NSString* entryFirstColumn = [selectedEntry getStringForColumnName:@"firstColumn"];
+    NSString* entryFirstColumn = [selectedEntry stringForColumn:@"firstColumn"];
     //int amount = [selectedEntry getNumberForColumnName:@"amount"];
     
     XCTAssertEqualObjects(entryFirstColumn, @"(){}[].;:?/|'", @"Name not properly stored in EasyStore");

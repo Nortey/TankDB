@@ -40,9 +40,9 @@
     
     for(int i=0; i<[students count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
-        [entry setFloat:gpas[i] forColumnName:@"gpa"];
-        [EasyStore store:entry intoTable:@"Students"];
+        [entry setString:[students objectAtIndex:i] forColumn:@"name"];
+        [entry setFloat:gpas[i] forColumn:@"gpa"];
+        [EasyStore insert:entry intoTable:@"Students"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -53,7 +53,7 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* thisEntry = [entries objectAtIndex:0];
-    XCTAssertEqual([thisEntry getFloatForColumnName:@"gpa"], 1.223f, @"Incorrect floating point number returned");
+    XCTAssertEqual([thisEntry floatForColumn:@"gpa"], 1.223f, @"Incorrect floating point number returned");
 }
 
 -(void)testAndEqualsPredicate{
@@ -70,9 +70,9 @@
     
     for(int i=0; i<[students count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
-        [entry setFloat:gpas[i] forColumnName:@"gpa"];
-        [EasyStore store:entry intoTable:@"Students"];
+        [entry setString:[students objectAtIndex:i] forColumn:@"name"];
+        [entry setFloat:gpas[i] forColumn:@"gpa"];
+        [EasyStore insert:entry intoTable:@"Students"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -84,7 +84,7 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* thisEntry = [entries objectAtIndex:0];
-    XCTAssertEqual([thisEntry getFloatForColumnName:@"gpa"], 3.948f, @"Incorrect floating point number returned");
+    XCTAssertEqual([thisEntry floatForColumn:@"gpa"], 3.948f, @"Incorrect floating point number returned");
 }
 
 -(void)testOrEqualsPredicate{
@@ -101,9 +101,9 @@
     
     for(int i=0; i<[students count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
-        [entry setFloat:gpas[i] forColumnName:@"gpa"];
-        [EasyStore store:entry intoTable:@"Students"];
+        [entry setString:[students objectAtIndex:i] forColumn:@"name"];
+        [entry setFloat:gpas[i] forColumn:@"gpa"];
+        [EasyStore insert:entry intoTable:@"Students"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -129,9 +129,9 @@
     
     for(int i=0; i<[students count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
-        [entry setFloat:gpas[i] forColumnName:@"gpa"];
-        [EasyStore store:entry intoTable:@"Students"];
+        [entry setString:[students objectAtIndex:i] forColumn:@"name"];
+        [entry setFloat:gpas[i] forColumn:@"gpa"];
+        [EasyStore insert:entry intoTable:@"Students"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -158,9 +158,9 @@
     
     for(int i=0; i<[students count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
-        [entry setFloat:gpas[i] forColumnName:@"gpa"];
-        [EasyStore store:entry intoTable:@"Students"];
+        [entry setString:[students objectAtIndex:i] forColumn:@"name"];
+        [entry setFloat:gpas[i] forColumn:@"gpa"];
+        [EasyStore insert:entry intoTable:@"Students"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -186,9 +186,9 @@
     
     for(int i=0; i<[students count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
-        [entry setFloat:gpas[i] forColumnName:@"gpa"];
-        [EasyStore store:entry intoTable:@"Students"];
+        [entry setString:[students objectAtIndex:i] forColumn:@"name"];
+        [entry setFloat:gpas[i] forColumn:@"gpa"];
+        [EasyStore insert:entry intoTable:@"Students"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -199,7 +199,7 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* thisEntry = [entries objectAtIndex:0];
-    XCTAssertEqual([thisEntry getFloatForColumnName:@"gpa"], 1.223f, @"Incorrect floating point number returned");
+    XCTAssertEqual([thisEntry floatForColumn:@"gpa"], 1.223f, @"Incorrect floating point number returned");
 }
 
 
@@ -217,9 +217,9 @@
     
     for(int i=0; i<[students count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
-        [entry setFloat:gpas[i] forColumnName:@"gpa"];
-        [EasyStore store:entry intoTable:@"Students"];
+        [entry setString:[students objectAtIndex:i] forColumn:@"name"];
+        [entry setFloat:gpas[i] forColumn:@"gpa"];
+        [EasyStore insert:entry intoTable:@"Students"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -245,9 +245,9 @@
     
     for(int i=0; i<[students count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[students objectAtIndex:i] forColumnName:@"name"];
-        [entry setFloat:gpas[i] forColumnName:@"gpa"];
-        [EasyStore store:entry intoTable:@"Students"];
+        [entry setString:[students objectAtIndex:i] forColumn:@"name"];
+        [entry setFloat:gpas[i] forColumn:@"gpa"];
+        [EasyStore insert:entry intoTable:@"Students"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];

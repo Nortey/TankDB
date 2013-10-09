@@ -26,12 +26,17 @@
 - (void)testConvertType{
     NSString* numberType = [Utility convertType:EasyInteger];
     NSString* stringType = [Utility convertType:EasyString];
-    // TODO boolean
-    // TODO date
-    // TODO float
+    NSString* booleanType = [Utility convertType:EasyBoolean];
+    NSString* dateType = [Utility convertType:EasyDate];
+    NSString* floatType = [Utility convertType:EasyFloat];
+    NSString* invalidType = [Utility convertType:-1];
     
-    XCTAssertEqualObjects(numberType, @"INTEGER", @"Convert EasyNumber failed");
+    XCTAssertEqualObjects(numberType, @"INTEGER", @"Convert EasyInteger failed");
     XCTAssertEqualObjects(stringType, @"TEXT", @"Convert EasyString failed");
+    XCTAssertEqualObjects(booleanType, @"INTEGER", @"Convert EasyBoolean failed");
+    XCTAssertEqualObjects(dateType, @"INTEGER", @"Convert EasyDate failed");
+    XCTAssertEqualObjects(floatType, @"REAL", @"Convert EasyFloat failed");
+    XCTAssertEqualObjects(invalidType, nil, @"Invalid value converted");
 }
 
 @end

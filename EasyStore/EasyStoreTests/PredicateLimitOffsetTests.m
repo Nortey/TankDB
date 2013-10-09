@@ -36,8 +36,8 @@
     
     for(int i=0; i<20; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setInteger:i * 23 forColumnName:@"number"];
-        [EasyStore store:entry intoTable:@"GIBBERISH"];
+        [entry setInteger:i * 23 forColumn:@"number"];
+        [EasyStore insert:entry intoTable:@"GIBBERISH"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -59,8 +59,8 @@
     
     for(int i=0; i<20; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setInteger:i * 23 forColumnName:@"number"];
-        [EasyStore store:entry intoTable:@"GIBBERISH"];
+        [entry setInteger:i * 23 forColumn:@"number"];
+        [EasyStore insert:entry intoTable:@"GIBBERISH"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];

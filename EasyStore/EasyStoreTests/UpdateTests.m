@@ -39,9 +39,9 @@
     
     for(int i=0; i<[names count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[names objectAtIndex:i] forColumnName:@"name"];
-        [entry setString:[states objectAtIndex:i] forColumnName:@"state"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setString:[names objectAtIndex:i] forColumn:@"name"];
+        [entry setString:[states objectAtIndex:i] forColumn:@"state"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"Users"];
@@ -59,7 +59,7 @@
     
     for(int i=0; i<[names count]; i++){
         EasyEntry* thisEntry = [updatedEntries objectAtIndex:i];
-        NSString* thisWord = [thisEntry getStringForColumnName:@"name"];
+        NSString* thisWord = [thisEntry stringForColumn:@"name"];
         XCTAssertEqualObjects(thisWord, [updatedNames objectAtIndex:i], @"Returned strings not correctly updated");
     }
 }
@@ -81,8 +81,8 @@
     
     for(int i=0; i<8; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setInteger:integers[i] forColumnName:@"integer"];
-        [EasyStore store:entry intoTable:@"UpdateInteger"];
+        [entry setInteger:integers[i] forColumn:@"integer"];
+        [EasyStore insert:entry intoTable:@"UpdateInteger"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -94,7 +94,7 @@
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"UpdateInteger"];
     
     for(EasyEntry* entry in entries){
-        int integer = [entry getIntegerForColumnName:@"integer"];
+        int integer = [entry integerForColumn:@"integer"];
         XCTAssertTrue(integer < 0, @"Integer values not correctly updated");
     }
 }
@@ -112,8 +112,8 @@
     
     for(int i=0; i<8; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setInteger:booleanValues[i] forColumnName:@"boolean"];
-        [EasyStore store:entry intoTable:@"UpdateBoolean"];
+        [entry setInteger:booleanValues[i] forColumn:@"boolean"];
+        [EasyStore insert:entry intoTable:@"UpdateBoolean"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -125,7 +125,7 @@
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"UpdateBoolean"];
     
     for(EasyEntry* entry in entries){
-        bool boolValue = [entry getBooleanForColumnName:@"boolean"];
+        bool boolValue = [entry booleanForColumn:@"boolean"];
         XCTAssertTrue(boolValue == true, @"Boolean values not correctly updated");
     }
 }
@@ -143,8 +143,8 @@
     
     for(int i=0; i<8; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setInteger:booleanValues[i] forColumnName:@"boolean"];
-        [EasyStore store:entry intoTable:@"UpdateBoolean"];
+        [entry setInteger:booleanValues[i] forColumn:@"boolean"];
+        [EasyStore insert:entry intoTable:@"UpdateBoolean"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -156,7 +156,7 @@
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"UpdateBoolean"];
     
     for(EasyEntry* entry in entries){
-        bool boolValue = [entry getBooleanForColumnName:@"boolean"];
+        bool boolValue = [entry booleanForColumn:@"boolean"];
         XCTAssertTrue(boolValue == false, @"Boolean values not correctly updated");
     }
 }
@@ -178,8 +178,8 @@
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [EasyStore store:entry intoTable:@"UpdateDates"];
+        [entry setDate:[dates objectAtIndex:i] forColumn:@"date"];
+        [EasyStore insert:entry intoTable:@"UpdateDates"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -191,7 +191,7 @@
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"UpdateDates"];
     
     for(EasyEntry* entry in entries){
-        NSDate *thisDate = [entry getDateForColumnName:@"date"];
+        NSDate *thisDate = [entry dateForColumn:@"date"];
         XCTAssertTrue(abs([now timeIntervalSince1970] - [thisDate timeIntervalSince1970]) < 3, @"Boolean values not correctly updated");
     }
 }
@@ -209,8 +209,8 @@
     
     for(int i=0; i<6; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setFloat:floats[i] forColumnName:@"floats"];
-        [EasyStore store:entry intoTable:@"UpdateFloat"];
+        [entry setFloat:floats[i] forColumn:@"floats"];
+        [EasyStore insert:entry intoTable:@"UpdateFloat"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -222,7 +222,7 @@
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"UpdateFloat"];
     
     for(EasyEntry* entry in entries){
-        float floatNumber = [entry getFloatForColumnName:@"floats"];
+        float floatNumber = [entry floatForColumn:@"floats"];
         XCTAssertTrue(floatNumber < 0.5, @"Float values not correctly updated");
     }
 }

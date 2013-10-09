@@ -26,36 +26,36 @@
  *  Set column value methods
  *  Sets the value for the column to be saved in the database
  */
--(void)setString:(NSString*)string forColumnName:(NSString*)columnName{
+-(void)setString:(NSString*)string forColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     [_entryDicitonary setObject:string forKey:columnNameLowerCase];
 }
 
--(void)setInteger:(int)integer forColumnName:(NSString*)columnName{
+-(void)setInteger:(int)integer forColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *numberObject = [NSNumber numberWithInteger:integer];
     [_entryDicitonary setObject:numberObject forKey:columnNameLowerCase];
 }
 
--(void)setBoolean:(BOOL)booleanValue forColumnName:(NSString*)columnName{
+-(void)setBoolean:(BOOL)booleanValue forColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *boolObject = [NSNumber numberWithBool:booleanValue];
     [_entryDicitonary setObject:boolObject forKey:columnNameLowerCase];
 }
 
--(void)setDate:(NSDate*)date forColumnName:(NSString*)columnName{
+-(void)setDate:(NSDate*)date forColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *dateNumber = [NSNumber numberWithInt:[date timeIntervalSince1970]];
     [_entryDicitonary setObject:dateNumber forKey:columnNameLowerCase];
 }
 
--(void)setDateAsNowForColumnName:(NSString*)columnName{
+-(void)setDateAsNowForColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *dateNumber = [NSNumber numberWithInt:[[NSDate date] timeIntervalSince1970]];
     [_entryDicitonary setObject:dateNumber forKey:columnNameLowerCase];
 }
 
--(void)setFloat:(float)floatNumber forColumnName:(NSString*)columnName{
+-(void)setFloat:(float)floatNumber forColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     NSNumber *numberObject = [NSNumber numberWithFloat:floatNumber];
     [_entryDicitonary setObject:numberObject forKey:columnNameLowerCase];
@@ -66,28 +66,28 @@
  *  Get column value methods
  *  Gets the value for the column
  */
--(NSString*)getStringForColumnName:(NSString*)columnName{
+-(NSString*)stringForColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     return [_entryDicitonary objectForKey:columnNameLowerCase];
 }
 
--(int)getIntegerForColumnName:(NSString*)columnName{
+-(int)integerForColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     return [[_entryDicitonary objectForKey:columnNameLowerCase] intValue];
 }
 
--(BOOL)getBooleanForColumnName:(NSString*)columnName{
+-(BOOL)booleanForColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     return [[_entryDicitonary objectForKey:columnNameLowerCase] boolValue];
 }
 
--(NSDate*)getDateForColumnName:(NSString*)columnName{
+-(NSDate*)dateForColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     int unixTimestamp = [[_entryDicitonary objectForKey:columnNameLowerCase] integerValue];
     return [NSDate dateWithTimeIntervalSince1970:unixTimestamp];
 }
 
--(float)getFloatForColumnName:(NSString*)columnName{
+-(float)floatForColumn:(NSString*)columnName{
     NSString* columnNameLowerCase = [columnName lowercaseString];
     return [[_entryDicitonary objectForKey:columnNameLowerCase] floatValue];
 }

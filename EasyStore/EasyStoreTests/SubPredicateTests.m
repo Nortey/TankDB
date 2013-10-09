@@ -44,11 +44,11 @@
     
     for(int i=0; i<[names count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[names objectAtIndex:i] forColumnName:@"name"];
-        [entry setInteger:grades[i] forColumnName:@"grade"];
-        [entry setBoolean:passed[i] forColumnName:@"passed"];
-        [entry setBoolean:registered[i] forColumnName:@"registered"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setString:[names objectAtIndex:i] forColumn:@"name"];
+        [entry setInteger:grades[i] forColumn:@"grade"];
+        [entry setBoolean:passed[i] forColumn:@"passed"];
+        [entry setBoolean:registered[i] forColumn:@"registered"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -65,8 +65,8 @@
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     for(EasyEntry *entry in entries){
-        bool isRegistered = [entry getBooleanForColumnName:@"registered"];
-        int grade = [entry getIntegerForColumnName:@"grade"];
+        bool isRegistered = [entry booleanForColumn:@"registered"];
+        int grade = [entry integerForColumn:@"grade"];
         XCTAssertTrue( (isRegistered == true && (grade > 60 || grade < 40)), @"Incorrect data returned from query");
     }
 }
@@ -89,11 +89,11 @@
     
     for(int i=0; i<[names count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setString:[names objectAtIndex:i] forColumnName:@"name"];
-        [entry setInteger:grades[i] forColumnName:@"grade"];
-        [entry setBoolean:passed[i] forColumnName:@"passed"];
-        [entry setBoolean:registered[i] forColumnName:@"registered"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setString:[names objectAtIndex:i] forColumn:@"name"];
+        [entry setInteger:grades[i] forColumn:@"grade"];
+        [entry setBoolean:passed[i] forColumn:@"passed"];
+        [entry setBoolean:registered[i] forColumn:@"registered"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -111,9 +111,9 @@
     XCTAssertEqual((int)[entries count], 4, @"Incorrect number of results returned from query");
     
     for(EasyEntry *entry in entries){
-        bool isRegistered = [entry getBooleanForColumnName:@"registered"];
-        int grade = [entry getIntegerForColumnName:@"grade"];
-        bool passed = [entry getIntegerForColumnName:@"passed"];
+        bool isRegistered = [entry booleanForColumn:@"registered"];
+        int grade = [entry integerForColumn:@"grade"];
+        bool passed = [entry integerForColumn:@"passed"];
         XCTAssertTrue( (isRegistered == true || (grade > 60 && passed == false)), @"Incorrect data returned from query");
     }
 }

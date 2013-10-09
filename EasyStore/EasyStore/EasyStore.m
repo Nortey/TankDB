@@ -162,7 +162,7 @@ static NSString* _errorMessage;
     NSArray* tablesArray = [EasyStore selectAllEntriesForTable:@"sqlite_master"];
     
     for(EasyEntry* entry in tablesArray){
-        NSString* tableName = [entry getStringForColumnName:@"tbl_name"];
+        NSString* tableName = [entry stringForColumn:@"tbl_name"];
         NSString* dropQuery = [NSString stringWithFormat:@"DROP TABLE IF EXISTS %@", tableName];
         [EasyStore invokeRawQuery:dropQuery];
     }
@@ -172,7 +172,7 @@ static NSString* _errorMessage;
  *  Store entry
  *  Will construct the query necessary to store the entry into the table
  */
-+(void)store:(EasyEntry*)entry intoTable:(NSString*)tableName{
++(void)insert:(EasyEntry*)entry intoTable:(NSString*)tableName{
     NSMutableArray* columnNamesArray = [NSMutableArray new];
     NSMutableArray* columnValuesArray = [NSMutableArray new];
     NSMutableDictionary* entries = [entry getEntries];
@@ -211,7 +211,7 @@ static NSString* _errorMessage;
         EasyEntry* entry = [EasyEntry new];
         
         for(NSString* key in dict){
-            [entry setString:[dict objectForKey:key] forColumnName:key];
+            [entry setString:[dict objectForKey:key] forColumn:key];
         }
         
         [allEntries addObject:entry];
@@ -233,7 +233,7 @@ static NSString* _errorMessage;
         EasyEntry* entry = [EasyEntry new];
         
         for(NSString* key in dict){
-            [entry setString:[dict objectForKey:key] forColumnName:key];
+            [entry setString:[dict objectForKey:key] forColumn:key];
         }
         
         [allEntries addObject:entry];

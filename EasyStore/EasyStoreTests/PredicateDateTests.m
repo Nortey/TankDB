@@ -37,8 +37,8 @@
     NSDate* now = [NSDate date];
     
     EasyEntry* entry = [EasyEntry new];
-    [entry setDate:now forColumnName:@"date"];
-    [EasyStore store:entry intoTable:@"Users"];
+    [entry setDate:now forColumn:@"date"];
+    [EasyStore insert:entry intoTable:@"Users"];
     
     EasyPredicate *predicate = [EasyPredicate new];
     [predicate selectFromTable:@"Users"];
@@ -48,7 +48,7 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* thisEntry = [entries objectAtIndex:0];
-    XCTAssertTrue((int)[now timeIntervalSinceDate:[thisEntry getDateForColumnName:@"date"]] == 0, @"Incorrect date returned from query");
+    XCTAssertTrue((int)[now timeIntervalSinceDate:[thisEntry dateForColumn:@"date"]] == 0, @"Incorrect date returned from query");
 }
 
 -(void)testStoreDateAsNow{
@@ -60,12 +60,12 @@
     
     EasyEntry* entry = [EasyEntry new];
     NSDate* now = [NSDate date];
-    [entry setDateAsNowForColumnName:@"date"];
-    [EasyStore store:entry intoTable:@"Date"];
+    [entry setDateAsNowForColumn:@"date"];
+    [EasyStore insert:entry intoTable:@"Date"];
     
     NSArray* entries = [EasyStore selectAllEntriesForTable:@"Date"];
     EasyEntry* storedEntry = [entries objectAtIndex:0];
-    NSDate* storedDate = [storedEntry getDateForColumnName:@"date"];
+    NSDate* storedDate = [storedEntry dateForColumn:@"date"];
     
     XCTAssertTrue(abs([now timeIntervalSince1970] - [storedDate timeIntervalSince1970]) < 3, @"Column name incorrect");
 }
@@ -92,9 +92,9 @@
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [entry setInteger:money[i] forColumnName:@"money"];
-        [EasyStore store:entry intoTable:@"BeforeDate"];
+        [entry setDate:[dates objectAtIndex:i] forColumn:@"date"];
+        [entry setInteger:money[i] forColumn:@"money"];
+        [EasyStore insert:entry intoTable:@"BeforeDate"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -106,8 +106,8 @@
     XCTAssertEqual((int)[entries count], 4, @"Incorrect number of results returned from query");
     
     for(EasyEntry* entry in entries){
-        NSDate *thisDate = [entry getDateForColumnName:@"date"];
-        int money = [entry getIntegerForColumnName:@"money"];
+        NSDate *thisDate = [entry dateForColumn:@"date"];
+        int money = [entry integerForColumn:@"money"];
         XCTAssertTrue([now compare:thisDate] == NSOrderedDescending || money > 300, @"Incorrect entries selected");
     }
 }
@@ -134,9 +134,9 @@
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [entry setInteger:money[i] forColumnName:@"money"];
-        [EasyStore store:entry intoTable:@"BeforeDate"];
+        [entry setDate:[dates objectAtIndex:i] forColumn:@"date"];
+        [entry setInteger:money[i] forColumn:@"money"];
+        [EasyStore insert:entry intoTable:@"BeforeDate"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -148,8 +148,8 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     for(EasyEntry* entry in entries){
-        NSDate *thisDate = [entry getDateForColumnName:@"date"];
-        int money = [entry getIntegerForColumnName:@"money"];
+        NSDate *thisDate = [entry dateForColumn:@"date"];
+        int money = [entry integerForColumn:@"money"];
         XCTAssertTrue([now compare:thisDate] == NSOrderedDescending && money > 100, @"Incorrect entries selected");
     }
 }
@@ -176,9 +176,9 @@
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [entry setInteger:money[i] forColumnName:@"money"];
-        [EasyStore store:entry intoTable:@"AfterDate"];
+        [entry setDate:[dates objectAtIndex:i] forColumn:@"date"];
+        [entry setInteger:money[i] forColumn:@"money"];
+        [EasyStore insert:entry intoTable:@"AfterDate"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -189,7 +189,7 @@
     XCTAssertEqual((int)[entries count], 2, @"Incorrect number of results returned from query");
     
     for(EasyEntry* entry in entries){
-        NSDate *thisDate = [entry getDateForColumnName:@"date"];
+        NSDate *thisDate = [entry dateForColumn:@"date"];
         XCTAssertTrue([now compare:thisDate] == NSOrderedAscending, @"Incorrect entries selected");
     }
 }
@@ -216,9 +216,9 @@
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [entry setInteger:money[i] forColumnName:@"money"];
-        [EasyStore store:entry intoTable:@"AfterDate"];
+        [entry setDate:[dates objectAtIndex:i] forColumn:@"date"];
+        [entry setInteger:money[i] forColumn:@"money"];
+        [EasyStore insert:entry intoTable:@"AfterDate"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -230,8 +230,8 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     for(EasyEntry* entry in entries){
-        NSDate *thisDate = [entry getDateForColumnName:@"date"];
-        int money = [entry getIntegerForColumnName:@"money"];
+        NSDate *thisDate = [entry dateForColumn:@"date"];
+        int money = [entry integerForColumn:@"money"];
         XCTAssertTrue([now compare:thisDate] == NSOrderedAscending && money > 400, @"Incorrect entries selected");
     }
 }
@@ -259,9 +259,9 @@
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [entry setInteger:money[i] forColumnName:@"money"];
-        [EasyStore store:entry intoTable:@"AfterDate"];
+        [entry setDate:[dates objectAtIndex:i] forColumn:@"date"];
+        [entry setInteger:money[i] forColumn:@"money"];
+        [EasyStore insert:entry intoTable:@"AfterDate"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -273,8 +273,8 @@
     XCTAssertEqual((int)[entries count], 3, @"Incorrect number of results returned from query");
     
     for(EasyEntry* entry in entries){
-        NSDate *thisDate = [entry getDateForColumnName:@"date"];
-        int money = [entry getIntegerForColumnName:@"money"];
+        NSDate *thisDate = [entry dateForColumn:@"date"];
+        int money = [entry integerForColumn:@"money"];
         XCTAssertTrue(money < 200 || [now compare:thisDate] == NSOrderedAscending, @"Incorrect entries selected");
     }
 }
@@ -299,9 +299,9 @@
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [entry setInteger:amounts[i] forColumnName:@"amount"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setDate:[dates objectAtIndex:i] forColumn:@"date"];
+        [entry setInteger:amounts[i] forColumn:@"amount"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
@@ -313,8 +313,8 @@
     XCTAssertEqual((int)[entries count], 1, @"Incorrect number of results returned from query");
     
     EasyEntry* thisEntry = [entries objectAtIndex:0];
-    int returnedAmount = [thisEntry getIntegerForColumnName:@"amount"];
-    XCTAssertTrue((int)[now timeIntervalSinceDate:[thisEntry getDateForColumnName:@"date"]] == 0 && returnedAmount == 300, @"Incorrect date returned from query");
+    int returnedAmount = [thisEntry integerForColumn:@"amount"];
+    XCTAssertTrue((int)[now timeIntervalSinceDate:[thisEntry dateForColumn:@"date"]] == 0 && returnedAmount == 300, @"Incorrect date returned from query");
 }
 
 -(void)testOrEqualsDate{
@@ -337,9 +337,9 @@
     
     for(int i=0; i<[dates count]; i++){
         EasyEntry* entry = [EasyEntry new];
-        [entry setDate:[dates objectAtIndex:i] forColumnName:@"date"];
-        [entry setInteger:amounts[i] forColumnName:@"amount"];
-        [EasyStore store:entry intoTable:@"Users"];
+        [entry setDate:[dates objectAtIndex:i] forColumn:@"date"];
+        [entry setInteger:amounts[i] forColumn:@"amount"];
+        [EasyStore insert:entry intoTable:@"Users"];
     }
     
     EasyPredicate *predicate = [EasyPredicate new];
