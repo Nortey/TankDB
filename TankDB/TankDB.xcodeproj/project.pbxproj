@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		718C07E417FA58F000511C87 /* UniversalLib */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 718C07E517FA58F000511C87 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
+			buildPhases = (
+				718C07E817FA597900511C87 /* ShellScript */,
+				718C07F117FA5B4E00511C87 /* CopyFiles */,
+			);
+			dependencies = (
+			);
+			name = UniversalLib;
+			productName = UniversalLib;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		7145F69517F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
+		7145F6A317F7767900B32A04 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6A217F7767900B32A04 /* XCTest.framework */; };
+		7145F6A417F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
+		7145F6A617F7767900B32A04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6A517F7767900B32A04 /* UIKit.framework */; };
+		7145F6A917F7767900B32A04 /* libTankDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69117F7767900B32A04 /* libTankDB.a */; };
+		7145F6C317F77AA200B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
+		7145F6C417F7838300B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
+		71BAA63F1806510E00651296 /* TankDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6331806510E00651296 /* TankDB.m */; };
+		71BAA6401806510E00651296 /* TDColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6351806510E00651296 /* TDColumn.m */; };
+		71BAA6411806510E00651296 /* TDEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6381806510E00651296 /* TDEntry.m */; };
+		71BAA6421806510E00651296 /* TDPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA63A1806510E00651296 /* TDPredicate.m */; };
+		71BAA6431806510E00651296 /* TDTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA63C1806510E00651296 /* TDTable.m */; };
+		71BAA6441806510E00651296 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA63E1806510E00651296 /* Utility.m */; };
+		71BAA66C1806513A00651296 /* CountTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6451806512300651296 /* CountTests.m */; };
+		71BAA66D1806513A00651296 /* CreateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6461806512300651296 /* CreateTests.m */; };
+		71BAA66E1806513A00651296 /* DeleteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6471806512300651296 /* DeleteTests.m */; };
+		71BAA66F1806513A00651296 /* PerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6481806512300651296 /* PerformanceTests.m */; };
+		71BAA6701806513A00651296 /* PredicateBooleanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6491806512300651296 /* PredicateBooleanTests.m */; };
+		71BAA6711806513A00651296 /* PredicateDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA64A1806512300651296 /* PredicateDateTests.m */; };
+		71BAA6721806513A00651296 /* PredicateFloatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA64B1806512300651296 /* PredicateFloatTests.m */; };
+		71BAA6731806513A00651296 /* PredicateIntegerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA64C1806512300651296 /* PredicateIntegerTests.m */; };
+		71BAA6741806513A00651296 /* PredicateLimitOffsetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA64D1806512300651296 /* PredicateLimitOffsetTests.m */; };
+		71BAA6751806513A00651296 /* PredicateOrderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA64E1806512300651296 /* PredicateOrderTests.m */; };
+		71BAA6761806513A00651296 /* PredicateStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA64F1806512300651296 /* PredicateStringTests.m */; };
+		71BAA6771806513A00651296 /* PredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6501806512300651296 /* PredicateTests.m */; };
+		71BAA6781806513A00651296 /* RawQueryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6511806512300651296 /* RawQueryTests.m */; };
+		71BAA6791806513A00651296 /* SelectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6521806512300651296 /* SelectTests.m */; };
+		71BAA67A1806513A00651296 /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6531806512300651296 /* StoreTests.m */; };
+		71BAA67B1806513A00651296 /* SubPredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6541806512300651296 /* SubPredicateTests.m */; };
+		71BAA67D1806513A00651296 /* UpdateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6561806512300651296 /* UpdateTests.m */; };
+		71BAA67E1806513A00651296 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6571806512300651296 /* UtilityTests.m */; };
+		71BAA67F1806513A00651296 /* zFlush.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6581806512300651296 /* zFlush.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7145F6A717F7767900B32A04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7145F68917F7767900B32A04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7145F69017F7767900B32A04;
+			remoteInfo = EasyStore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7145F68F17F7767900B32A04 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SRCROOT)/../Installation/EasyStore";
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		718C07F117FA5B4E00511C87 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7145F69117F7767900B32A04 /* libTankDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTankDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7145F69417F7767900B32A04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7145F6A117F7767900B32A04 /* TankDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TankDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7145F6A217F7767900B32A04 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7145F6A517F7767900B32A04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		7145F6C217F77AA200B32A04 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		71BAA6311806510E00651296 /* TankDB-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TankDB-Prefix.pch"; path = "TankDB/TankDB-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		71BAA6321806510E00651296 /* TankDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TankDB.h; path = TankDB/TankDB.h; sourceTree = SOURCE_ROOT; };
+		71BAA6331806510E00651296 /* TankDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TankDB.m; path = TankDB/TankDB.m; sourceTree = SOURCE_ROOT; };
+		71BAA6341806510E00651296 /* TDColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDColumn.h; path = TankDB/TDColumn.h; sourceTree = SOURCE_ROOT; };
+		71BAA6351806510E00651296 /* TDColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDColumn.m; path = TankDB/TDColumn.m; sourceTree = SOURCE_ROOT; };
+		71BAA6361806510E00651296 /* TDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDConstants.h; path = TankDB/TDConstants.h; sourceTree = SOURCE_ROOT; };
+		71BAA6371806510E00651296 /* TDEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDEntry.h; path = TankDB/TDEntry.h; sourceTree = SOURCE_ROOT; };
+		71BAA6381806510E00651296 /* TDEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDEntry.m; path = TankDB/TDEntry.m; sourceTree = SOURCE_ROOT; };
+		71BAA6391806510E00651296 /* TDPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDPredicate.h; path = TankDB/TDPredicate.h; sourceTree = SOURCE_ROOT; };
+		71BAA63A1806510E00651296 /* TDPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDPredicate.m; path = TankDB/TDPredicate.m; sourceTree = SOURCE_ROOT; };
+		71BAA63B1806510E00651296 /* TDTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTable.h; path = TankDB/TDTable.h; sourceTree = SOURCE_ROOT; };
+		71BAA63C1806510E00651296 /* TDTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTable.m; path = TankDB/TDTable.m; sourceTree = SOURCE_ROOT; };
+		71BAA63D1806510E00651296 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = TankDB/Utility.h; sourceTree = SOURCE_ROOT; };
+		71BAA63E1806510E00651296 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utility.m; path = TankDB/Utility.m; sourceTree = SOURCE_ROOT; };
+		71BAA6451806512300651296 /* CountTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountTests.m; path = TankDBTests/CountTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6461806512300651296 /* CreateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTests.m; path = TankDBTests/CreateTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6471806512300651296 /* DeleteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeleteTests.m; path = TankDBTests/DeleteTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6481806512300651296 /* PerformanceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerformanceTests.m; path = TankDBTests/PerformanceTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6491806512300651296 /* PredicateBooleanTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateBooleanTests.m; path = TankDBTests/PredicateBooleanTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA64A1806512300651296 /* PredicateDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateDateTests.m; path = TankDBTests/PredicateDateTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA64B1806512300651296 /* PredicateFloatTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateFloatTests.m; path = TankDBTests/PredicateFloatTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA64C1806512300651296 /* PredicateIntegerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateIntegerTests.m; path = TankDBTests/PredicateIntegerTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA64D1806512300651296 /* PredicateLimitOffsetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateLimitOffsetTests.m; path = TankDBTests/PredicateLimitOffsetTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA64E1806512300651296 /* PredicateOrderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateOrderTests.m; path = TankDBTests/PredicateOrderTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA64F1806512300651296 /* PredicateStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateStringTests.m; path = TankDBTests/PredicateStringTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6501806512300651296 /* PredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateTests.m; path = TankDBTests/PredicateTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6511806512300651296 /* RawQueryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RawQueryTests.m; path = TankDBTests/RawQueryTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6521806512300651296 /* SelectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectTests.m; path = TankDBTests/SelectTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6531806512300651296 /* StoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTests.m; path = TankDBTests/StoreTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6541806512300651296 /* SubPredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubPredicateTests.m; path = TankDBTests/SubPredicateTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6551806512300651296 /* TankDBTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "TankDBTests-Info.plist"; path = "TankDBTests/TankDBTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		71BAA6561806512300651296 /* UpdateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateTests.m; path = TankDBTests/UpdateTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6571806512300651296 /* UtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UtilityTests.m; path = TankDBTests/UtilityTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6581806512300651296 /* zFlush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = zFlush.m; path = TankDBTests/zFlush.m; sourceTree = SOURCE_ROOT; };
+		71BAA680180651FF00651296 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = TankDBTests/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7145F68E17F7767900B32A04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7145F6C317F77AA200B32A04 /* libsqlite3.dylib in Frameworks */,
+				7145F69517F7767900B32A04 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7145F69E17F7767900B32A04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7145F6C417F7838300B32A04 /* libsqlite3.dylib in Frameworks */,
+				7145F6A317F7767900B32A04 /* XCTest.framework in Frameworks */,
+				7145F6A617F7767900B32A04 /* UIKit.framework in Frameworks */,
+				7145F6A417F7767900B32A04 /* Foundation.framework in Frameworks */,
+				7145F6A917F7767900B32A04 /* libTankDB.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		713F3629180095D9006ECFD8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				71BAA6361806510E00651296 /* TDConstants.h */,
+				71BAA63D1806510E00651296 /* Utility.h */,
+				71BAA63E1806510E00651296 /* Utility.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		7145F68817F7767900B32A04 = {
+			isa = PBXGroup;
+			children = (
+				7145F69617F7767900B32A04 /* TankDB */,
+				7145F6AA17F7767900B32A04 /* TankDB Tests */,
+				7145F69317F7767900B32A04 /* Frameworks */,
+				7145F69217F7767900B32A04 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7145F69217F7767900B32A04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7145F69117F7767900B32A04 /* libTankDB.a */,
+				7145F6A117F7767900B32A04 /* TankDBTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7145F69317F7767900B32A04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7145F6C217F77AA200B32A04 /* libsqlite3.dylib */,
+				7145F69417F7767900B32A04 /* Foundation.framework */,
+				7145F6A217F7767900B32A04 /* XCTest.framework */,
+				7145F6A517F7767900B32A04 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7145F69617F7767900B32A04 /* TankDB */ = {
+			isa = PBXGroup;
+			children = (
+				71BAA6321806510E00651296 /* TankDB.h */,
+				71BAA6331806510E00651296 /* TankDB.m */,
+				7145F6BA17F776DE00B32A04 /* Classes */,
+				713F3629180095D9006ECFD8 /* Helpers */,
+				7145F69717F7767900B32A04 /* Supporting Files */,
+			);
+			name = TankDB;
+			path = EasyStore;
+			sourceTree = "<group>";
+		};
+		7145F69717F7767900B32A04 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				71BAA6311806510E00651296 /* TankDB-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7145F6AA17F7767900B32A04 /* TankDB Tests */ = {
+			isa = PBXGroup;
+			children = (
+				71BAA6451806512300651296 /* CountTests.m */,
+				71BAA6461806512300651296 /* CreateTests.m */,
+				71BAA6471806512300651296 /* DeleteTests.m */,
+				71BAA6481806512300651296 /* PerformanceTests.m */,
+				71BAA6491806512300651296 /* PredicateBooleanTests.m */,
+				71BAA64A1806512300651296 /* PredicateDateTests.m */,
+				71BAA64B1806512300651296 /* PredicateFloatTests.m */,
+				71BAA64C1806512300651296 /* PredicateIntegerTests.m */,
+				71BAA64D1806512300651296 /* PredicateLimitOffsetTests.m */,
+				71BAA64E1806512300651296 /* PredicateOrderTests.m */,
+				71BAA64F1806512300651296 /* PredicateStringTests.m */,
+				71BAA6501806512300651296 /* PredicateTests.m */,
+				71BAA6511806512300651296 /* RawQueryTests.m */,
+				71BAA6521806512300651296 /* SelectTests.m */,
+				71BAA6531806512300651296 /* StoreTests.m */,
+				71BAA6541806512300651296 /* SubPredicateTests.m */,
+				71BAA6561806512300651296 /* UpdateTests.m */,
+				71BAA6571806512300651296 /* UtilityTests.m */,
+				71BAA6581806512300651296 /* zFlush.m */,
+				7145F6AB17F7767900B32A04 /* Supporting Files */,
+			);
+			name = "TankDB Tests";
+			path = EasyStoreTests;
+			sourceTree = "<group>";
+		};
+		7145F6AB17F7767900B32A04 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				71BAA680180651FF00651296 /* InfoPlist.strings */,
+				71BAA6551806512300651296 /* TankDBTests-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7145F6BA17F776DE00B32A04 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				71BAA6341806510E00651296 /* TDColumn.h */,
+				71BAA6351806510E00651296 /* TDColumn.m */,
+				71BAA6371806510E00651296 /* TDEntry.h */,
+				71BAA6381806510E00651296 /* TDEntry.m */,
+				71BAA6391806510E00651296 /* TDPredicate.h */,
+				71BAA63A1806510E00651296 /* TDPredicate.m */,
+				71BAA63B1806510E00651296 /* TDTable.h */,
+				71BAA63C1806510E00651296 /* TDTable.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7145F69017F7767900B32A04 /* TankDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7145F6B417F7767900B32A04 /* Build configuration list for PBXNativeTarget "TankDB" */;
+			buildPhases = (
+				7145F68D17F7767900B32A04 /* Sources */,
+				7145F68E17F7767900B32A04 /* Frameworks */,
+				7145F68F17F7767900B32A04 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TankDB;
+			productName = EasyStore;
+			productReference = 7145F69117F7767900B32A04 /* libTankDB.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7145F6A017F7767900B32A04 /* TankDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7145F6B717F7767900B32A04 /* Build configuration list for PBXNativeTarget "TankDBTests" */;
+			buildPhases = (
+				7145F69D17F7767900B32A04 /* Sources */,
+				7145F69E17F7767900B32A04 /* Frameworks */,
+				7145F69F17F7767900B32A04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7145F6A817F7767900B32A04 /* PBXTargetDependency */,
+			);
+			name = TankDBTests;
+			productName = EasyStoreTests;
+			productReference = 7145F6A117F7767900B32A04 /* TankDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7145F68917F7767900B32A04 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Jeremy Nortey";
+			};
+			buildConfigurationList = 7145F68C17F7767900B32A04 /* Build configuration list for PBXProject "TankDB" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7145F68817F7767900B32A04;
+			productRefGroup = 7145F69217F7767900B32A04 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7145F69017F7767900B32A04 /* TankDB */,
+				7145F6A017F7767900B32A04 /* TankDBTests */,
+				718C07E417FA58F000511C87 /* UniversalLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7145F69F17F7767900B32A04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		718C07E817FA597900511C87 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target EasyStore ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target EasyStore -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7145F68D17F7767900B32A04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71BAA63F1806510E00651296 /* TankDB.m in Sources */,
+				71BAA6421806510E00651296 /* TDPredicate.m in Sources */,
+				71BAA6411806510E00651296 /* TDEntry.m in Sources */,
+				71BAA6431806510E00651296 /* TDTable.m in Sources */,
+				71BAA6441806510E00651296 /* Utility.m in Sources */,
+				71BAA6401806510E00651296 /* TDColumn.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7145F69D17F7767900B32A04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71BAA67E1806513A00651296 /* UtilityTests.m in Sources */,
+				71BAA66C1806513A00651296 /* CountTests.m in Sources */,
+				71BAA6761806513A00651296 /* PredicateStringTests.m in Sources */,
+				71BAA66D1806513A00651296 /* CreateTests.m in Sources */,
+				71BAA6791806513A00651296 /* SelectTests.m in Sources */,
+				71BAA66F1806513A00651296 /* PerformanceTests.m in Sources */,
+				71BAA66E1806513A00651296 /* DeleteTests.m in Sources */,
+				71BAA6781806513A00651296 /* RawQueryTests.m in Sources */,
+				71BAA6731806513A00651296 /* PredicateIntegerTests.m in Sources */,
+				71BAA6701806513A00651296 /* PredicateBooleanTests.m in Sources */,
+				71BAA67A1806513A00651296 /* StoreTests.m in Sources */,
+				71BAA6771806513A00651296 /* PredicateTests.m in Sources */,
+				71BAA6721806513A00651296 /* PredicateFloatTests.m in Sources */,
+				71BAA67F1806513A00651296 /* zFlush.m in Sources */,
+				71BAA67B1806513A00651296 /* SubPredicateTests.m in Sources */,
+				71BAA6741806513A00651296 /* PredicateLimitOffsetTests.m in Sources */,
+				71BAA67D1806513A00651296 /* UpdateTests.m in Sources */,
+				71BAA6751806513A00651296 /* PredicateOrderTests.m in Sources */,
+				71BAA6711806513A00651296 /* PredicateDateTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7145F6A817F7767900B32A04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7145F69017F7767900B32A04 /* TankDB */;
+			targetProxy = 7145F6A717F7767900B32A04 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7145F6B217F7767900B32A04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7145F6B317F7767900B32A04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7145F6B517F7767900B32A04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				DSTROOT = /tmp/TankDB.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TankDB/TankDB-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = TankDB;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7145F6B617F7767900B32A04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				DSTROOT = /tmp/TankDB.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TankDB/TankDB-Prefix.pch";
+				GENERATE_PROFILING_CODE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = TankDB;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7145F6B817F7767900B32A04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TankDB/TankDB-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_PROFILING_CODE = YES;
+				INFOPLIST_FILE = "TankDBTests/TankDBTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = TankDBTests;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7145F6B917F7767900B32A04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TankDB/TankDB-Prefix.pch";
+				GENERATE_PROFILING_CODE = NO;
+				INFOPLIST_FILE = "TankDBTests/TankDBTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = TankDBTests;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		718C07E617FA58F000511C87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		718C07E717FA58F000511C87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7145F68C17F7767900B32A04 /* Build configuration list for PBXProject "TankDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7145F6B217F7767900B32A04 /* Debug */,
+				7145F6B317F7767900B32A04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7145F6B417F7767900B32A04 /* Build configuration list for PBXNativeTarget "TankDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7145F6B517F7767900B32A04 /* Debug */,
+				7145F6B617F7767900B32A04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7145F6B717F7767900B32A04 /* Build configuration list for PBXNativeTarget "TankDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7145F6B817F7767900B32A04 /* Debug */,
+				7145F6B917F7767900B32A04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		718C07E517FA58F000511C87 /* Build configuration list for PBXAggregateTarget "UniversalLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				718C07E617FA58F000511C87 /* Debug */,
+				718C07E717FA58F000511C87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7145F68917F7767900B32A04 /* Project object */;
+}

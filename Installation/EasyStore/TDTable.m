@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
 //
 
-#import "EasyTable.h"
+#import "TDTable.h"
 
 
-@implementation EasyTable
+@implementation TDTable
 
 /* 
  *  Initialize table
@@ -31,31 +31,31 @@
  *  Column creation
  *  Creates the column based on the column datatype
  */
--(TKColumn*)createColumnWithName:(NSString*)name withType:(int)type{
-    TKColumn* column = [[TKColumn alloc] initWithName:name withType:type];
+-(TDColumn*)createColumnWithName:(NSString*)name withType:(int)type{
+    TDColumn* column = [[TDColumn alloc] initWithName:name withType:type];
     [_columns addObject:column];
     
     return column;
 }
 
--(TKColumn*)createStringColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyString];
+-(TDColumn*)createStringColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDString];
 }
 
--(TKColumn*)createIntegerColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyInteger];
+-(TDColumn*)createIntegerColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDInteger];
 }
 
--(TKColumn*)createBooleanColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyBoolean];
+-(TDColumn*)createBooleanColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDBoolean];
 }
 
--(TKColumn*)createDateColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyDate];
+-(TDColumn*)createDateColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDDate];
 }
 
--(TKColumn*)createFloatColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyFloat];
+-(TDColumn*)createFloatColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDFloat];
 }
 
 
@@ -64,7 +64,7 @@
  *  Adds a primary autoincrementing column named 'id' to the table
  */
 -(void)addIdentityColumn{
-    TKColumn* identityColumn = [self createColumnWithName:@"id" withType:EasyInteger];
+    TDColumn* identityColumn = [self createColumnWithName:@"id" withType:TDInteger];
     [identityColumn setAsIdentityColumn];
 }
 
@@ -75,7 +75,7 @@
  */
 -(NSString*)getCreationString;{
     NSMutableArray* columnStringArray = [NSMutableArray new];
-    for(TKColumn* column in _columns){
+    for(TDColumn* column in _columns){
         [columnStringArray addObject:[column getCreationString]];
     }
     

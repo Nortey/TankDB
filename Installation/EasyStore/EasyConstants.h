@@ -11,7 +11,7 @@
 
 
 typedef enum {
-    EasyInteger,
+    TDInteger,
     EasyString,
     EasyBoolean,
     EasyDate,

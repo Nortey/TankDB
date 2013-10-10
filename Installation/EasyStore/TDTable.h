@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TKColumn.h"
+#import "TDColumn.h"
 
-@interface EasyTable : NSObject{
+@interface TDTable : NSObject{
     NSString* _name;
     NSMutableArray* _columns;
 }
@@ -18,12 +18,12 @@
 -(id)initWithName:(NSString*)name;
 
 /* Create columns */
--(TKColumn*)createColumnWithName:(NSString*)name withType:(int)type;
--(TKColumn*)createStringColumnWithName:(NSString*)name;
--(TKColumn*)createIntegerColumnWithName:(NSString*)name;
--(TKColumn*)createBooleanColumnWithName:(NSString*)name;
--(TKColumn*)createDateColumnWithName:(NSString*)name;
--(TKColumn*)createFloatColumnWithName:(NSString*)name;
+-(TDColumn*)createColumnWithName:(NSString*)name withType:(int)type;
+-(TDColumn*)createStringColumnWithName:(NSString*)name;
+-(TDColumn*)createIntegerColumnWithName:(NSString*)name;
+-(TDColumn*)createBooleanColumnWithName:(NSString*)name;
+-(TDColumn*)createDateColumnWithName:(NSString*)name;
+-(TDColumn*)createFloatColumnWithName:(NSString*)name;
 
 /* Other public methods */
 -(void)addIdentityColumn;

@@ -1,6 +1,6 @@
 //
-//  EasyStore.h
-//  EasyStore
+//  TankDB.h
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/28/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
@@ -9,14 +9,14 @@
 #import <sqlite3.h>
 #import <Foundation/Foundation.h>
 
-#import "EasyConstants.h"
+#import "TDConstants.h"
 #import "Utility.h"
 #import "TDTable.h"
 #import "TDColumn.h"
 #import "TDEntry.h"
 #import "TDPredicate.h"
 
-@interface EasyStore : NSObject{
+@interface TankDB : NSObject{
 
 }
 
@@ -31,7 +31,7 @@
 +(NSArray*)invokeRawSelectQuery:(NSString*)query;
 
 /* Database modifier methods */
-+(void)clearEasyStore;
++(void)clear;
 +(void)insert:(TDEntry*)entry intoTable:(NSString*)tableName;
 +(NSArray*)selectAllEntriesForTable:(NSString*)tableName;
 
@@ -42,10 +42,10 @@
 +(int)countEntriesWithPredicate:(TDPredicate*)predicate;
 
 /* Private Methods */
-+(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error;
++(void)setStatus:(TDStatus)status withError:(NSString*)error;
 
 /* Properties */
-+(EasyStatus)getStatus;
++(TDStatus)getStatus;
 +(NSString*)getErrorMessage;
 
 @end
