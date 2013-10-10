@@ -1,4 +1,4 @@
-EasyStore
+TankDB
 =========
 
 A lightweight object oriented local storage library for Objective C.
