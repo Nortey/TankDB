@@ -7,7 +7,7 @@ A lightweight object oriented local storage library for Objective C.
 1. Add a link to the libsqlite3.dylib library
 ![Image](TankDB/Images/add-sqlite-lib.png)
 
-2. Copy the TankDB source files into your project
+2. Copy the TankDB source files into your project (files in Installation/TankDB)
 ![Image](TankDB/Images/copy-source-files.png)
 
 ##Creating a Database with Tables
@@ -17,7 +17,6 @@ A lightweight object oriented local storage library for Objective C.
 	[TankDB beginDatabaseCreation];
 	
 	TDTable *table = [TankDB createTableWithName:@"Users"];
-    
     [table createStringColumnWithName:@"name"];
     [table createIntegerColumnWithName:@"age"];
     [table createBooleanColumnWithName:@"retired"];
@@ -59,7 +58,7 @@ Creates an autoincrementing primary key with the column name "id".
     [TankDB beginDatabaseCreation];
     
     TDTable *table = [TankDB createTableWithName:@"Students"];
-    
+
     [table addIdentityColumn];
     [table createStringColumnWithName:@"name"];
     [table createFloatColumnWithName:@"gpa"];
@@ -131,7 +130,7 @@ Creates an autoincrementing primary key with the column name "id".
 	// Insert, Update, Delete
 	[EasyStore invokeRawQuery:@"INSERT INTO Words VALUES ( \"hello\" )"];
 	
-	// Delect, Count
+	// Select, Count
 	NSArray* entries = [TankDB invokeRawSelectQuery:@"SELECT * FROM Contacts"];
 
 
