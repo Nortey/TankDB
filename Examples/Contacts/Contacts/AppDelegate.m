@@ -7,23 +7,23 @@
 //
 
 #import "AppDelegate.h"
-#import "EasyStore.h"
+#import "TankDB.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
-    // Create the EasyStore database
-    [EasyStore beginDatabaseCreation];
+    // Create the database
+    [TankDB beginDatabaseCreation];
     
-    EasyTable* contactsTable = [EasyStore createTableWithName:@"Contacts"];
+    TDTable* contactsTable = [TankDB createTableWithName:@"Contacts"];
     
     [contactsTable addIdentityColumn];
     [contactsTable createStringColumnWithName:@"name"];
     [contactsTable createStringColumnWithName:@"emailAddress"];
     [contactsTable createStringColumnWithName:@"phoneNumber"];
     
-    [EasyStore completeDatabaseCreation];
+    [TankDB completeDatabaseCreation];
     
     return YES;
 }

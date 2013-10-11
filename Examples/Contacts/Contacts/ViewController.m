@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "EasyStore.h"
+#import "TankDB.h"
 
 @interface ViewController ()
 
@@ -36,12 +36,12 @@
     NSString* phoneNumber = [contactPhoneNumber text];
     NSString* emailAddres = [contactEmailAddress text];
     
-    EasyEntry* entry = [EasyEntry new];
+    TDEntry* entry = [TDEntry new];
     [entry setString:name forColumn:@"name"];
     [entry setString:phoneNumber forColumn:@"emailAddress"];
     [entry setString:emailAddres forColumn:@"phoneNumber"];
     
-    [EasyStore insert:entry intoTable:@"Contacts"];
+    [TankDB insert:entry intoTable:@"Contacts"];
     
     [self resetForm];
 }
@@ -78,13 +78,13 @@
  *  Get the contact for the given index. Change the labels to the values of that contact
  */
 -(void)setContact:(int)index{
-    EasyPredicate* predicate = [EasyPredicate new];
+    TDPredicate* predicate = [TDPredicate new];
     [predicate selectFromTable:@"Contacts"];
     [predicate whereColumn:@"id" equalsInteger:index];
     
-    NSArray* entries = [EasyStore selectEntriesWithPredicate:predicate];
+    NSArray* entries = [TankDB selectEntriesWithPredicate:predicate];
     if([entries count] > 0){
-        EasyEntry* entry = [entries objectAtIndex:0];
+        TDEntry* entry = [entries objectAtIndex:0];
         
         NSString* name = [entry stringForColumn:@"name"];
         NSString* phoneNumber = [entry stringForColumn:@"phoneNumber"];
@@ -106,9 +106,9 @@
  *  Query for the total number of contacts in the database
  */
 -(int)getNumContacts{
-    EasyPredicate* predicate = [EasyPredicate new];
+    TDPredicate* predicate = [TDPredicate new];
     [predicate countEntriesInTable:@"Contacts"];
-    int count = [EasyStore countEntriesWithPredicate:predicate];
+    int count = [TankDB countEntriesWithPredicate:predicate];
     
     return count;
 }

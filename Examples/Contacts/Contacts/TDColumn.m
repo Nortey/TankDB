@@ -1,20 +1,20 @@
 //
-//  EasyColumn.m
-//  EasyStore
+//  TDColumn.m
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/28/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
 //
 
-#import "TKColumn.h"
+#import "TDColumn.h"
 
-@implementation TKColumn
+@implementation TDColumn
 
 /*
  *  Initialize table
  *  Initializes the column with the given name and column type.
  */
--(id)initWithName:(NSString*)name withType:(EasyType)type{
+-(id)initWithName:(NSString*)name withType:(TDType)type{
     self = [super init];
     if (self) {
         _primaryKey = @"";
@@ -63,7 +63,7 @@
 }
 
 
--(EasyType)getType{
+-(TDType)getType{
     return _type;
 }
 

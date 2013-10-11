@@ -1,15 +1,15 @@
 //
-//  EasyTable.m
-//  EasyStore
+//  TDTable.m
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/28/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
 //
 
-#import "EasyTable.h"
+#import "TDTable.h"
 
 
-@implementation EasyTable
+@implementation TDTable
 
 /* 
  *  Initialize table
@@ -31,31 +31,31 @@
  *  Column creation
  *  Creates the column based on the column datatype
  */
--(EasyColumn*)createColumnWithName:(NSString*)name withType:(int)type{
-    EasyColumn* column = [[EasyColumn alloc] initWithName:name withType:type];
+-(TDColumn*)createColumnWithName:(NSString*)name withType:(int)type{
+    TDColumn* column = [[TDColumn alloc] initWithName:name withType:type];
     [_columns addObject:column];
     
     return column;
 }
 
--(EasyColumn*)createStringColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyString];
+-(TDColumn*)createStringColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDString];
 }
 
--(EasyColumn*)createIntegerColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyInteger];
+-(TDColumn*)createIntegerColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDInteger];
 }
 
--(EasyColumn*)createBooleanColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyBoolean];
+-(TDColumn*)createBooleanColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDBoolean];
 }
 
--(EasyColumn*)createDateColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyDate];
+-(TDColumn*)createDateColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDDate];
 }
 
--(EasyColumn*)createFloatColumnWithName:(NSString*)name{
-    return [self createColumnWithName:name withType:EasyFloat];
+-(TDColumn*)createFloatColumnWithName:(NSString*)name{
+    return [self createColumnWithName:name withType:TDFloat];
 }
 
 
@@ -64,7 +64,7 @@
  *  Adds a primary autoincrementing column named 'id' to the table
  */
 -(void)addIdentityColumn{
-    EasyColumn* identityColumn = [self createColumnWithName:@"id" withType:EasyInteger];
+    TDColumn* identityColumn = [self createColumnWithName:@"id" withType:TDInteger];
     [identityColumn setAsIdentityColumn];
 }
 
@@ -75,7 +75,7 @@
  */
 -(NSString*)getCreationString;{
     NSMutableArray* columnStringArray = [NSMutableArray new];
-    for(EasyColumn* column in _columns){
+    for(TDColumn* column in _columns){
         [columnStringArray addObject:[column getCreationString]];
     }
     

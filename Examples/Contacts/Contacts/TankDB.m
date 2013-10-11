@@ -1,21 +1,21 @@
 //
-//  EasyStore.m
-//  EasyStore
+//  TankDB.m
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/28/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
 //
 
-#import "EasyStore.h"
+#import "TankDB.h"
 
 /* Static variables */
 static NSMutableArray* _tables;
 static sqlite3* _database;
 static NSString* _databasePath;
-static EasyStatus _status;
+static TDStatus _status;
 static NSString* _errorMessage;
 
-@implementation EasyStore
+@implementation TankDB
 
 /*
  *  Begin database creation
@@ -29,7 +29,7 @@ static NSString* _errorMessage;
     NSString*docsDir = dirPaths[0];
     
     // Build the path to the database file
-    _databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent:@"easy_store.db"]];
+    _databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent:@"tank.db"]];
     
     // Open the database
     NSFileManager *filemgr = [NSFileManager defaultManager];
@@ -39,7 +39,7 @@ static NSString* _errorMessage;
         if (sqlite3_open(dbpath, &_database) == SQLITE_OK){
             sqlite3_close(_database);
         } else {
-            [EasyStore setEasyStoreStatus:Easy_ERROR withError:@"Failed to open/create database"];
+            [TankDB setStatus:TD_ERROR withError:@"Failed to open/create database"];
         }
     }
 }
@@ -49,11 +49,11 @@ static NSString* _errorMessage;
  *  Creates all tables and columns if they do not exist
  */
 +(void)completeDatabaseCreation{
-    for(EasyTable *table in _tables){
+    for(TDTable *table in _tables){
         NSString* tableName = [table getName];
         NSString* tableCreatetionString = [table getCreationString];
         NSString* createTableQuery = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ %@", tableName, tableCreatetionString];
-        [EasyStore invokeRawQuery:createTableQuery];
+        [TankDB invokeRawQuery:createTableQuery];
     }
 }
 
@@ -65,7 +65,7 @@ static NSString* _errorMessage;
     NSError* error = nil;
     [[NSFileManager defaultManager] removeItemAtPath: _databasePath error: &error];
     if(error){
-        [EasyStore setEasyStoreStatus:Easy_ERROR withError:[error localizedDescription]];
+        [TankDB setStatus:TD_ERROR withError:[error localizedDescription]];
     }
 }
 
@@ -74,8 +74,8 @@ static NSString* _errorMessage;
  *  Create table with name
  *  Creates a new table in the database
  */
-+(EasyTable*)createTableWithName:(NSString*)name{
-    EasyTable* table = [[EasyTable alloc] initWithName:name];
++(TDTable*)createTableWithName:(NSString*)name{
+    TDTable* table = [[TDTable alloc] initWithName:name];
     [_tables addObject:table];
     
     return table;
@@ -91,19 +91,19 @@ static NSString* _errorMessage;
         const char *sql_stmt = [query UTF8String];
         
         if (sqlite3_exec(_database, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
-            [EasyStore setEasyStoreStatus:Easy_ERROR withError:[NSString stringWithFormat:@"%s", errMsg]];
+            [TankDB setStatus:TD_ERROR withError:[NSString stringWithFormat:@"%s", errMsg]];
         }else{
-            [EasyStore setEasyStoreStatus:Easy_OK withError:@""];
+            [TankDB setStatus:TD_OK withError:@""];
         }
         sqlite3_close(_database);
     } else {
-        [EasyStore setEasyStoreStatus:Easy_ERROR withError:@"Failed to open database"];
+        [TankDB setStatus:TD_ERROR withError:@"Failed to open database"];
     }
 }
 
 /*
  *  Invoke raw select query
- *  Invokes a raw select query and returns the results as an array of EasyEntry objects
+ *  Invokes a raw select query and returns the results as an array of TDEntry objects
  */
 +(NSArray*)invokeRawSelectQuery:(NSString*)query{
     NSMutableArray* selectArray = [NSMutableArray new];
@@ -142,9 +142,9 @@ static NSString* _errorMessage;
                 [selectArray addObject:columnDictionary];
             }
             
-            [EasyStore setEasyStoreStatus:Easy_OK withError:@""];
+            [TankDB setStatus:TD_OK withError:@""];
         }else{
-            [EasyStore setEasyStoreStatus:Easy_ERROR withError:[NSString stringWithFormat:@"%s", sqlite3_errmsg(_database)]];
+            [TankDB setStatus:TD_ERROR withError:[NSString stringWithFormat:@"%s", sqlite3_errmsg(_database)]];
         }
         sqlite3_finalize(selectstmt);
     }
@@ -155,16 +155,16 @@ static NSString* _errorMessage;
 
 
 /*
- *  Clear easy store
- *  Will remove all tables from the database. Completely clears Easystore.
+ *  Clear
+ *  Will remove all tables from the database. Completely clears everything.
  */
-+(void)clearEasyStore{
-    NSArray* tablesArray = [EasyStore selectAllEntriesForTable:@"sqlite_master"];
++(void)clear{
+    NSArray* tablesArray = [TankDB selectAllEntriesForTable:@"sqlite_master"];
     
-    for(EasyEntry* entry in tablesArray){
+    for(TDEntry* entry in tablesArray){
         NSString* tableName = [entry stringForColumn:@"tbl_name"];
         NSString* dropQuery = [NSString stringWithFormat:@"DROP TABLE IF EXISTS %@", tableName];
-        [EasyStore invokeRawQuery:dropQuery];
+        [TankDB invokeRawQuery:dropQuery];
     }
 }
 
@@ -172,7 +172,7 @@ static NSString* _errorMessage;
  *  Store entry
  *  Will construct the query necessary to store the entry into the table
  */
-+(void)insert:(EasyEntry*)entry intoTable:(NSString*)tableName{
++(void)insert:(TDEntry*)entry intoTable:(NSString*)tableName{
     NSMutableArray* columnNamesArray = [NSMutableArray new];
     NSMutableArray* columnValuesArray = [NSMutableArray new];
     NSMutableDictionary* entries = [entry getEntries];
@@ -194,21 +194,21 @@ static NSString* _errorMessage;
     NSString *columnValues = [columnValuesArray componentsJoinedByString:@", "];
     NSString *storeQuery = [NSString stringWithFormat:@"INSERT INTO %@ ( %@ ) VALUES ( %@ )", tableNameLowerCase, columnNames, columnValues];
     
-    [EasyStore invokeRawQuery:storeQuery];
+    [TankDB invokeRawQuery:storeQuery];
 }
 
 /*
  *  Get all entries for table
- *  Gets all rows in a table and returns an array of EasyEntry objects
+ *  Gets all rows in a table and returns an array of TDEntry objects
  */
 +(NSArray*)selectAllEntriesForTable:(NSString*)tableName{
     NSString* tableNameLowerCase = [tableName lowercaseString];
     NSString* selectQuery = [NSString stringWithFormat:@"SELECT * FROM %@", tableNameLowerCase];
-    NSArray* selectArray = [EasyStore invokeRawSelectQuery:selectQuery];
+    NSArray* selectArray = [TankDB invokeRawSelectQuery:selectQuery];
     
     NSMutableArray* allEntries = [NSMutableArray new];
     for(NSDictionary* dict in selectArray){
-        EasyEntry* entry = [EasyEntry new];
+        TDEntry* entry = [TDEntry new];
         
         for(NSString* key in dict){
             [entry setString:[dict objectForKey:key] forColumn:key];
@@ -222,15 +222,15 @@ static NSString* _errorMessage;
 
 /*
  *  Get entries with predicate
- *  Constructs and invokes a select statement with a predicate. Returns array of EasyEntry objects.
+ *  Constructs and invokes a select statement with a predicate. Returns array of TDEntry objects.
  */
-+(NSArray*)selectEntriesWithPredicate:(EasyPredicate*)predicate{
++(NSArray*)selectEntriesWithPredicate:(TDPredicate*)predicate{
     NSString *selectQuery = [predicate getPredicateString];
-    NSArray* selectArray = [EasyStore invokeRawSelectQuery:selectQuery];
+    NSArray* selectArray = [TankDB invokeRawSelectQuery:selectQuery];
     
     NSMutableArray* allEntries = [NSMutableArray new];
     for(NSDictionary* dict in selectArray){
-        EasyEntry* entry = [EasyEntry new];
+        TDEntry* entry = [TDEntry new];
         
         for(NSString* key in dict){
             [entry setString:[dict objectForKey:key] forColumn:key];
@@ -246,42 +246,42 @@ static NSString* _errorMessage;
  *  Get entries with predicate
  *  Constructs and invokes a delete statement with a predicate
  */
-+(void)deleteEntriesWithPredicate:(EasyPredicate*)predicate{
++(void)deleteEntriesWithPredicate:(TDPredicate*)predicate{
     NSString *deleteQuery = [predicate getPredicateString];
-    [EasyStore invokeRawQuery:deleteQuery];
+    [TankDB invokeRawQuery:deleteQuery];
 }
 
 /*
  *  Get entries with predicate
  *  Constructs and invokes an update statement with a predicate
  */
-+(void)updateEntriesWithPredicate:(EasyPredicate*)predicate{
++(void)updateEntriesWithPredicate:(TDPredicate*)predicate{
     NSString *updateQuery = [predicate getPredicateString];
-    [EasyStore invokeRawQuery:updateQuery];
+    [TankDB invokeRawQuery:updateQuery];
 }
 
 /*
  *  Count entries with predicate
  *  Invokes raw count query
  */
-+(int)countEntriesWithPredicate:(EasyPredicate*)predicate{
++(int)countEntriesWithPredicate:(TDPredicate*)predicate{
     NSArray* entries = [self selectEntriesWithPredicate:predicate];
     
     if([entries count] > 0){
-        EasyEntry* countEntry = [entries objectAtIndex:0];
+        TDEntry* countEntry = [entries objectAtIndex:0];
         int count = [countEntry integerForColumn:@"count"];
         return count;
     }
     
     return 0;
 }
-
+    
 
 /*
- *  Set EasyStore status
+ *  Set status
  *  Sets the status and error message after an sql query is performed
  */
-+(void)setEasyStoreStatus:(EasyStatus)status withError:(NSString*)error{
++(void)setStatus:(TDStatus)status withError:(NSString*)error{
     _status = status;
     _errorMessage = [NSString stringWithString:error];
 }
@@ -289,7 +289,7 @@ static NSString* _errorMessage;
 /*
  *  Properties
  */
-+(EasyStatus)getStatus{
++(TDStatus)getStatus{
     return _status;
 }
 

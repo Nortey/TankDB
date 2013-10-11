@@ -1,6 +1,6 @@
 //
-//  EasyPredicate.h
-//  EasyStore
+//  TDPredicate.h
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/29/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.

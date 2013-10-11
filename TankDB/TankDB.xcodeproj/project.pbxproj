@@ -29,6 +29,19 @@
 		7145F6A917F7767900B32A04 /* libTankDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69117F7767900B32A04 /* libTankDB.a */; };
 		7145F6C317F77AA200B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
 		7145F6C417F7838300B32A04 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6C217F77AA200B32A04 /* libsqlite3.dylib */; };
+		71997EDB1806541A006A1C09 /* TankDB.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA6321806510E00651296 /* TankDB.h */; };
+		71997EDC1806541A006A1C09 /* TankDB.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA6331806510E00651296 /* TankDB.m */; };
+		71997EDD1806541A006A1C09 /* TDColumn.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA6341806510E00651296 /* TDColumn.h */; };
+		71997EDE1806541A006A1C09 /* TDColumn.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA6351806510E00651296 /* TDColumn.m */; };
+		71997EDF1806541A006A1C09 /* TDEntry.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA6371806510E00651296 /* TDEntry.h */; };
+		71997EE01806541A006A1C09 /* TDEntry.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA6381806510E00651296 /* TDEntry.m */; };
+		71997EE11806541A006A1C09 /* TDPredicate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA6391806510E00651296 /* TDPredicate.h */; };
+		71997EE21806541A006A1C09 /* TDPredicate.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA63A1806510E00651296 /* TDPredicate.m */; };
+		71997EE318065424006A1C09 /* TDTable.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA63B1806510E00651296 /* TDTable.h */; };
+		71997EE418065424006A1C09 /* TDTable.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA63C1806510E00651296 /* TDTable.m */; };
+		71997EE518065424006A1C09 /* TDConstants.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA6361806510E00651296 /* TDConstants.h */; };
+		71997EE618065424006A1C09 /* Utility.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA63D1806510E00651296 /* Utility.h */; };
+		71997EE718065424006A1C09 /* Utility.m in Copy Files */ = {isa = PBXBuildFile; fileRef = 71BAA63E1806510E00651296 /* Utility.m */; };
 		71BAA63F1806510E00651296 /* TankDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6331806510E00651296 /* TankDB.m */; };
 		71BAA6401806510E00651296 /* TDColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6351806510E00651296 /* TDColumn.m */; };
 		71BAA6411806510E00651296 /* TDEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6381806510E00651296 /* TDEntry.m */; };
@@ -67,13 +80,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7145F68F17F7767900B32A04 /* CopyFiles */ = {
+		7145F68F17F7767900B32A04 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "$(SRCROOT)/../Installation/EasyStore";
+			dstPath = "$(SRCROOT)/../Installation/TankDB";
 			dstSubfolderSpec = 0;
 			files = (
+				71997EE318065424006A1C09 /* TDTable.h in Copy Files */,
+				71997EE418065424006A1C09 /* TDTable.m in Copy Files */,
+				71997EE518065424006A1C09 /* TDConstants.h in Copy Files */,
+				71997EE618065424006A1C09 /* Utility.h in Copy Files */,
+				71997EE718065424006A1C09 /* Utility.m in Copy Files */,
+				71997EDB1806541A006A1C09 /* TankDB.h in Copy Files */,
+				71997EDC1806541A006A1C09 /* TankDB.m in Copy Files */,
+				71997EDD1806541A006A1C09 /* TDColumn.h in Copy Files */,
+				71997EDE1806541A006A1C09 /* TDColumn.m in Copy Files */,
+				71997EDF1806541A006A1C09 /* TDEntry.h in Copy Files */,
+				71997EE01806541A006A1C09 /* TDEntry.m in Copy Files */,
+				71997EE11806541A006A1C09 /* TDPredicate.h in Copy Files */,
+				71997EE21806541A006A1C09 /* TDPredicate.m in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		718C07F117FA5B4E00511C87 /* CopyFiles */ = {
@@ -278,7 +305,7 @@
 			buildPhases = (
 				7145F68D17F7767900B32A04 /* Sources */,
 				7145F68E17F7767900B32A04 /* Frameworks */,
-				7145F68F17F7767900B32A04 /* CopyFiles */,
+				7145F68F17F7767900B32A04 /* Copy Files */,
 			);
 			buildRules = (
 			);

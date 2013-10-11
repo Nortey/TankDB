@@ -1,6 +1,6 @@
 //
-//  EasyPredicate.h
-//  EasyStore
+//  TDPredicate.h
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/29/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface EasyPredicate : NSObject{
+@interface TDPredicate : NSObject{
     
     NSString* _subPredicateType;
     
@@ -29,8 +29,8 @@
 -(void)countEntriesInTable:(NSString*)tableName;
 
 /* Compound Predicate methods */
--(void)And:(EasyPredicate*)predicate;
--(void)Or:(EasyPredicate*)predicate;
+-(void)And:(TDPredicate*)predicate;
+-(void)Or:(TDPredicate*)predicate;
 
 /* Predicate modifiers */
 -(void)withLimit:(int)limit;

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		713FDD9E18077B40008672C7 /* TankDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 713FDD9218077B40008672C7 /* TankDB.m */; };
+		713FDD9F18077B40008672C7 /* TDColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 713FDD9418077B40008672C7 /* TDColumn.m */; };
+		713FDDA018077B40008672C7 /* TDEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 713FDD9718077B40008672C7 /* TDEntry.m */; };
+		713FDDA118077B40008672C7 /* TDPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 713FDD9918077B40008672C7 /* TDPredicate.m */; };
+		713FDDA218077B40008672C7 /* TDTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 713FDD9B18077B40008672C7 /* TDTable.m */; };
+		713FDDA318077B40008672C7 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 713FDD9D18077B40008672C7 /* Utility.m */; };
 		716BCC8718051FE000834200 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716BCC8618051FE000834200 /* Foundation.framework */; };
 		716BCC8918051FE000834200 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716BCC8818051FE000834200 /* CoreGraphics.framework */; };
 		716BCC8B18051FE000834200 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716BCC8A18051FE000834200 /* UIKit.framework */; };
@@ -19,12 +25,6 @@
 		716BCCA918051FE000834200 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716BCCA818051FE000834200 /* XCTest.framework */; };
 		716BCCAA18051FE000834200 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716BCC8618051FE000834200 /* Foundation.framework */; };
 		716BCCAB18051FE000834200 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716BCC8A18051FE000834200 /* UIKit.framework */; };
-		716BCCCC1805240600834200 /* EasyColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 716BCCC01805240600834200 /* EasyColumn.m */; };
-		716BCCCD1805240600834200 /* EasyEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 716BCCC31805240600834200 /* EasyEntry.m */; };
-		716BCCCE1805240600834200 /* EasyPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 716BCCC51805240600834200 /* EasyPredicate.m */; };
-		716BCCCF1805240600834200 /* EasyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 716BCCC71805240600834200 /* EasyStore.m */; };
-		716BCCD01805240600834200 /* EasyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 716BCCC91805240600834200 /* EasyTable.m */; };
-		716BCCD11805240600834200 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 716BCCCB1805240600834200 /* Utility.m */; };
 		716BCCD31805241800834200 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 716BCCD21805241800834200 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +39,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		713FDD9118077B40008672C7 /* TankDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankDB.h; sourceTree = "<group>"; };
+		713FDD9218077B40008672C7 /* TankDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankDB.m; sourceTree = "<group>"; };
+		713FDD9318077B40008672C7 /* TDColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDColumn.h; sourceTree = "<group>"; };
+		713FDD9418077B40008672C7 /* TDColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDColumn.m; sourceTree = "<group>"; };
+		713FDD9518077B40008672C7 /* TDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDConstants.h; sourceTree = "<group>"; };
+		713FDD9618077B40008672C7 /* TDEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDEntry.h; sourceTree = "<group>"; };
+		713FDD9718077B40008672C7 /* TDEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDEntry.m; sourceTree = "<group>"; };
+		713FDD9818077B40008672C7 /* TDPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDPredicate.h; sourceTree = "<group>"; };
+		713FDD9918077B40008672C7 /* TDPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDPredicate.m; sourceTree = "<group>"; };
+		713FDD9A18077B40008672C7 /* TDTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDTable.h; sourceTree = "<group>"; };
+		713FDD9B18077B40008672C7 /* TDTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTable.m; sourceTree = "<group>"; };
+		713FDD9C18077B40008672C7 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		713FDD9D18077B40008672C7 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		716BCC8318051FE000834200 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		716BCC8618051FE000834200 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		716BCC8818051FE000834200 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,19 +68,6 @@
 		716BCCA118051FE000834200 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		716BCCA718051FE000834200 /* ContactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		716BCCA818051FE000834200 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		716BCCBF1805240600834200 /* EasyColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyColumn.h; sourceTree = "<group>"; };
-		716BCCC01805240600834200 /* EasyColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyColumn.m; sourceTree = "<group>"; };
-		716BCCC11805240600834200 /* EasyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyConstants.h; sourceTree = "<group>"; };
-		716BCCC21805240600834200 /* EasyEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyEntry.h; sourceTree = "<group>"; };
-		716BCCC31805240600834200 /* EasyEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyEntry.m; sourceTree = "<group>"; };
-		716BCCC41805240600834200 /* EasyPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyPredicate.h; sourceTree = "<group>"; };
-		716BCCC51805240600834200 /* EasyPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyPredicate.m; sourceTree = "<group>"; };
-		716BCCC61805240600834200 /* EasyStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyStore.h; sourceTree = "<group>"; };
-		716BCCC71805240600834200 /* EasyStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyStore.m; sourceTree = "<group>"; };
-		716BCCC81805240600834200 /* EasyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTable.h; sourceTree = "<group>"; };
-		716BCCC91805240600834200 /* EasyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTable.m; sourceTree = "<group>"; };
-		716BCCCA1805240600834200 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
-		716BCCCB1805240600834200 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		716BCCD21805241800834200 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -135,7 +135,7 @@
 				716BCC9F18051FE000834200 /* ViewController.m */,
 				716BCC9818051FE000834200 /* Main_iPhone.storyboard */,
 				716BCCA118051FE000834200 /* Images.xcassets */,
-				716BCCBE180522A700834200 /* EasyStore */,
+				716BCCBE180522A700834200 /* TankDB */,
 				716BCC8D18051FE000834200 /* Supporting Files */,
 			);
 			path = Contacts;
@@ -152,24 +152,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		716BCCBE180522A700834200 /* EasyStore */ = {
+		716BCCBE180522A700834200 /* TankDB */ = {
 			isa = PBXGroup;
 			children = (
-				716BCCBF1805240600834200 /* EasyColumn.h */,
-				716BCCC01805240600834200 /* EasyColumn.m */,
-				716BCCC11805240600834200 /* EasyConstants.h */,
-				716BCCC21805240600834200 /* EasyEntry.h */,
-				716BCCC31805240600834200 /* EasyEntry.m */,
-				716BCCC41805240600834200 /* EasyPredicate.h */,
-				716BCCC51805240600834200 /* EasyPredicate.m */,
-				716BCCC61805240600834200 /* EasyStore.h */,
-				716BCCC71805240600834200 /* EasyStore.m */,
-				716BCCC81805240600834200 /* EasyTable.h */,
-				716BCCC91805240600834200 /* EasyTable.m */,
-				716BCCCA1805240600834200 /* Utility.h */,
-				716BCCCB1805240600834200 /* Utility.m */,
+				713FDD9118077B40008672C7 /* TankDB.h */,
+				713FDD9218077B40008672C7 /* TankDB.m */,
+				713FDD9318077B40008672C7 /* TDColumn.h */,
+				713FDD9418077B40008672C7 /* TDColumn.m */,
+				713FDD9518077B40008672C7 /* TDConstants.h */,
+				713FDD9618077B40008672C7 /* TDEntry.h */,
+				713FDD9718077B40008672C7 /* TDEntry.m */,
+				713FDD9818077B40008672C7 /* TDPredicate.h */,
+				713FDD9918077B40008672C7 /* TDPredicate.m */,
+				713FDD9A18077B40008672C7 /* TDTable.h */,
+				713FDD9B18077B40008672C7 /* TDTable.m */,
+				713FDD9C18077B40008672C7 /* Utility.h */,
+				713FDD9D18077B40008672C7 /* Utility.m */,
 			);
-			name = EasyStore;
+			name = TankDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,15 +268,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				716BCCD01805240600834200 /* EasyTable.m in Sources */,
-				716BCCCF1805240600834200 /* EasyStore.m in Sources */,
+				713FDD9F18077B40008672C7 /* TDColumn.m in Sources */,
 				716BCCA018051FE000834200 /* ViewController.m in Sources */,
-				716BCCCD1805240600834200 /* EasyEntry.m in Sources */,
-				716BCCD11805240600834200 /* Utility.m in Sources */,
 				716BCC9718051FE000834200 /* AppDelegate.m in Sources */,
-				716BCCCE1805240600834200 /* EasyPredicate.m in Sources */,
 				716BCC9318051FE000834200 /* main.m in Sources */,
-				716BCCCC1805240600834200 /* EasyColumn.m in Sources */,
+				713FDDA318077B40008672C7 /* Utility.m in Sources */,
+				713FDDA218077B40008672C7 /* TDTable.m in Sources */,
+				713FDDA118077B40008672C7 /* TDPredicate.m in Sources */,
+				713FDDA018077B40008672C7 /* TDEntry.m in Sources */,
+				713FDD9E18077B40008672C7 /* TankDB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +478,7 @@
 				716BCCBA18051FE000834200 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		716BCCBB18051FE000834200 /* Build configuration list for PBXNativeTarget "ContactsTests" */ = {
 			isa = XCConfigurationList;
@@ -486,6 +487,7 @@
 				716BCCBD18051FE000834200 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

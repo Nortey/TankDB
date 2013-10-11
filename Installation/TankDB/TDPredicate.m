@@ -1,14 +1,14 @@
 //
-//  EasyPredicate.m
-//  EasyStore
+//  TDPredicate.m
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/29/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
 //
 
-#import "EasyPredicate.h"
+#import "TDPredicate.h"
 
-@implementation EasyPredicate
+@implementation TDPredicate
 
 /*
  *  Initializes the predicate
@@ -56,12 +56,12 @@
  *  Compound predicate methods
  *  Called to surround an entire predicate in an AND or an OR
  */
--(void)And:(EasyPredicate*)predicate{
+-(void)And:(TDPredicate*)predicate{
     [predicate setSubPredicateType:@"AND"];
     [_subPredicates addObject:predicate];
 }
 
--(void)Or:(EasyPredicate*)predicate{
+-(void)Or:(TDPredicate*)predicate{
     [predicate setSubPredicateType:@"OR"];
     [_subPredicates addObject:predicate];
 }
@@ -97,7 +97,7 @@
     
     // Construct sub predicates
     NSMutableString* subPredicateString = [NSMutableString stringWithString:@""];
-    for(EasyPredicate* predicate in _subPredicates){
+    for(TDPredicate* predicate in _subPredicates){
         NSString* removeWhereString = [[predicate getPredicateString] stringByReplacingOccurrencesOfString:@"WHERE" withString:@""];
         NSString* subPredicate = [NSString stringWithFormat:@" %@ ( %@ ) ", [predicate getSubPredicateType], removeWhereString];
         [subPredicateString appendString:subPredicate];

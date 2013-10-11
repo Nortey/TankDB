@@ -1,14 +1,14 @@
 //
-//  EasyEntry.m
-//  EasyStore
+//  TDEntry.m
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/29/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
 //
 
-#import "EasyEntry.h"
+#import "TDEntry.h"
 
-@implementation EasyEntry
+@implementation TDEntry
 
 /*
  *  Initializes the entry

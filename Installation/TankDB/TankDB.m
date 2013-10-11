@@ -1,6 +1,6 @@
 //
-//  EasyStore.m
-//  EasyStore
+//  TankDB.m
+//  TankDB
 //
 //  Created by Jeremy Nortey on 9/28/13.
 //  Copyright (c) 2013 Jeremy Nortey. All rights reserved.
@@ -29,7 +29,7 @@ static NSString* _errorMessage;
     NSString*docsDir = dirPaths[0];
     
     // Build the path to the database file
-    _databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent:@"easy_store.db"]];
+    _databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent:@"tank.db"]];
     
     // Open the database
     NSFileManager *filemgr = [NSFileManager defaultManager];
@@ -103,7 +103,7 @@ static NSString* _errorMessage;
 
 /*
  *  Invoke raw select query
- *  Invokes a raw select query and returns the results as an array of EasyEntry objects
+ *  Invokes a raw select query and returns the results as an array of TDEntry objects
  */
 +(NSArray*)invokeRawSelectQuery:(NSString*)query{
     NSMutableArray* selectArray = [NSMutableArray new];
@@ -155,8 +155,8 @@ static NSString* _errorMessage;
 
 
 /*
- *  Clear easy store
- *  Will remove all tables from the database. Completely clears Easystore.
+ *  Clear
+ *  Will remove all tables from the database. Completely clears everything.
  */
 +(void)clear{
     NSArray* tablesArray = [TankDB selectAllEntriesForTable:@"sqlite_master"];
@@ -199,7 +199,7 @@ static NSString* _errorMessage;
 
 /*
  *  Get all entries for table
- *  Gets all rows in a table and returns an array of EasyEntry objects
+ *  Gets all rows in a table and returns an array of TDEntry objects
  */
 +(NSArray*)selectAllEntriesForTable:(NSString*)tableName{
     NSString* tableNameLowerCase = [tableName lowercaseString];
@@ -222,7 +222,7 @@ static NSString* _errorMessage;
 
 /*
  *  Get entries with predicate
- *  Constructs and invokes a select statement with a predicate. Returns array of EasyEntry objects.
+ *  Constructs and invokes a select statement with a predicate. Returns array of TDEntry objects.
  */
 +(NSArray*)selectEntriesWithPredicate:(TDPredicate*)predicate{
     NSString *selectQuery = [predicate getPredicateString];
@@ -278,7 +278,7 @@ static NSString* _errorMessage;
     
 
 /*
- *  Set EasyStore status
+ *  Set status
  *  Sets the status and error message after an sql query is performed
  */
 +(void)setStatus:(TDStatus)status withError:(NSString*)error{
