@@ -151,7 +151,7 @@ Creates an autoincrementing primary key with the column name "id".
     }
 
 
-## Supported Data Types*
+## Supported Data Types
     Integer	-	[table createIntegerColumnWithName:@"name"];
     String	-	[table createStringColumnWithName:@"name"];
     Float	-	[table createFloatColumnWithName:@"name"];
