@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		711B798E1809FDDA00D5A4FC /* InsertPerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 711B798D1809FDDA00D5A4FC /* InsertPerformanceTests.m */; };
 		7145F69517F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
 		7145F6A317F7767900B32A04 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F6A217F7767900B32A04 /* XCTest.framework */; };
 		7145F6A417F7767900B32A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7145F69417F7767900B32A04 /* Foundation.framework */; };
@@ -115,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		711B798D1809FDDA00D5A4FC /* InsertPerformanceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertPerformanceTests.m; sourceTree = SOURCE_ROOT; };
 		7145F69117F7767900B32A04 /* libTankDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTankDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7145F69417F7767900B32A04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7145F6A117F7767900B32A04 /* TankDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TankDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		711B798B1809FD9A00D5A4FC /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				71BAA6451806512300651296 /* CountTests.m */,
+				71BAA6461806512300651296 /* CreateTests.m */,
+				71BAA6471806512300651296 /* DeleteTests.m */,
+				71BAA6491806512300651296 /* PredicateBooleanTests.m */,
+				71BAA64A1806512300651296 /* PredicateDateTests.m */,
+				71BAA64B1806512300651296 /* PredicateFloatTests.m */,
+				71BAA64C1806512300651296 /* PredicateIntegerTests.m */,
+				71BAA64D1806512300651296 /* PredicateLimitOffsetTests.m */,
+				71BAA64E1806512300651296 /* PredicateOrderTests.m */,
+				71BAA64F1806512300651296 /* PredicateStringTests.m */,
+				71BAA6501806512300651296 /* PredicateTests.m */,
+				71BAA6511806512300651296 /* RawQueryTests.m */,
+				71BAA6521806512300651296 /* SelectTests.m */,
+				71BAA6531806512300651296 /* StoreTests.m */,
+				71BAA6541806512300651296 /* SubPredicateTests.m */,
+				71BAA6561806512300651296 /* UpdateTests.m */,
+				71BAA6571806512300651296 /* UtilityTests.m */,
+				71BAA6581806512300651296 /* zFlush.m */,
+			);
+			name = UnitTests;
+			sourceTree = "<group>";
+		};
+		711B798C1809FDAB00D5A4FC /* PerformanceTests */ = {
+			isa = PBXGroup;
+			children = (
+				71BAA6481806512300651296 /* PerformanceTests.m */,
+				711B798D1809FDDA00D5A4FC /* InsertPerformanceTests.m */,
+			);
+			name = PerformanceTests;
+			sourceTree = "<group>";
+		};
 		713F3629180095D9006ECFD8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,25 +283,8 @@
 		7145F6AA17F7767900B32A04 /* TankDB Tests */ = {
 			isa = PBXGroup;
 			children = (
-				71BAA6451806512300651296 /* CountTests.m */,
-				71BAA6461806512300651296 /* CreateTests.m */,
-				71BAA6471806512300651296 /* DeleteTests.m */,
-				71BAA6481806512300651296 /* PerformanceTests.m */,
-				71BAA6491806512300651296 /* PredicateBooleanTests.m */,
-				71BAA64A1806512300651296 /* PredicateDateTests.m */,
-				71BAA64B1806512300651296 /* PredicateFloatTests.m */,
-				71BAA64C1806512300651296 /* PredicateIntegerTests.m */,
-				71BAA64D1806512300651296 /* PredicateLimitOffsetTests.m */,
-				71BAA64E1806512300651296 /* PredicateOrderTests.m */,
-				71BAA64F1806512300651296 /* PredicateStringTests.m */,
-				71BAA6501806512300651296 /* PredicateTests.m */,
-				71BAA6511806512300651296 /* RawQueryTests.m */,
-				71BAA6521806512300651296 /* SelectTests.m */,
-				71BAA6531806512300651296 /* StoreTests.m */,
-				71BAA6541806512300651296 /* SubPredicateTests.m */,
-				71BAA6561806512300651296 /* UpdateTests.m */,
-				71BAA6571806512300651296 /* UtilityTests.m */,
-				71BAA6581806512300651296 /* zFlush.m */,
+				711B798C1809FDAB00D5A4FC /* PerformanceTests */,
+				711B798B1809FD9A00D5A4FC /* UnitTests */,
 				7145F6AB17F7767900B32A04 /* Supporting Files */,
 			);
 			name = "TankDB Tests";
@@ -407,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BAA67E1806513A00651296 /* UtilityTests.m in Sources */,
+				711B798E1809FDDA00D5A4FC /* InsertPerformanceTests.m in Sources */,
 				71BAA66C1806513A00651296 /* CountTests.m in Sources */,
 				71BAA6761806513A00651296 /* PredicateStringTests.m in Sources */,
 				71BAA66D1806513A00651296 /* CreateTests.m in Sources */,
