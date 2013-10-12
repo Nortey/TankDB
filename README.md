@@ -128,7 +128,7 @@ Creates an autoincrementing primary key with the column name "id".
 ## Invoking Raw SQL Queries
 
 	// Insert, Update, Delete
-	[EasyStore invokeRawQuery:@"INSERT INTO Words VALUES ( \"hello\" )"];
+	[TankDB invokeRawQuery:@"INSERT INTO Words VALUES ( \"hello\" )"];
 	
 	// Select, Count
 	NSArray* entries = [TankDB invokeRawSelectQuery:@"SELECT * FROM Contacts"];
