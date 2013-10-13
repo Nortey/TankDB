@@ -47,11 +47,10 @@
 +(void)performBulkUpdate:(NSArray*)entries forTable:(NSString*)tableName;
 
 /* Private Methods */
-+(NSString*)getSQLforInsertEntry:(TDEntry*)entry forTable:(NSString*)tableName;
 +(void)setStatus:(TDStatus)status withError:(NSString*)error;
 
-
 /* Properties */
++(NSString*)getDatabasePath;
 +(TDStatus)getStatus;
 +(NSString*)getErrorMessage;
 

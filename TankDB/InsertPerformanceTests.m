@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "TankDB.h"
 
-#define RUN_INSERT_PERF_TESTS 1
+#define RUN_INSERT_PERF_TESTS 0
 #define NUM_RECORDS 100000
 
 @interface InsertPerformanceTests : XCTestCase

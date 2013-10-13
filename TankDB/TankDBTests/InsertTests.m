@@ -10,11 +10,11 @@
 #import "TankDB.h"
 
 
-@interface StoreTests : XCTestCase
+@interface InsertTests : XCTestCase
 
 @end
 
-@implementation StoreTests
+@implementation InsertTests
 
 - (void)setUp{
     [super setUp];

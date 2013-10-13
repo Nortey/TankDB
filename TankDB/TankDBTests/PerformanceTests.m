@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "TankDB.h"
 
 @interface PerformanceTests : XCTestCase
 

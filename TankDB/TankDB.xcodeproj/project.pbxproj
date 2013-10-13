@@ -63,7 +63,7 @@
 		71BAA6771806513A00651296 /* PredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6501806512300651296 /* PredicateTests.m */; };
 		71BAA6781806513A00651296 /* RawQueryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6511806512300651296 /* RawQueryTests.m */; };
 		71BAA6791806513A00651296 /* SelectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6521806512300651296 /* SelectTests.m */; };
-		71BAA67A1806513A00651296 /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6531806512300651296 /* StoreTests.m */; };
+		71BAA67A1806513A00651296 /* InsertTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6531806512300651296 /* InsertTests.m */; };
 		71BAA67B1806513A00651296 /* SubPredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6541806512300651296 /* SubPredicateTests.m */; };
 		71BAA67D1806513A00651296 /* UpdateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6561806512300651296 /* UpdateTests.m */; };
 		71BAA67E1806513A00651296 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAA6571806512300651296 /* UtilityTests.m */; };
@@ -151,7 +151,7 @@
 		71BAA6501806512300651296 /* PredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredicateTests.m; path = TankDBTests/PredicateTests.m; sourceTree = SOURCE_ROOT; };
 		71BAA6511806512300651296 /* RawQueryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RawQueryTests.m; path = TankDBTests/RawQueryTests.m; sourceTree = SOURCE_ROOT; };
 		71BAA6521806512300651296 /* SelectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectTests.m; path = TankDBTests/SelectTests.m; sourceTree = SOURCE_ROOT; };
-		71BAA6531806512300651296 /* StoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTests.m; path = TankDBTests/StoreTests.m; sourceTree = SOURCE_ROOT; };
+		71BAA6531806512300651296 /* InsertTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsertTests.m; path = TankDBTests/InsertTests.m; sourceTree = SOURCE_ROOT; };
 		71BAA6541806512300651296 /* SubPredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubPredicateTests.m; path = TankDBTests/SubPredicateTests.m; sourceTree = SOURCE_ROOT; };
 		71BAA6551806512300651296 /* TankDBTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "TankDBTests-Info.plist"; path = "TankDBTests/TankDBTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		71BAA6561806512300651296 /* UpdateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateTests.m; path = TankDBTests/UpdateTests.m; sourceTree = SOURCE_ROOT; };
@@ -201,7 +201,7 @@
 				71BAA6501806512300651296 /* PredicateTests.m */,
 				71BAA6511806512300651296 /* RawQueryTests.m */,
 				71BAA6521806512300651296 /* SelectTests.m */,
-				71BAA6531806512300651296 /* StoreTests.m */,
+				71BAA6531806512300651296 /* InsertTests.m */,
 				71BAA6541806512300651296 /* SubPredicateTests.m */,
 				71BAA6561806512300651296 /* UpdateTests.m */,
 				71BAA6571806512300651296 /* UtilityTests.m */,
@@ -436,7 +436,7 @@
 				71BAA6781806513A00651296 /* RawQueryTests.m in Sources */,
 				71BAA6731806513A00651296 /* PredicateIntegerTests.m in Sources */,
 				71BAA6701806513A00651296 /* PredicateBooleanTests.m in Sources */,
-				71BAA67A1806513A00651296 /* StoreTests.m in Sources */,
+				71BAA67A1806513A00651296 /* InsertTests.m in Sources */,
 				71BAA6771806513A00651296 /* PredicateTests.m in Sources */,
 				71BAA6721806513A00651296 /* PredicateFloatTests.m in Sources */,
 				71BAA67F1806513A00651296 /* zFlush.m in Sources */,

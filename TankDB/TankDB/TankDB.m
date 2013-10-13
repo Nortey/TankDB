@@ -159,34 +159,64 @@ static NSString* _errorMessage;
  *
  */
 +(void)performBulkInsert:(NSArray*)entries intoTable:(NSString*)tableName{
-    NSMutableArray* queries = [NSMutableArray new];
-    for(TDEntry *entry in entries){
-        NSString* query = [self getSQLforInsertEntry:entry forTable:tableName];
-        [queries addObject:query];
+    NSMutableArray* columnNames = [NSMutableArray new];
+    NSMutableArray* unknownValues = [NSMutableArray new];
+    
+    // Get the column names
+    NSString* getColumnNames = [NSString stringWithFormat:@"PRAGMA table_info('%@')", tableName];
+    NSArray* columnProperties = [self invokeRawSelectQuery:getColumnNames];
+    for(NSDictionary* dict in columnProperties){
+        [columnNames addObject:[dict objectForKey:@"name"]];
     }
+    
+    // Construct the '?' string
+    for(int i=0; i<[columnNames count]; i++){
+        [unknownValues addObject:@"?"];
+    }
+    
+    // Construct the insert statement
+    NSString* unknownValuesString = [unknownValues componentsJoinedByString:@","];
+    NSString* insertStatement = [NSString stringWithFormat:@"INSERT INTO %@ VALUES( %@ )", tableName, unknownValuesString];
+    
     
     const char *dbpath = [_databasePath UTF8String];
     if (sqlite3_open(dbpath, &_database) == SQLITE_OK){
-        char *errMsg;
+        sqlite3_stmt *statement;
         
+        sqlite3_prepare_v2(_database, [insertStatement UTF8String], -1, &statement, 0);
         sqlite3_exec(_database, "BEGIN EXCLUSIVE TRANSACTION", 0, 0, 0);
-        for (NSString* query in queries) {
-            const char *sql_stmt = [query UTF8String];
-            
-            if (sqlite3_exec(_database, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
-                [TankDB setStatus:TD_ERROR withError:[NSString stringWithFormat:@"%s", errMsg]];
-            }else{
-                [TankDB setStatus:TD_OK withError:@""];
-            }
-        }
-        sqlite3_exec(_database, "COMMIT TRANSACTION", 0, 0, 0);
         
+        for(TDEntry *entry in entries){
+            NSDictionary* dict = [entry getEntries];
+            
+            for(int i=1; i<=[columnNames count]; i++){
+                NSString* columnName = [columnNames objectAtIndex:i-1];
+                id columnValue = [dict objectForKey:columnName];
+                
+                if ((!columnValue) || ((NSNull *)columnValue == [NSNull null])) {
+                    sqlite3_bind_null(statement, i);
+                }else if([columnValue isKindOfClass:[NSString class]]){
+                    sqlite3_bind_text(statement, i, [columnValue UTF8String], -1, SQLITE_TRANSIENT);
+                }else if([columnValue isKindOfClass:[NSNumber class]]){
+                    // TODO need to do float value
+                    sqlite3_bind_int64(statement, i, [columnValue intValue]);
+                }
+            }
+            
+            sqlite3_step(statement);
+            sqlite3_clear_bindings(statement);
+            sqlite3_reset(statement);
+        }
+        
+        sqlite3_exec(_database, "COMMIT TRANSACTION", 0, 0, 0);
+        sqlite3_finalize(statement);
         sqlite3_close(_database);
     } else {
         [TankDB setStatus:TD_ERROR withError:@"Failed to open database"];
     }
     
 }
+
 
 /*
  *
@@ -216,7 +246,27 @@ static NSString* _errorMessage;
  *  Will construct the query necessary to store the entry into the table
  */
 +(void)insert:(TDEntry*)entry intoTable:(NSString*)tableName{
-    NSString* insertQuery = [self getSQLforInsertEntry:entry forTable:tableName];
+    NSMutableArray* columnNamesArray = [NSMutableArray new];
+    NSMutableArray* columnValuesArray = [NSMutableArray new];
+    NSMutableDictionary* entries = [entry getEntries];
+    NSString* tableNameLowerCase = [tableName lowercaseString];
+    
+    // Add array of columns, wrapping strings in quotes
+    for(NSString* key in entries){
+        [columnNamesArray addObject:key];
+        NSObject *value = [entries objectForKey:key];
+        
+        if([value isKindOfClass:[NSString class]]){
+            value = [NSString stringWithFormat:@"\"%@\"", value];
+        }
+        
+        [columnValuesArray addObject:value];
+    }
+    
+    NSString *columnNames = [columnNamesArray componentsJoinedByString:@", "];
+    NSString *columnValues = [columnValuesArray componentsJoinedByString:@", "];
+    NSString *insertQuery = [NSString stringWithFormat:@"INSERT INTO %@ ( %@ ) VALUES ( %@ )", tableNameLowerCase, columnNames, columnValues];
+   
     [TankDB invokeRawQuery:insertQuery];
 }
 
@@ -298,35 +348,7 @@ static NSString* _errorMessage;
     
     return 0;
 }
-    
-/*
- *  TODO
- *
- */
-+(NSString*)getSQLforInsertEntry:(TDEntry*)entry forTable:(NSString*)tableName{
-    NSMutableArray* columnNamesArray = [NSMutableArray new];
-    NSMutableArray* columnValuesArray = [NSMutableArray new];
-    NSMutableDictionary* entries = [entry getEntries];
-    NSString* tableNameLowerCase = [tableName lowercaseString];
-    
-    // Add array of columns, wrapping strings in quotes
-    for(NSString* key in entries){
-        [columnNamesArray addObject:key];
-        NSObject *value = [entries objectForKey:key];
-        
-        if([value isKindOfClass:[NSString class]]){
-            value = [NSString stringWithFormat:@"\"%@\"", value];
-        }
-        
-        [columnValuesArray addObject:value];
-    }
-    
-    NSString *columnNames = [columnNamesArray componentsJoinedByString:@", "];
-    NSString *columnValues = [columnValuesArray componentsJoinedByString:@", "];
-    NSString *insertQuery = [NSString stringWithFormat:@"INSERT INTO %@ ( %@ ) VALUES ( %@ )", tableNameLowerCase, columnNames, columnValues];
-    
-    return insertQuery;
-}
+
 
 /*
  *  Set status
@@ -340,6 +362,10 @@ static NSString* _errorMessage;
 /*
  *  Properties
  */
++(NSString*)getDatabasePath{
+    return _databasePath;
+}
+
 +(TDStatus)getStatus{
     return _status;
 }
