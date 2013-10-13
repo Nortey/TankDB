@@ -155,6 +155,49 @@ static NSString* _errorMessage;
 
 
 /*
+ *
+ *
+ */
++(void)performBulkInsert:(NSArray*)entries intoTable:(NSString*)tableName{
+    NSMutableArray* queries = [NSMutableArray new];
+    for(TDEntry *entry in entries){
+        NSString* query = [self getSQLforInsertEntry:entry forTable:tableName];
+        [queries addObject:query];
+    }
+    
+    const char *dbpath = [_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_database) == SQLITE_OK){
+        char *errMsg;
+        
+        sqlite3_exec(_database, "BEGIN EXCLUSIVE TRANSACTION", 0, 0, 0);
+        for (NSString* query in queries) {
+            const char *sql_stmt = [query UTF8String];
+            
+            if (sqlite3_exec(_database, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
+                [TankDB setStatus:TD_ERROR withError:[NSString stringWithFormat:@"%s", errMsg]];
+            }else{
+                [TankDB setStatus:TD_OK withError:@""];
+            }
+        }
+        sqlite3_exec(_database, "COMMIT TRANSACTION", 0, 0, 0);
+        
+        sqlite3_close(_database);
+    } else {
+        [TankDB setStatus:TD_ERROR withError:@"Failed to open database"];
+    }
+    
+}
+
+/*
+ *
+ *
+ */
++(void)performBulkUpdate:(NSArray*)entries forTable:(NSString*)tableName{
+    // TODO
+}
+
+
+/*
  *  Clear
  *  Will remove all tables from the database. Completely clears everything.
  */
@@ -173,28 +216,8 @@ static NSString* _errorMessage;
  *  Will construct the query necessary to store the entry into the table
  */
 +(void)insert:(TDEntry*)entry intoTable:(NSString*)tableName{
-    NSMutableArray* columnNamesArray = [NSMutableArray new];
-    NSMutableArray* columnValuesArray = [NSMutableArray new];
-    NSMutableDictionary* entries = [entry getEntries];
-    NSString* tableNameLowerCase = [tableName lowercaseString];
-    
-    // Add array of columns, wrapping strings in quotes
-    for(NSString* key in entries){
-        [columnNamesArray addObject:key];
-        NSObject *value = [entries objectForKey:key];
-        
-        if([value isKindOfClass:[NSString class]]){
-            value = [NSString stringWithFormat:@"\"%@\"", value];
-        }
-        
-        [columnValuesArray addObject:value];
-    }
-    	
-    NSString *columnNames = [columnNamesArray componentsJoinedByString:@", "];
-    NSString *columnValues = [columnValuesArray componentsJoinedByString:@", "];
-    NSString *storeQuery = [NSString stringWithFormat:@"INSERT INTO %@ ( %@ ) VALUES ( %@ )", tableNameLowerCase, columnNames, columnValues];
-    
-    [TankDB invokeRawQuery:storeQuery];
+    NSString* insertQuery = [self getSQLforInsertEntry:entry forTable:tableName];
+    [TankDB invokeRawQuery:insertQuery];
 }
 
 /*
@@ -276,6 +299,34 @@ static NSString* _errorMessage;
     return 0;
 }
     
+/*
+ *  TODO
+ *
+ */
++(NSString*)getSQLforInsertEntry:(TDEntry*)entry forTable:(NSString*)tableName{
+    NSMutableArray* columnNamesArray = [NSMutableArray new];
+    NSMutableArray* columnValuesArray = [NSMutableArray new];
+    NSMutableDictionary* entries = [entry getEntries];
+    NSString* tableNameLowerCase = [tableName lowercaseString];
+    
+    // Add array of columns, wrapping strings in quotes
+    for(NSString* key in entries){
+        [columnNamesArray addObject:key];
+        NSObject *value = [entries objectForKey:key];
+        
+        if([value isKindOfClass:[NSString class]]){
+            value = [NSString stringWithFormat:@"\"%@\"", value];
+        }
+        
+        [columnValuesArray addObject:value];
+    }
+    
+    NSString *columnNames = [columnNamesArray componentsJoinedByString:@", "];
+    NSString *columnValues = [columnValuesArray componentsJoinedByString:@", "];
+    NSString *insertQuery = [NSString stringWithFormat:@"INSERT INTO %@ ( %@ ) VALUES ( %@ )", tableNameLowerCase, columnNames, columnValues];
+    
+    return insertQuery;
+}
 
 /*
  *  Set status

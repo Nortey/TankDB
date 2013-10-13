@@ -35,14 +35,21 @@
 +(void)insert:(TDEntry*)entry intoTable:(NSString*)tableName;
 +(NSArray*)selectAllEntriesForTable:(NSString*)tableName;
 
+
 /* Predicate methods */
 +(NSArray*)selectEntriesWithPredicate:(TDPredicate*)predicate;
 +(void)deleteEntriesWithPredicate:(TDPredicate*)predicate;
 +(void)updateEntriesWithPredicate:(TDPredicate*)predicate;
 +(int)countEntriesWithPredicate:(TDPredicate*)predicate;
 
+/* Bulk methods */
++(void)performBulkInsert:(NSArray*)entries intoTable:(NSString*)tableName;
++(void)performBulkUpdate:(NSArray*)entries forTable:(NSString*)tableName;
+
 /* Private Methods */
++(NSString*)getSQLforInsertEntry:(TDEntry*)entry forTable:(NSString*)tableName;
 +(void)setStatus:(TDStatus)status withError:(NSString*)error;
+
 
 /* Properties */
 +(TDStatus)getStatus;

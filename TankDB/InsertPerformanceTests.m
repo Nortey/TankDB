@@ -10,7 +10,7 @@
 #import "TankDB.h"
 
 #define RUN_INSERT_PERF_TESTS 1
-#define NUM_RECORDS 1000
+#define NUM_RECORDS 100000
 
 @interface InsertPerformanceTests : XCTestCase
 
@@ -42,7 +42,8 @@
 
 -(void)testRunPerformanceTests{
     if(RUN_INSERT_PERF_TESTS){
-        [self insertEntries];
+      //  [self insertEntries];
+        [self insertBulkEntries];
     }
 }
 
@@ -80,6 +81,17 @@
     for(TDEntry *entry in entries){
         [TankDB insert:entry intoTable:@"Users"];
     }
+    
+    NSDate *methodFinish = [NSDate date];
+    NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+    NSLog(@"insertEntries executionTime = %f", executionTime);
+}
+
+- (void)insertBulkEntries{
+    NSDate *methodStart = [NSDate date];
+    
+    NSArray* entries = [self getEntries:NUM_RECORDS];
+    [TankDB performBulkInsert:entries intoTable:@"Users"];
     
     NSDate *methodFinish = [NSDate date];
     NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
